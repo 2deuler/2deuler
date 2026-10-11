@@ -1,0 +1,39 @@
+@mathematical_research_goal (1).md @mathematical_audit_prompt_v3 (1).md I am attaching `mathematical_research_goal.md`.    Read that file completely and treat it as the governing research procedure.  The authoritative mathematical problem is the complete LaTeX source between  the two TARGET_PROBLEM markers below.    PROJECT_WINDOW_BUDGET: 6 hours    \<TARGET_PROBLEM_BEGIN> \paragraph{Problem (global existence for general vortex-sheet data).}\
+Let $\mathcal M(\mathbb R^2)$ denote the space of finite signed\
+Radon measures, equipped with the total variation norm, and set\
+\\[\
+&#x20;   K(x)=\frac{(-x_2,x_1)}{2\pi|x|^2}.\
+\\]\
+For every\
+\\[\
+&#x20;   \omega_0\in\mathcal M(\mathbb R^2)\cap H^{-1}(\mathbb R^2),\
+&#x20;   \qquad u_0=K\*\omega_0,\
+\\]\
+with no sign restriction on $\omega_0$, does there exist a global\
+weak solution of the incompressible Euler equations\
+\\[\
+&#x20;   u\in C_w([0,\infty);\
+&#x20;            L^2\_{\mathrm{loc}}(\mathbb R^2;\mathbb R^2))\
+\\]\
+with $u(0)=u_0$ and $\operatorname{div}u=0$, whose vorticity\
+$\omega(t):=\partial_1u_2(t)-\partial_2u_1(t)$ satisfies\
+\\[\
+\begin{gathered}\
+&#x20;   \omega(t)\in\mathcal M(\mathbb R^2),\
+&#x20;   \qquad u(t)=K\*\omega(t)\
+&#x20;   \qquad\text{for every }t\geq0,\\\\\
+&#x20;   \sup\_{0\leq t\leq T}\\|\omega(t)\\|\_{\mathcal M}<\infty\
+&#x20;   \qquad\text{for every }T>0?\
+\end{gathered}\
+\\]\
+Here the Euler equations are required in the sense that\
+\\[\
+&#x20;   \int_0^T\\!\\!\int\_{\mathbb R^2}\
+&#x20;   \bigl(u\cdot\partial_t\varphi\
+&#x20;         +(u\otimes u):\nabla\varphi\bigr)\\,dx\\,dt\
+&#x20;   +\int\_{\mathbb R^2}u_0\cdot\varphi(0,\cdot)\\,dx=0\
+\\]\
+for every $T>0$ and every divergence-free\
+$\varphi\in C_c^\infty([0,T)\times\mathbb R^2;\mathbb R^2)$.\
+The notation $C_w$ means weak continuity in $L^2$ on every\
+bounded spatial subdomain. \<TARGET_PROBLEM_END>    This is a bounded mathematical research project, not a request for an  immediate literature-status answer.    Begin the procedure in `mathematical_research_goal.md` now. As the first  persistence action, create and maintain `checkpoint.md`. Copy the exact marked  problem into that checkpoint before beginning heavy route work.    Do not terminate except under a stopping condition permitted by  `mathematical_research_goal.md`.

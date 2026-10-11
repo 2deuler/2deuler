@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Existence of weak 2D Euler solutions for sign-changing vortex-sheet data. Delort's problem, a convex-integration construction, and an invitation to discuss the manuscript.">
+  <meta name="description" content="An AI-written manuscript on weak 2D Euler solutions for sign-changing vortex-sheet data. Delort's problem, the original ChatGPT conversation, source files, and an invitation to discuss the argument.">
   <meta name="theme-color" content="#fbfaf6">
   <title>Existence of weak 2D Euler solutions for sign-changing vortex-sheet data</title>
   <!-- All styling is included here. Equations use native MathML: no scripts or external fonts are required. -->
@@ -41,6 +41,9 @@
     .button:hover{color:#fff;background:#1d4d41;border-color:#1d4d41}
     .plain-link{text-decoration:none;border-bottom:1px solid var(--rule);padding:5px 0}
     .hero{padding-bottom:48px;border-bottom:1px solid var(--rule)}
+    .ai-note{margin:0 0 28px;padding:19px 23px;border-left:2px solid var(--accent);background:var(--wash);font:15px/1.75 var(--sans)}
+    .ai-note strong{display:block;margin-bottom:5px;color:var(--accent);font-weight:600}
+    .ai-note p{margin:0}
     .section{margin-top:49px;scroll-margin-top:30px}
     .section-label{color:var(--muted);margin-bottom:12px}
     .math{font-family:"Cambria Math","STIX Two Math",var(--serif);white-space:normal}
@@ -99,6 +102,7 @@
         <a href="#overview">Overview</a>
         <a href="#main-result">Main result</a>
         <a href="#paper">Paper <span aria-hidden="true">↗</span></a>
+        <a href="sources.html">Source material</a>
         <a href="#team">Team</a>
         <a href="#invitation">Contact</a>
       </nav>
@@ -107,8 +111,11 @@
       <section class="hero" aria-labelledby="paper-title">
         <p class="eyebrow">Delort’s vortex-sheet problem</p>
         <h1 id="paper-title">Existence of weak 2D Euler solutions for <em>sign-changing vortex-sheet data</em></h1>
-        <!-- Author information can be added here when the manuscript's author line is available. -->
-        <p class="lead">A construction of global weak flows from arbitrary finite signed vorticity in <span class="math"><i>H</i><sup>−1</sup></span>, with a strong initial velocity trace and integrable vorticity at every positive time.</p>
+        <p class="lead">A manuscript proposing global weak flows from arbitrary finite signed vorticity in <span class="math"><i>H</i><sup>−1</sup></span>, with a strong initial velocity trace and integrable vorticity at every positive time.</p>
+        <aside class="ai-note" aria-label="Manuscript status">
+          <strong>Currently an AI-written manuscript</strong>
+          <p>The manuscript was generated with ChatGPT and subsequently polished with ChatGPT in separate conversations. We share its mathematical claims for examination and discussion. The <a href="sources.html">source material</a> documents the original chat, prompts, and manuscript versions.</p>
+        </aside>
         <div class="actions">
           <a class="button" href="paper.pdf">Read the paper <span aria-hidden="true">↗</span></a>
           <a class="plain-link" href="#main-result">Explore the main result <span aria-hidden="true">↓</span></a>
@@ -126,12 +133,12 @@
         </div>
         <p>A vortex sheet concentrates vorticity on a curve. Delort proved global weak existence for compactly supported vorticity in <span class="math"><i>H</i><sup>−1</sup></span> that is a measure of one sign. In his <a href="https://www.numdam.org/article/SEDP_1990-1991____A2_0.pdf#page=13">discussion of the sign condition</a>, he asked whether existence still holds for general signed measures.</p>
         <p class="question">Can one construct global weak Euler solutions from vortex-sheet data of both signs, while keeping the vorticity a finite measure?</p>
-        <p>The sign condition provides the compactness needed to pass to the nonlinear Euler equation. For general signed measures, that mechanism can fail. The manuscript addresses Delort’s question by constructing the solutions directly, for arbitrary finite signed initial vorticity in <span class="math"><i>H</i><sup>−1</sup></span>, without requiring compact support.</p>
+        <p>The sign condition provides the compactness needed to pass to the nonlinear Euler equation. For general signed measures, that mechanism can fail. The manuscript proposes to address Delort’s question by constructing the solutions directly, for arbitrary finite signed initial vorticity in <span class="math"><i>H</i><sup>−1</sup></span>, without requiring compact support.</p>
         <p>The approach uses <strong>convex integration in the style of <a href="https://arxiv.org/abs/2408.07934">Bruè–Colombo–Kumar</a></strong>: begin with an approximate Euler flow and remove its equation error through the time-averaged effect of moving dipoles. The corrections remain summable both in velocity <span class="math"><i>L</i><sup>2</sup></span> and in vorticity <span class="math"><i>L</i><sup>1</sup></span>.</p>
       </section>
 
       <section class="section" id="main-result" aria-labelledby="result-title">
-        <p class="section-label">02 / The main result</p>
+        <p class="section-label">02 / The manuscript’s main claim</p>
         <h2 id="result-title">No restriction on the initial sign</h2>
         <p>Write <span class="math">ℳ(ℝ<sup>2</sup>)</span> for the finite signed Radon measures and use the inhomogeneous space <span class="math"><i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>. The initial velocity is given by the Biot–Savart law:</p>
         <div class="equation" tabindex="0" role="group" aria-label="The initial velocity and Biot–Savart kernel">
@@ -140,7 +147,7 @@
           </math>
         </div>
         <div class="theorem">
-          <p class="theorem-label">Theorem 1.1 · Manuscript</p>
+          <p class="theorem-label">Theorem 1.1 · As stated in the AI-written manuscript</p>
           <p>For every <span class="math"><i>μ</i><sub>0</sub> ∈ ℳ(ℝ<sup>2</sup>) ∩ <i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>, there are <strong>infinitely many distinct global weak velocity solutions</strong> with initial value <span class="math"><i>u</i><sub>0</sub></span>. They satisfy</p>
           <div class="equation" tabindex="0" role="group" aria-label="The velocity difference is continuous in L2 and vanishes at the initial time">
             <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
@@ -180,10 +187,12 @@
         <p class="section-label">04 / The paper</p>
         <h2 id="download-title">Read the full argument</h2>
         <h3>Global weak Euler flows with finite signed initial vorticity</h3>
-        <p class="metadata">Research manuscript · 25 pages · PDF</p>
+        <p class="metadata">AI-written manuscript · Subsequently polished with ChatGPT · 25 pages</p>
+        <p>This is the current, revised manuscript. The original output and the material from the research run are available on the <a href="sources.html">source page</a>.</p>
         <div class="actions">
           <a class="button" href="paper.pdf">Open the paper <span aria-hidden="true">↗</span></a>
           <a class="plain-link" href="paper.pdf" download="global-weak-euler-flows.pdf">Download PDF <span aria-hidden="true">↓</span></a>
+          <a class="plain-link" href="sources/revised-manuscript.tex" download>Download LaTeX <span aria-hidden="true">↓</span></a>
         </div>
       </section>
       <section class="team-section" id="team" aria-labelledby="team-title">
@@ -196,7 +205,7 @@
       <section class="community" id="our-purpose" aria-labelledby="purpose-title">
         <h2 id="purpose-title">Our purpose</h2>
         <p>We want to understand new arguments for the existence of weak Euler solutions with sign-changing vortex-sheet data: identify their main mechanisms, examine what they imply, make the ideas accessible, and explore their limits.</p>
-        <p>This page brings together the original AI-generated manuscript and our efforts to interpret and explain it. We hope to collect comments, questions, and expositions that can be read alongside the original argument. We aim for transparency and to share the relevant AI interactions whenever feasible. Over time, we hope to complement the AI-generated work with human expositions.</p>
+        <p>This page brings together the AI-written manuscript, its <a href="sources.html">source material</a>, and our efforts to interpret and explain it. We hope to collect comments, questions, and expositions that can be read alongside the original argument. We aim for transparency and to share the relevant AI interactions whenever feasible. Over time, we hope to complement the AI-generated work with human expositions.</p>
       </section>
       <section class="community invitation" id="invitation" aria-labelledby="invitation-title">
         <h2 id="invitation-title">Invitation</h2>
@@ -209,7 +218,7 @@
     </main>
     <footer class="footer">
       <p>Signed vorticity · Two-dimensional incompressible Euler equations</p>
-      <nav class="footer-links" aria-label="Footer navigation"><a href="mailto:josef.demmel@fau.de">Get in touch</a><a href="#top">Back to top <span aria-hidden="true">↑</span></a></nav>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="sources.html">Source material</a><a href="mailto:josef.demmel@fau.de">Get in touch</a><a href="#top">Back to top <span aria-hidden="true">↑</span></a></nav>
     </footer>
   </div>
 </body>

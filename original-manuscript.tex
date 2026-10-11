@@ -1,0 +1,951 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools,geometry,hyperref,array,xcolor}
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\M}{\mathcal M}
+\newcommand{\curl}{\operatorname{curl}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\norm}[2]{\left\|#1\right\|_{#2}}
+\newcommand{\dd}{\,dx}
+\title{Global weak Euler flows for finite signed vorticity on the plane}
+\author{Research manuscript}
+\date{8 October 2026}
+\begin{document}
+\maketitle
+
+\noindent Research proof manuscript.
+Verification status is recorded in the accompanying audit report;
+this source alone is not a verification certificate.
+
+\paragraph{Exact target.}
+Let $K(x)=(-x_2,x_1)/(2\pi|x|^2)$. Given any finite signed Radon measure
+$\mu_0\in\M(\R^2)\cap H^{-1}(\R^2)$, with the \emph{inhomogeneous} Sobolev
+space and no sign restriction, set $u_0=K*\mu_0$. The requested conclusion is a
+global weak Euler solution
+\[
+ u\in C_w([0,\infty);L^2_{\rm loc}(\R^2;\R^2)),\qquad u(0)=u_0,
+ \qquad \Div u=0,
+\]
+such that, at \emph{every} $t\geq0$,
+\[
+ \mu(t)=\curl u(t)\in\M(\R^2),\qquad u(t)=K*\mu(t),\qquad
+ \sup_{0\leq t\leq T}\norm{\mu(t)}{\M}<\infty\quad(T<\infty).
+\]
+The velocity identity is precisely
+\[
+ \int_0^T\!\!\int_{\R^2}
+ \bigl(u\cdot\partial_t\varphi+(u\otimes u):\nabla\varphi\bigr)\dd\,dt
+ +\int_{\R^2}u_0\cdot\varphi(0)\dd=0
+\]
+for all divergence-free $\varphi\in C_c^\infty([0,T)\times\R^2;\R^2)$.
+No global kinetic-energy assumption, compact support, zero circulation, or
+energy inequality is added.
+
+\section{Initial normalization and a bounded Euler background}
+
+We use $\nabla^\perp=(-\partial_2,\partial_1)$,
+$(\nabla v)_{ij}=\partial_jv_i$, $(\Div S)_i=\sum_j\partial_jS_{ij}$, and
+$\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\dd$.
+The multiplier of $K$ is $m(\xi)=-i\xi^\perp/|\xi|^2$.
+
+\begin{lemma}[Canonical velocity and the physical-space decomposition]\label{lem:decomp}
+Let $\mu\in\M\cap H^{-1}$ and $M=\norm\mu\M$. The convolution $K*\mu$
+is defined almost everywhere, belongs to $L^2_{\rm loc}$, and has divergence
+zero and curl $\mu$. Fix a nonnegative radial $a\in C_c^\infty(B_A)$ of
+integral one. Set
+\[
+ \nu_0=a*\mu,\quad \sigma_0=\mu-\nu_0,\quad
+ V_0=K*\nu_0,\quad v_0=(K-K*a)*\mu.
+\]
+Then $K*\mu=V_0+v_0$, $v_0\in L^1\cap L^2$, $V_0\in C_0\cap C^\infty$
+is bounded, and
+\[
+ \norm{v_0}1\leq C_aM,\quad
+ \norm{v_0}2\leq C_a\norm\mu{H^{-1}},\quad
+ \norm{\nu_0}1\leq M,\quad \norm{\sigma_0}\M\leq2M.
+\]
+All derivatives of $\nu_0$ belong to $L^1\cap L^\infty$, and every
+positive-order derivative of $V_0$ belongs to $L^2\cap L^\infty$.
+\end{lemma}
+\begin{proof}
+For a bounded ball $B$, $\sup_y\int_B|K(x-y)|\dd<\infty$; Tonelli gives the
+almost-everywhere definition and local integrability. The kernel's divergence,
+curl, and Fourier identities give the distributional assertions. These identities
+extend from compactly supported to arbitrary finite measures by truncation in
+total variation. Equivalently, $m$ is locally integrable at frequency zero and
+integrable against Schwartz functions, so uniform convergence of the Fourier
+transforms of the truncated measures passes the formula to the limit.
+
+For radial $a$, circulation gives
+\[
+ (K*a)(x)=K(x)\int_{|y|<|x|}a(y)\,dy.
+\]
+Consequently $L_a=K-K*a$ vanishes outside $B_A$ and has only the integrable
+$|x|^{-1}$ singularity at zero. Thus $L_a\in L^1$ and Young's inequality gives
+the $L^1$ estimate for $v_0$. Evenness gives
+$|1-\widehat a(\xi)|\leq C_a\min(|\xi|^2,1)$; hence
+\[
+ (1+|\xi|^2)|(1-\widehat a(\xi))m(\xi)|^2\leq C_a.
+\]
+Plancherel proves the $L^2$ estimate, using exactly the inhomogeneous hypothesis.
+The multipliers $m\widehat a$ and $\xi^\alpha m\widehat a$ are integrable;
+for $|\alpha|\geq1$ the latter multipliers $\xi^\alpha m\widehat a$ are also square integrable. Fourier inversion and the
+Riemann--Lebesgue lemma give the assertions about $V_0$. The convolution
+identities and remaining bounds follow by finite-measure convolution. In
+particular $K*\mu=V_0+v_0\in L^2_{\rm loc}$.
+\end{proof}
+
+\paragraph{External input E1, used only here.}
+Crippa--Stefani, \emph{An elementary proof of existence and uniqueness for the
+Euler flow in localized Yudovich spaces}, Calc. Var. PDE 63, 168 (2024),
+Theorem 3.3, with Assumptions 2.1 and 3.1 and Definition 3.2,
+\url{https://link.springer.com/article/10.1007/s00526-024-02750-4}.
+The specialization used here supplies a global Lagrangian vorticity solution for
+arbitrary signed $L^1\cap L^\infty$ data on $\R^2$, with canonical Biot--Savart
+velocity almost everywhere in time, bounded vorticity and velocity on finite
+horizons, a log-Lipschitz velocity modulus, and nonincreasing $L^1$ norm.
+Definition 3.2 includes the weak initial-value vorticity equation and the
+Lagrangian pushforward representation almost everywhere in time. It does not require compact support or finite global energy.
+The kernel hypotheses hold because $|K(z)|=(2\pi|z|)^{-1}$,
+$|K(z)-K(w)|=|z-w|/(2\pi|z||w|)$, and $\Div K=0$; take $p=3$ in Assumption~3.1, whose bounded
+$1/3$-H\"older velocity mapping is supplied by Theorem~2.2, and note that
+bounded vorticity has uniformly bounded local $L^3$ norms.
+The source is not being used as an unquoted smoothness theorem.
+
+\begin{lemma}[Bounded background and its trace]\label{lem:background}
+The datum $\nu_0$ in Lemma~\ref{lem:decomp} has a global bounded-vorticity Euler evolution
+$\nu$, with velocity $V=K*\nu$ and a pressure $p_V$, such that on each finite
+horizon $[0,T]$,
+\[
+ \sup_t(\norm{\nu(t)}1+\norm{\nu(t)}\infty+
+ \norm{V(t)}\infty+\norm{V(t)}3)<\infty,
+ \quad V(t)-V_0\in C([0,T];L^2).
+\]
+Moreover $\norm{V(t)-V_0}2\leq
+t\norm V{L^\infty_{t,x}}\norm{\nu_0}2$.
+\end{lemma}
+\begin{proof}
+Apply E1, using its $L^1$ and $L^\infty$ bounds and canonical velocity.
+No smoothness upgrade is needed in this construction.
+We first select an every-time representative.
+The log-Lipschitz modulus is Osgood, so the flow and
+its inverse are unique, continuous, and have bounded displacement on finite
+horizons. Mollify the velocity only in space by a probability kernel.
+The resulting smooth divergence-free flows preserve Lebesgue measure by
+the Jacobian equation. Their uniform Osgood modulus and uniform convergence
+of the velocities give convergence of flows and inverse flows on compact
+time-space sets. For a compact continuous test, bounded displacement confines
+its transported support to a fixed bounded set; dominated convergence passes
+volume preservation to the original flow $X_t$.
+
+Define $\nu(t)=\nu_0\circ X_t^{-1}$ at every time. It agrees with the source
+solution almost everywhere in time and preserves the $L^1$, $L^2$, and
+$L^\infty$ norms. Approximating $\nu_0$ in $L^1$ or $L^2$ by compact smooth
+functions and using volume preservation and continuity of the inverse flow
+gives $\nu\in C_tL^1\cap C_tL^2$. Set $V(t)=K*\nu(t)$ at every time.
+It agrees with the source velocity almost everywhere, so its equation is
+unchanged. For $f=\nu(t)-\nu(s)$ the near--far bound
+$\norm{K*f}\infty\leq r\norm f\infty+(2\pi r)^{-1}\norm f1$
+shows continuity of $V$ in $L^\infty$ by choosing $r$ small and then $t-s$
+small. Thus this representative has the canonical initial velocity and
+continuous positive-time local velocity pairings.
+
+The Biot--Savart near--far split also bounds the velocity:
+\[
+ \norm V\infty\leq C\bigl(r\norm\nu\infty+r^{-1}\norm\nu1\bigr)
+ \quad(r>0).
+\]
+Thus $V\nu$ belongs to both $L^1$ and $L^2$ uniformly on finite horizons.
+
+For completeness, $K*\mu$ for any finite measure satisfies
+\[
+ |\{|K*\mu|>\lambda\}|\leq C\norm\mu\M^2\lambda^{-2}.
+\]
+Indeed split $K$ at radius $r=\norm\mu\M/(\pi\lambda)$; the far part has
+supremum at most $\lambda/2$, and the near part has $L^1$ norm at most
+$Cr\norm\mu\M$. Chebyshev proves the bound. Combining it with boundedness
+of $V$ and layer cake gives $\norm V3^3\leq C\norm\nu1^2\norm V\infty$.
+
+Integrate the vorticity equation:
+\[
+ \nu(t)-\nu_0=-\Div F_t,\qquad F_t=\int_0^t V(s)\nu(s)\,ds\in L^1\cap L^2.
+\]
+The Fourier multiplier of $-K*\Div$ has operator norm at most one, yielding
+$V(t)-V_0=-K*\Div F_t$ and the stated estimate and continuity. Likewise
+$\partial_tV,\nabla V\in L^\infty_tL^2$. The same argument between
+any two times gives $\norm{V(t)-V(s)}2\leq C_T|t-s|$. With
+$B_T=\sup_t\norm{V(t)}\infty$, interpolation gives
+$\norm{V(t)-V(s)}3^3\leq2B_T\norm{V(t)-V(s)}2^2$.
+Therefore $V\in C([0,T];L^3)$. The vector
+$\partial_tV+(V\cdot\nabla)V$ is an $L^2$ curl-free field by transport;
+it is a pressure gradient in distributions. Thus the velocity Euler equation
+used below is indeed available without a global-energy assumption on $V$.
+\end{proof}
+
+\section{An initial Euler--Reynolds subsolution}
+
+The convention for Euler--Reynolds is
+\begin{equation}\label{eq:ER}
+ \partial_tu+\Div(u\otimes u)+\nabla p=\Div R,
+ \qquad \Div u=0,
+\end{equation}
+where $R$ is symmetric. Let $b=\mathcal F^{-1}(e^{-|\xi|^4})$ and
+$b_t(x)=t^{-2}b(x/t)$ for $t>0$. It is a real radial Schwartz kernel of
+integral one; it need not be positive. Write $C_b=\norm b1$.
+
+\begin{proposition}[Initial Euler--Reynolds seed]\label{prop:seed}
+For the preceding decomposition and background, put
+\[
+ W(t)=b_t*v_0,\qquad u^{(0)}=V+W,\qquad p^{(0)}=p_V,
+\]
+\[
+ R^{(0)}=W\otimes W+V\otimes W+W\otimes V
+ -4t^3\bigl[\nabla\Delta W+(\nabla\Delta W)^T\bigr].
+\]
+This is a positive-time distributional solution of \eqref{eq:ER}. On $0<t\leq T$,
+\begin{align*}
+ \norm{u^{(0)}-V}2&\leq\norm{v_0}2,\\
+ \norm{\curl u^{(0)}}1&\leq\norm{\nu_0}1+C_b\norm{\sigma_0}\M,\\
+ \norm{R^{(0)}}1&\leq\norm{v_0}2^2
+ +2C_b\norm V\infty\norm{v_0}1+Ct\norm{\sigma_0}\M.
+\end{align*}
+It has strong $L^2_{\rm loc}$ initial trace $u_0$ and canonical velocity
+$u^{(0)}(t)=K*(\nu(t)+b_t*\sigma_0)$.
+On compact positive-time intervals $R^{(0)}\in C_tL^1$,
+$u^{(0)}\in C_tL^3$, and the velocity is strongly continuous in local $L^2$.
+\end{proposition}
+\begin{proof}
+The multiplier of $b_t$ is $e^{-t^4|\xi|^4}$, so
+$\partial_tW=-4t^3\Delta^2W$. Since $\Div W=0$,
+$\Div[\nabla\Delta W+(\nabla\Delta W)^T]=\Delta^2W$.
+Expanding $(V+W)\otimes(V+W)$ proves \eqref{eq:ER} with the stated signs.
+Plancherel gives the $L^2$ bound and $W(t)\to v_0$ strongly in $L^2$.
+Finite-measure convolution gives $\curl W=b_t*\sigma_0$ and the curl bound.
+Furthermore $\norm W1\leq C_b\norm{v_0}1$. The identity
+$\Delta W=\nabla^\perp\curl W$ yields
+\[
+ \norm{\nabla\Delta W}1\leq C\norm{D^2b_t}1\norm{\sigma_0}\M
+ =Ct^{-2}\norm{\sigma_0}\M.
+\]
+Thus the derivative stress costs $Ct\norm{\sigma_0}\M$, and the other
+terms are bounded as displayed. Lemma~\ref{lem:background} proves the trace.
+Fubini against compact tests, or the Fourier identity, gives the canonical
+convolution. On positive-time compact intervals, convolution bounds give
+$W\in C_t(L^1\cap L^2\cap L^\infty)$ and hence
+$W\in C_tL^{3/2}\cap C_tL^3$. The derivative stress is continuous
+in $L^1$ by continuity of $D^2b_t$ in $L^1$. Products $W\otimes W$
+are $L^1$-continuous by $C_tL^2$, while $V\otimes W$ and its transpose
+are $L^1$-continuous by $V\in C_tL^3$ and $W\in C_tL^{3/2}$.
+This proves all asserted continuity without differentiating the old background.
+\end{proof}
+
+\begin{remark}[Why a subcritical global increment norm is required]\label{rem:cross}
+Every repair below must have an \emph{arbitrarily small} $L^{3/2}$ velocity
+increment, in addition to its $L^2$ and curl-variation estimates. Indeed,
+$\norm{V\otimes w}1\leq\norm V3\norm w{3/2}$ closes the whole-plane
+cross-stress bound. Finite energy and finite curl variation do not suffice:
+a smooth radial swirl equal to $e_\theta/(r\log r)$ for $r\geq e^2$ belongs
+to $L^2$, has integrable curl, but is not in $L^{3/2}$. Against a smooth
+unit-circulation background equal to $e_\theta/(2\pi r)$ at infinity,
+$\int|V\otimes w|=\infty$ because $\int_R^\infty dr/(r\log r)=\infty$.
+Multiplying $w$ by a small constant does not repair this divergence.
+\end{remark}
+
+\section{Endpoint repair: elementary building blocks}
+
+\subsection{An exact translating dipole}
+The Bessel functions used below may be defined by their convergent power
+series, whose termwise derivatives give the Bessel equation and
+$J_1'(z)=J_0(z)-J_1(z)/z$.
+There is a positive zero $\beta\in(3,4)$ of $J_1$.
+For completeness, the alternating series gives
+$J_1(3)\geq(3/2)(223/1024)>0$ by truncating after its cubic term in
+$(3/2)^2$, and $J_1(4)\leq-2/45<0$ by truncating after its fourth such term.
+The omitted terms alternate with decreasing magnitudes.
+The intermediate value theorem gives the asserted zero.
+If $J_0(\beta)=0$ also, the recurrence gives $J_1'(\beta)=0$.
+Uniqueness for the regular second-order Bessel ODE near $\beta>0$ would then
+make $J_1$ identically zero, contrary to $J_1(z)=z/2+O(z^3)$.
+Thus $J_0(\beta)\ne0$.
+In polar coordinates set
+\[
+ \psi(\rho,\theta)=
+ \begin{cases}
+ -\rho\sin\theta+\dfrac{2J_1(\beta\rho)}{\beta J_0(\beta)}\sin\theta,
+ &\rho\leq1,\\
+ -\sin\theta/\rho,&\rho\geq1,
+ \end{cases}
+ \qquad D=\nabla^\perp\psi.
+\]
+With $q=\psi+x_2$, $D-e_1=\nabla^\perp q$ and
+$\curl D=-\beta^2q$ in $B_1$, while $\curl D=0$ outside.
+The relations $J_1(\beta)=0$ and $J_1'(\beta)=J_0(\beta)$ give the matching
+values and first derivatives of the stream function.
+The Bessel equation also gives $J_1''(\beta)=-J_0(\beta)/\beta$,
+so the second radial derivatives match.
+Tangential differentiation of the matching traces gives the other second
+derivatives; hence the velocity is continuously differentiable across the circle.
+In particular $q=0$ on
+the circle and $(D-e_1)\cdot\nabla\curl D=0$ distributionally. The pressure
+\[
+ P=-\tfrac12|D-e_1|^2-\tfrac{\beta^2}{2}q^2\mathbf1_{B_1}
+\]
+gives $-\partial_1D+\Div(D\otimes D)+\nabla P=0$. This follows from
+$(w\cdot\nabla)w=(\curl w)w^\perp+\nabla(|w|^2/2)$, and matching on the
+circle leaves no boundary distribution. Outside the unit disk,
+$D=\nabla(-x_1/|x|^2)$; $D$ is even under $x\mapsto-x$.
+
+For a unit direction $\xi\in\mathbb S^1$, rotate the velocity and pressure profiles together, and write $D_r(x)=r^{-1}D(x/r)$ and $P_r(x)=r^{-2}P(x/r)$.
+The direction is suppressed where no confusion arises. Then
+\begin{equation}\label{eq:dipole}
+ -r^{-1}\partial_\xi D_r+\Div(D_r\otimes D_r)+\nabla P_r=0,
+ \quad \Div D_r=0,
+\end{equation}
+and
+\begin{equation}\label{eq:dipole-norms}
+ \norm{D_r}2=C_2,\quad \norm{\curl D_r}1=C_\omega,\quad
+ \norm{D_r}{3/2}=C_{3/2}r^{1/3},\quad \norm{\nabla D_r}1=C_\nabla.
+\end{equation}
+The constants are finite by boundedness in the core and the exterior
+$|x|^{-2}$ decay; the curl is supported in $B_r$.
+
+\subsection{A symmetric globally integrable anti-divergence}
+For a vector field $f$ supported in $B_R$, with
+\[
+ \int f=0,\qquad \int x_jf_i(x)\dd=0\quad\hbox{for every }i,j,
+\]
+define
+\[
+ (\mathcal Af)_{ij}=\partial_i\Delta^{-1}f_j+
+ \partial_j\Delta^{-1}f_i-\delta_{ij}\Div\Delta^{-1}f.
+\]
+It is symmetric and $\Div\mathcal Af=f$. Its kernel has degree $-1$.
+On $B_{3R}$, integration of that kernel gives $CR\norm f1$. Outside $B_{3R}$,
+subtract its constant and linear Taylor terms using the two moment conditions;
+the remainder is at most $CR^2|x|^{-3}\norm f1$. Integration gives
+\begin{equation}\label{eq:anti}
+ \norm{\mathcal Af}1\leq CR\norm f1.
+\end{equation}
+The output need not be compactly supported. Cancellation of only the mean
+would leave a generally nonintegrable $|x|^{-2}$ far field.
+
+Differentiation of the profile gives
+\[
+ \partial_rD_r=r^{-1}D_r-\Div(D_r\otimes x/r).
+\]
+The vector $f_r=\Div(D_r\otimes x/r)$ is supported in $B_r$, because the
+exterior dipole is homogeneous of degree $-2$; $\norm{f_r}1\leq C$.
+Evenness gives all first moments zero. Its mean is zero by the boundary flux
+on any circle outside $B_r$, since the angular mean of the exterior dipole
+is zero. Therefore $F_r=-\mathcal Af_r$ satisfies
+\begin{equation}\label{eq:radial}
+ \partial_rD_r=r^{-1}D_r+\Div F_r,
+ \qquad \norm{F_r}1\leq Cr.
+\end{equation}
+
+\subsection{Variable radius and a compact source}
+On each visit take $r,\eta,X$ to be $C^1$ in time, with $r(t)>0$, $\eta(t)\geq0$, and $X'=\eta\xi/r$, and write $T_X f(x)=f(x-X)$. By
+\eqref{eq:dipole}--\eqref{eq:radial}, the packet
+$v(t,x)=\eta(t)D_{r(t)}(x-X(t))$ satisfies, after adding gradients to pressure,
+\begin{equation}\label{eq:packet}
+ \partial_tv+\Div(v\otimes v)+\nabla p
+ =(\eta r)'T_XD_r/r+\Div(\eta r'T_XF_r).
+\end{equation}
+Choose a radial cutoff $\chi$ equal to zero on $B_1$ and one outside $B_2$,
+let $\alpha=1/5$, and put
+\[
+ \Phi_\xi(x)=-\xi\cdot x/|x|^2,\quad
+ \Pi_r(x)=r\chi(x/r^\alpha)\Phi_\xi(x),\quad
+ Z_r=D_r-\nabla\Pi_r.
+\]
+For small $r$, $Z_r$ is even and supported in $B_{2r^\alpha}$; direct radial
+integration gives $\norm{Z_r}1\leq Cr(1+|\log r|)$. Its integral is
+$2\pi r\xi$: on a large circle the respective boundary integrals for $D_r$
+and $\nabla\Pi_r$ are $\pi r\xi$ and $-\pi r\xi$.
+Thus $S_r=Z_r/r$ has integral $2\pi\xi$ and all first moments zero.
+
+Fix a nonnegative radial smooth probability bump $U\in C_c^\infty(B_1)$ and define $U_H(x)=H^{-2}U(x/H)$, supported in $B_H$.
+If $2r^\alpha\leq H$, the difference $S_r-2\pi U_H\xi$ has its zeroth and
+first moments zero. Equation~\eqref{eq:anti} gives
+\[
+ \norm{\mathcal A(S_r-2\pi U_H\xi)}1\leq CH(1+|\log r|).
+\]
+Equation~\eqref{eq:packet} therefore becomes
+\begin{equation}\label{eq:packet-source}
+ \partial_tv+\Div(v\otimes v)+\nabla p=\mathcal U+\Div E,
+ \qquad \mathcal U=2\pi(\eta r)'U_H(x-X)\xi,
+\end{equation}
+where
+\begin{equation}\label{eq:E-bound}
+ E=\eta r'T_XF_r+(\eta r)'T_X\mathcal A(S_r-2\pi U_H\xi),\quad
+ \norm E1\leq C|\eta r'|r+C|(\eta r)'|H(1+|\log r|).
+\end{equation}
+The endpoint estimate $\norm{\curl v}1=|\eta|C_\omega$ is independent of $r$.
+
+\section{Two-scale raster and local stress repair}\label{sec:repair-interface}
+
+\subsection{Stress coefficients and a fixed cycle}
+For a prescribed symmetric stress piece $S$, use the directions
+$e_1,e_2,(e_1+e_2)/\sqrt2,(e_1-e_2)/\sqrt2$.
+For a fixed smooth compactly supported tensor $S$, choose a nonnegative
+compact smooth function $h$ equal to one on a neighborhood of its support.
+For $\gamma>0$ put
+\[
+ A=\sqrt{S_{12}^2+\gamma^2h^2},\qquad
+ B=\sqrt{S_{11}^2+S_{22}^2+\gamma^2h^2}.
+\]
+These functions are smooth: near the zero set of $h$, the entries of $S$
+already vanish, so both square roots reduce to $\gamma h$.
+They satisfy $A\geq|S_{12}|$ and $B\geq\max(S_{11},S_{22})$.
+Define
+\[
+ a_1=B-S_{11},\quad a_2=B-S_{22},\quad
+ a_3=A-S_{12},\quad a_4=A+S_{12},\quad q=A+B
+\]
+Then $-S+qI=\sum_i a_i\xi_i\otimes\xi_i$.
+All coefficients are smooth, compactly supported, and nonnegative, with
+$\sum_i\norm{a_i}1\leq C\norm S1+C\gamma\norm h1$.
+The final term can be made arbitrarily small before choosing fine scales.
+The discarded spatial tail remains a small residual. On a compact time
+interval, continuity into $L^1$ makes this tail truncation uniform: the
+continuous image is compact in $L^1$, and a finite covering reduces the claim
+to finitely many fixed integrable functions.
+
+Fix a coefficient and its rectangle in coordinates $(s,y)$ adapted to $\xi$.
+Write $a$ for the original compactly supported coefficient.
+On the scanning rectangle define $c=a+e$ with a strictly positive floor
+$e>0$, and use constant-$e$ longitudinal buffers where $a=0$.
+Write $\varepsilon_{\rm floor}$ for the total added floor and buffer mass,
+including the fixed factors from the ramp durations below.
+This mass is chosen arbitrarily small.
+All rectangle, floor, and derivative constants are fixed before the fine
+parameter tends to zero. We use two distinct scales
+\begin{equation}\label{eq:scales}
+ d=H^2\quad\hbox{(row spacing)},\qquad
+ \tau\asymp H^6\quad\hbox{(cycle duration)}.
+\end{equation}
+The auxiliary bump has width $H$, not $d$. One packet visits rows $y=kd$
+sequentially, with no simultaneous packets. On the interior of a row,
+$\eta$ is constant and $r(s)=r_0c(s,kd)$. Thus
+\[
+ dt=(r_0/\eta)c(s,kd)\,ds,
+ \qquad\int\eta^2U_H(x-X(t))\,dt
+ =\eta r_0\int c(s,kd)U_H(x-s\xi-kd\xi^\perp)\,ds.
+\]
+At entry use a fixed smooth temporal ramp $\zeta:[0,1]\to[0,1]$,
+equal to zero to all orders at zero and equal to one with all positive-order
+derivatives zero at one.
+At exit use the reversed ramp $\zeta(1-\cdot)$.
+Write $I_\zeta=\int_0^1\zeta>0$.
+Throughout either buffer $r=r_0e$ is constant.
+To traverse a
+buffer of length $L$, choose ramp duration
+$r_0eL/(\eta I_\zeta)$.
+Let $B_i$ be the sum over rows of the interior line
+integrals of $c_i=a_i+e_i$, plus $2e_iL/I_\zeta$ per row for the two ramps.
+Allocate $\tau_i=\tau/4$ to direction $i$, and set
+\begin{equation}\label{eq:normalization}
+ \eta_i^2=\frac{\tau dB_i}{2\pi\tau_i},\qquad
+ r_{0,i}=\frac{\tau d}{2\pi\eta_i}.
+\end{equation}
+The full scan takes exactly $(r_{0,i}/\eta_i)B_i=\tau_i$, and its coefficient
+weight is exactly $2\pi\eta_ir_{0,i}/\tau=d$. With sufficiently fine $d$,
+$dB_i\leq C\norm{a_i}1+C\varepsilon_{\rm floor}+o_H(1)$.
+Writing $\varepsilon_{\rm reg}$ for the earlier regularization mass gives
+$\eta_i\leq C\sqrt\delta+
+C\sqrt{\varepsilon_{\rm floor}+\varepsilon_{\rm reg}}+o_H(1)$
+when $\norm S1\leq\delta$.
+If a direction
+has zero mass it can be omitted; a positive floor otherwise makes
+\eqref{eq:normalization} unambiguous.
+
+On a ramp $|(\eta r)'|\leq C\eta_i^2$; on an interior row
+$|\eta r'|=|(\eta r)'|\leq\eta_i^2\norm{\partial_\xi\log c_i}\infty$.
+Constants are fixed before $H\downarrow0$. Accordingly $r_0\asymp H^8$,
+all radii are bounded above and below by fixed multiples of $H^8$, and
+$r^{1/5}=O(H^{8/5})=o(H)$. The intrinsic error
+\eqref{eq:E-bound} is $O(H|\log H|)+O(H^8)$.
+
+Integration by parts on a visit, using $\eta=0$ at its endpoints, gives
+\begin{equation}\label{eq:average}
+ \overline{\mathcal U}=\frac1\tau\int_{\rm cycle}\mathcal U\,dt
+ =\Div\left(\frac{2\pi}{\tau}\int_{\rm cycle}
+ \eta(t)^2U_H(x-X(t))\xi\otimes\xi\,dt\right).
+\end{equation}
+Indeed $\frac d{dt}(\eta rU_H(x-X))=(\eta r)'U_H-\eta^2\xi\cdot\nabla U_H$.
+Write the tensor in parentheses, summed over four directions, as $A_{\rm av}$.
+The raster quadrature obeys
+\begin{equation}\label{eq:quad}
+ \left\|d\sum_k\int a(s,kd)U_H(\,\cdot-s\xi-kd\xi^\perp)\,ds-a\right\|_1
+ \leq C\left[d\bigl(\norm{\partial_\perp a}1+H^{-1}\norm a1\bigr)
+ +H\norm{\nabla a}1\right].
+\end{equation}
+Here is the explicit Banach-valued rectangle-rule proof.
+Put $F(y)=\int a(s,y)U_H(\cdot-s\xi-y\xi^\perp)\,ds$, as an $L^1_x$-valued
+function.
+Differentiating it gives
+$\int\norm{F'(y)}1dy\leq\norm{\partial_\perp a}1+
+\norm a1\norm{\partial_\perp U_H}1$.
+On each row interval of length $d$, the fundamental theorem of calculus
+bounds the integrated discrepancy from its endpoint sample by
+$d$ times the integral of $\norm{F'}1$ on that interval.
+Summing yields the first two terms in \eqref{eq:quad}.
+The translation estimate
+$\norm{a*U_H-a}1\leq CH\norm{\nabla a}1$ gives the third.
+Estimate \eqref{eq:quad} applies to the original compact coefficient $a$.
+The added floor and the ramp-weighted buffers contribute at most
+$C\varepsilon_{\rm floor}+o_H(1)$ separately.
+Since $d=H^2$, the quadrature error tends to zero.
+
+\subsection{Temporal correction and the stress identity}
+On each cycle $[t_k,t_k+\tau]$ put
+\[
+ Q(t)=-\mathbb P\int_{t_k}^t
+ (\mathcal U(s)-\overline{\mathcal U})\,ds,
+\]
+The average here is taken over the entire four-direction cycle, not
+separately on each direction slot. This ensures that its tensor is the
+sum of all four directional averages throughout the cycle.
+Here $\mathbb P=I-\nabla\Delta^{-1}\Div$ is used only on translates of
+the fixed bump $U_H\xi$ and their time integrals. Its needed bounds have
+a direct fixed-profile proof. Let $G=(2\pi)^{-1}\log|x|$ and
+\[
+ Z_{H,\xi}=U_H\xi-(D^2G*U_H)\xi.
+\]
+It has zero divergence and $\curl Z_{H,\xi}=\curl(U_H\xi)$.
+At $H=1$ it is smooth and bounded in the core: write the Hessian convolution
+as $\partial_iG*\partial_jU_1$, whose $|x|^{-1}$ singularity is integrable.
+For $|x|>1$, radial averaging gives $G*U_1=G$, so
+$Z_{1,\xi}=-D^2G\xi=O(|x|^{-2})$. Hence $Z_{1,\xi}\in L^p$ for every
+$p>1$. Scaling gives
+\[
+ \norm{Z_{H,\xi}}p\leq C_p H^{2/p-2}.
+\]
+Minkowski applies to its translates in the time primitive. No general
+Calderón--Zygmund $L^p$ theorem is needed for this use of $\mathbb P$.
+For an explicit pressure sign, write
+$q_{H,\xi}=\xi\cdot\nabla(G*U_H)$ and let
+$\pi_{\mathcal U}(t)=2\pi(\eta r)'q_{H,\xi}(\cdot-X(t))$
+for the active direction, with zero value when no packet is active.
+Then $\mathcal U-\mathbb P\mathcal U=\nabla\pi_{\mathcal U}$.
+Taking
+$p_Q=-\pi_{\mathcal U}+\tau^{-1}\int_{\rm cycle}\pi_{\mathcal U}(s)\,ds$
+gives the exact identity
+$\partial_tQ+\mathcal U+\nabla p_Q=\overline{\mathcal U}$.
+If $B$ bounds $|(\eta r)'|$, bump scaling gives
+\begin{equation}\label{eq:Q}
+ \norm Q2\leq C\tau H^{-1}B,
+ \quad\norm Q{3/2}\leq C\tau H^{-2/3}B,
+ \quad\norm{\curl Q}1\leq C\tau H^{-1}B.
+\end{equation}
+Here both $\mathcal U$ and its cycle average obey the needed norm bound.
+The curl estimate follows directly from $\norm{\nabla U_H}1=O(H^{-1})$.
+No $L^1$ boundedness of $\mathbb P$ is invoked. The corrector vanishes at both
+cycle endpoints. Its first time derivative may jump there, so the new velocity correction
+is continuous and, after the fixed spatial mollification below, piecewise
+smooth in time; it is not asserted to
+be globally time-smooth.
+
+Given an old distributional Euler--Reynolds seed $(u,p,R)$, set $\widetilde u=u+v+Q$.
+Combining \eqref{eq:packet-source}, \eqref{eq:average}, and the equation for
+$Q$ gives, modulo a gradient,
+\[
+ \partial_t\widetilde u+\Div(\widetilde u\otimes\widetilde u)
+ =\Div\widetilde R,
+\]
+\begin{align*}
+ \widetilde R={}&R+A_{\rm av}-qI+E
+ +u\otimes v+v\otimes u+u\otimes Q+Q\otimes u\\
+ &+v\otimes Q+Q\otimes v+Q\otimes Q.
+\end{align*}
+The scalar $q$ is absorbed into pressure. Thus $\widetilde R=R-S+E_{\rm total}$,
+where the averaging error is $S+A_{\rm av}-qI$ and all remaining terms are
+shown explicitly. The displayed expression for $\widetilde R$ is symmetric, since each mixed product occurs with its transpose;
+the cross terms satisfy
+\begin{align*}
+ \norm{u\otimes v}1&\leq\norm u3\norm v{3/2}
+ \leq C\norm u3\eta r^{1/3},&
+ \norm{u\otimes Q}1&\leq\norm u3\norm Q{3/2},\\
+ \norm{v\otimes Q}1&\leq\norm v2\norm Q2,&
+ \norm{Q\otimes Q}1&=\norm Q2^2.
+\end{align*}
+These terms tend to zero at fixed coarse seed as $H\downarrow0$.
+The same estimates give an arbitrarily small $L^{3/2}$ increment.
+A corrector on one direction slot alone would have the wrong instantaneous
+average stress and is not used.
+
+\subsection{Spatial smoothing, without remollifying the old seed}
+The raw profile can be made spatially smooth on each fixed cycle by convolving
+the \emph{new packet equation} with a fixed even compact smooth mollifier
+$\rho_\ell$. Keep $\ell$ constant throughout that cycle and take it below its
+positive minimum radius. Replace $v,Q,\mathcal U,E,A_{\rm av}$ by their
+convolutions consistently. The packet equation then gains the symmetric
+commutator
+\[
+ C_\ell=v_\ell\otimes v_\ell-(v\otimes v)_\ell,
+\]
+with the sign determined by moving it to the right-hand side as above.
+Its $L^1$ norm tends uniformly to zero on the fixed cycle: the map
+$t\mapsto v(t)$ is continuous into $L^2$, its image is compact there, and
+approximation of the identity is uniform on compact subsets of $L^2$.
+Norm bounds do not grow under probability convolution; evenness and the two
+moment cancellations are preserved. The constant smoothing scale eliminates
+any additional time derivative of the convolution kernel. Zero endpoint
+values of $v$ and $Q$ are preserved. The old seed is never remollified, so no
+new velocity jump is created at a pre-existing boundary.
+
+\begin{lemma}[Prescribed-piece local endpoint repair, LER]\label{ass:LER}
+Consider the following admissible class: positive-time Euler--Reynolds
+velocities are continuous into local $L^2$ and global $L^3$.
+Stresses are symmetric and locally bounded in $L^\infty_tL^1_x$.
+Their restrictions to the open pieces of a locally finite positive-time
+partition admit continuous $L^1$ extensions to each piece's closure.
+The two one-sided extensions need not agree at a boundary.
+Actual stress values at those discrete times are chosen separately subject
+to the same norm bound; they do not enter the distributional equation.
+The Euler--Reynolds equation holds in distributions. No derivative bound
+on the old velocity is required by the local construction.
+
+Let $(u,R)$ be any current pair in this class, $J\Subset(0,\infty)$ an
+open interval, and $S$ a prescribed symmetric tensor compactly supported in
+time in $J$, piecewise continuous into $L^1$ on the inherited partition.
+Write $\delta=\sup_J\norm S1$.
+For every $\varepsilon,\zeta,\kappa,r_*>0$
+there are $w,E_{\rm total}$ compactly supported in time in $J$ such that
+\[
+ (\widetilde u,\widetilde R)=(u+w,R-S+E_{\rm total})
+\]
+is again an Euler--Reynolds pair in the admissible class,
+$\Div w=0$, $E_{\rm total}$ is symmetric, and
+\[
+ \sup_J\norm{E_{\rm total}}1\leq\varepsilon,\qquad
+ \sup_J\bigl(\norm w2+\norm{\curl w}1\bigr)\leq C\sqrt\delta+\zeta,
+ \qquad \sup_J\norm w{3/2}\leq\kappa.
+\]
+The constant $C$ is independent of the seed derivatives, support, patch
+location, and patch length; fine parameters may depend on these quantities
+and on the finite old $L^3$ norm. The new correction is continuous into
+$L^2\cap L^3\cap L^{3/2}$, and only finitely many new time boundaries are
+introduced in a compact patch. Old boundaries are included in the new
+partition.
+Every principal radius can be required to be at most $r_*$.
+All outputs paste within the admissible class.
+\end{lemma}
+\begin{proof}
+If $\delta=0$, take $w=E_{\rm total}=0$.
+Suppose henceforth that $\delta>0$.
+Choose $[a,b]\Subset J$ containing the temporal support of $S$ in its interior.
+Only finitely many inherited partition boundaries meet this interval.
+On each closed one-sided continuity piece, uniform continuity into $L^1$
+permits a finite coarse subdivision such that on each coarse cell $I_k$
+there is a fixed symmetric tensor $S_k\in C_c^\infty$ satisfying
+\begin{equation}\label{eq:coarse-approx}
+ \sup_{t\in I_k}\norm{S(t)-S_k}1\leq\varepsilon_0,\qquad
+ \norm{S_k}1\leq\delta+\varepsilon_0.
+\end{equation}
+In this display, $S$ on a closed $I_k$ means the one-sided continuous
+extension from its interior.
+No single actual boundary value is required to equal two different traces.
+First freeze $S$ at one time with error at most $\varepsilon_0/2$, then approximate
+that single $L^1$ tensor by a compact smooth symmetric tensor with error
+at most $\varepsilon_0/2$.
+There are only finitely many coarse cells.
+Thus their chosen supports, spatial derivatives, and decomposition parameters
+have finite maxima.
+No derivative of the actual prescribed $S$ is taken.
+
+On each $I_k$, decompose the constant tensor $-S_k$ modulo $q_kI$
+as above.
+Choose its regularization parameter and the positive floors so that all
+added coefficient mass is arbitrarily small.
+The rectangular buffers lie outside the support of the original coefficient,
+where its value is zero before adding the floor.
+The constant-floor buffer errors are bounded by a fixed multiple of their
+total added mass.
+In particular, shrinking those masses controls the averaging error and the
+additive amplitude slack independently of the size of the rectangle.
+
+Fix the coarse tensor, rectangles, floors, and ramp functions.
+Divide $I_k$ into $N_k$ equal complete four-direction cycles.
+Put $\tau_k=|I_k|/N_k$, $H_k=\tau_k^{1/6}$, and $d_k=H_k^2$.
+Consequently $\tau_k=H_k^6$ holds exactly, rather than only asymptotically,
+and every endpoint of $I_k$ is a complete-cycle endpoint.
+Use the exact normalization \eqref{eq:normalization} on each cycle.
+At fixed positive floors, the quantities $d_kB_i$ converge to positive finite
+limits as $N_k\to\infty$.
+The amplitudes therefore have positive lower and finite upper bounds
+independent of large $N_k$, with bounds permitted to depend on the fixed floors.
+The leading upper bound is
+\[
+ \eta_i\leq C\sqrt{\delta+\varepsilon_0}
+   +C\sqrt{\hbox{added mass and vanishing row-rule errors}}.
+\]
+The constant multiplying $\sqrt{\delta+\varepsilon_0}$ depends only on the fixed
+four directions and dipole, not on derivative norms or the rectangle.
+
+All radii on the fixed coarse cell are bounded above and below by positive
+constant multiples of $H_k^8$.
+The constants may depend on its coefficients and floors.
+Thus $2r^{1/5}\leq H_k$ and $r\leq r_*$ hold for all sufficiently large $N_k$.
+The quantities $|(\eta r)'|$ and $|\eta r'|$ stay bounded independently
+of $N_k$, because their formulas involve only the uniformly bounded peak amplitudes, fixed
+ramp functions, and the fixed logarithmic derivatives of the positive coefficients.
+Equation \eqref{eq:E-bound} makes the intrinsic stress
+$O(H_k|\log H_k|)+O(H_k^8)$.
+Equation \eqref{eq:Q} makes the corrector $O(H_k^5)$ in $L^2$ and
+curl $L^1$, and $O(H_k^{16/3})$ in $L^{3/2}$.
+The principal $L^{3/2}$ norm is $O(H_k^{8/3})$ at fixed coarse parameters.
+Equation \eqref{eq:quad} makes the quadrature error tend to zero.
+Every cross term with the actual old $u$ tends to zero by the displayed
+Hölder estimates and the finite bound $\sup_{[a,b]}\norm u3$.
+There is no time-freezing derivative estimate here: the constructed tensor
+$S_k$ is constant on the coarse cell, and the already charged discrepancy
+is precisely \eqref{eq:coarse-approx}.
+
+Finally choose a fixed spatial mollification scale on each complete cycle.
+The finite set of cycles has a positive minimum radius.
+The commutator can therefore be made smaller than any remaining stress budget,
+while convolution decreases all required velocity and curl norms.
+It changes the averaged tensor to its convolution.
+The resulting additional averaging error also tends to zero in $L^1$ as
+the mollification scale tends to zero, since that tensor is integrable.
+No old field is mollified.
+
+The exact stress identity on $I_k$ is
+$\widetilde R=R-S_k+E_k^{\rm loc}$.
+It follows by adding the old equation to the new packet and corrector
+identities, taking the average over the whole four-direction cycle, and
+subtracting $q_k$ from the intermediate pressure.
+At times strictly inside a coarse cell, set
+\[
+ E_{\rm total}(t)=S(t)-S_k+E_k^{\rm loc}(t)\qquad(t\in I_k).
+\]
+Then $\widetilde R=R-S+E_{\rm total}$ exactly.
+Choose $\varepsilon_0\leq\varepsilon/2$ and all local stress errors at most
+$\varepsilon/2$.
+This proves the requested stress bound.
+
+Choose $\varepsilon_0$ also so that $C\sqrt\varepsilon_0\leq\zeta/3$.
+Next choose added coefficient masses small enough for their amplitude cost
+to be at most $\zeta/3$.
+Finally choose the cycle counts large enough that the row-rule amplitude
+error and the $L^2$ and curl cost of $Q$ use at most the remaining $\zeta/3$.
+Using $\sqrt{\delta+\varepsilon_0}\leq\sqrt\delta+\sqrt\varepsilon_0$ proves
+the independent leading increment estimate.
+The same cycle counts can make the two $L^{3/2}$ contributions sum to at
+most $\kappa$ and all radii at most $r_*$.
+All these requirements have already been shown to improve as the counts
+increase at fixed coarse data, so this is one compatible parameter choice.
+
+Every principal packet and $Q$ vanishes at each completed cycle endpoint.
+Extend $w$ by zero outside $[a,b]$.
+Its continuous zero traces exclude temporal delta functions.
+Define $E_{\rm total}=0$ outside this interval; the prescribed $S$ is zero there.
+On the finite set of inherited, coarse-cell, and full-cycle boundary times,
+choose $E_{\rm total}(t)=0$ and
+$\widetilde R(t)=R(t)-S(t)$.
+These choices maintain the exact algebra and the pointwise error bound,
+and do not change the distributional equation or one-sided extensions.
+The error stress may jump at $a,b$ and at cycle boundaries, but spatial
+divergence creates no temporal delta from those jumps.
+Both output supports are compact subsets of $J$.
+
+The principal packet is continuous in global $L^2$ and $L^{3/2}$ by
+positive-radius scaling and translation continuity, including its zero limits
+at resets.
+Fixed spatial smoothing makes it continuous into $L^3$ by Young's inequality
+$\norm{\rho_\ell*v}3\leq C\ell^{-1/3}\norm v2$.
+The projected-bump time integral makes $Q$ continuous into all three spaces.
+For each fixed construction these bounds are finite, without asserting a
+uniform $L^3$ bound through the infinite iteration.
+
+Every local intrinsic stress is continuous into $L^1$ on its closed cycle.
+For the anti-divergence terms this follows from \eqref{eq:anti} on a common
+support ball and the $L^1$ continuity of the compact zero-moment inputs.
+Translations and positive-radius rescalings preserve the asserted continuity.
+At packet resets the prefactors in those intrinsic stresses tend to zero.
+The commutator and quadratic terms are continuous by their $L^2$ products.
+The old--new terms are continuous because
+\[
+ \norm{u(t)\otimes w(t)-u(s)\otimes w(s)}1
+ \leq\norm{u(t)-u(s)}3\norm{w(t)}{3/2}
+ +\norm{u(s)}3\norm{w(t)-w(s)}{3/2}.
+\]
+Adding $S-S_k$ leaves the error piecewise continuous into $L^1$.
+Thus the new stress and velocity remain in the stated admissible class.
+Only finitely many coarse cells and cycles were used in $[a,b]$.
+\end{proof}
+
+\section{Global time iteration and exact-target closure}
+
+\begin{lemma}[Zero initial trace from anchor times]\label{lem:anchors}
+Suppose $(U,R)$ and $(\widetilde U,\widetilde R)$ are positive-time
+Euler--Reynolds pairs with continuous local $L^2$ velocities, uniformly
+bounded local kinetic energies and global $L^1$ stresses on $(0,T)$.
+Suppose $W=\widetilde U-U$ is uniformly bounded in global $L^2$ and
+$W(t_k)=0$ for a sequence $t_k\downarrow0$. Then $W(t)\rightharpoonup0$
+in global $L^2$ as $t\downarrow0$.
+\end{lemma}
+\begin{proof}
+For a compact smooth divergence-free spatial test $\psi$, subtract the
+Euler--Reynolds equations:
+\[
+ \frac d{dt}\int W\cdot\psi
+ =\int(\widetilde U\otimes\widetilde U-U\otimes U):\nabla\psi
+ -\int(\widetilde R-R):\nabla\psi.
+\]
+The right side is uniformly bounded. The pairing is Lipschitz, including
+across piecewise-time boundaries by the distributional equation and
+continuity, and its zero values at $t_k$ force its limit to zero.
+For any sequence $t_n\downarrow0$, the bounded sequence $W(t_n)$ has a weakly convergent $L^2$ subsequence. Its limit
+is divergence free and annihilates all such $\psi$; testing
+$\psi=\nabla^\perp\phi$ also makes its curl zero. Fourier variables force
+this global $L^2$ vector field to vanish: away from frequency zero it is
+both parallel and perpendicular to $\xi$, and an $L^2$ function has no
+zero-frequency point mass. All weak cluster points are zero, proving the claim.
+\end{proof}
+
+\begin{proposition}[Global iteration]\label{prop:iteration}
+The seed in Proposition~\ref{prop:seed} can be repaired
+on $(0,\infty)$ to a global weak Euler solution with exact initial trace,
+locally uniformly finite curl variation, and a globally $L^2$ perturbation
+of the seed at each time, bounded uniformly on finite time horizons.
+\end{proposition}
+\begin{proof}
+Choose a nonnegative $\eta\in C_c^\infty((1/2,2))$ equal to one on $[3/4,3/2]$, whose positive dyadic dilates
+cover $(0,\infty)$ and set
+\[
+ I_j=(2^{j-1},2^{j+1}),\qquad
+ \chi_j(t)=\frac{\eta(t/2^j)}{\sum_{k\in\mathbb Z}\eta(t/2^k)}.
+\]
+This is a locally finite partition of unity with
+$\supp\chi_j\Subset I_j$. Color patches by $j\bmod3$.
+Within each color the intervals are disjoint and leave gaps; for a given
+$j$ of that color, $3\cdot2^j$ lies between $I_j$ and $I_{j+3}$.
+These gap times tend to zero as $j\to-\infty$. Use $N=3$ as an overlap bound.
+
+Choose a smooth nondecreasing majorant $\Theta\geq1$, finite on every finite
+horizon including zero, such that $\norm{R^{(0)}(t)}1\leq\Theta(t)$.
+It exists from Proposition~\ref{prop:seed}. Let $\delta_q=16^{-q}$ and
+inductively require $\norm{R^{(q)}(t)}1\leq\delta_q\Theta(t)$.
+Freeze the prescribed pieces $S_{qj}=\chi_jR^{(q)}$ before any repair at
+stage $q$. Set $M_j=\sup_{I_j}\Theta$, $m_j=\inf_{I_j}\Theta\geq1$.
+For patch $j$ apply LER with
+\[
+ \varepsilon_{qj}=\delta_{q+1}m_j/N,\qquad
+ \zeta_{qj}=\sqrt{\delta_q}/N,\qquad
+ \kappa_{qj}=2^{-q}/N,\qquad r_*=1.
+\]
+Process the three colors in order. Within one color disjoint supports
+allow simultaneous pasting, with no cross term between different patches.
+Between colors use the current repaired pair as background, while still
+removing the originally frozen piece $S_{qj}$. This prescribed-piece
+feature is why LER is stated with $S$ independently of the current $R$.
+Each compact positive-time interval meets only finitely many patches,
+and LER introduces only finitely many new boundaries per patch.
+Thus the finite-stage admissible class is retained.
+
+At the end of the stage,
+\[
+ u^{(q+1)}=u^{(q)}+w_q,\quad w_q=\sum_jw_{qj},\qquad
+ R^{(q+1)}=\sum_jE_{qj}.
+\]
+There are at most $N$ active summands at any time, and each has
+$m_j\leq\Theta(t)$. Therefore
+$\norm{R^{(q+1)}(t)}1\leq\delta_{q+1}\Theta(t)$.
+During a partially completed color stage the stress is
+\[
+ \left(1-\sum_{j\ \mathrm{processed}}\chi_j\right)R^{(q)}
+ +\sum_{j\ \mathrm{processed}}E_{qj},
+\]
+whose $L^1$ norm is at most $(\delta_q+\delta_{q+1})\Theta(t)$.
+If $0<t\leq T$ and a patch is active, $I_j\subset(0,4T)$, so
+\begin{equation}\label{eq:increment-stage}
+ \sup_{0<t\leq T}\left(\norm{w_q(t)}2+
+ \norm{\curl w_q(t)}1\right)
+ \leq[NC\sqrt{\Theta(4T)}+1]\sqrt{\delta_q}.
+\end{equation}
+These bounds are summable in $q$ and also bound intermediate color increments.
+The arbitrary $L^{3/2}$ budgets give summable subcritical increments; their
+more immediate role is making each old--new global cross stress as small
+as needed in LER. No uniform-in-stage $L^3$ norm is asserted.
+
+For each color the total correction vanishes at its gap times approaching
+zero. Both old and new stresses and local energies are uniformly bounded
+near zero, and the global $L^2$ correction is bounded by
+\eqref{eq:increment-stage}. Lemma~\ref{lem:anchors} shows it has weakly zero
+initial trace. There are only three colors. Induction therefore preserves
+exact initial trace at every stage without requiring small initial energy
+or a nearby-endpoint replacement.
+
+The correction series converges uniformly in global $L^2$ on $(0,T]$
+for each finite $T$. At positive times the finite stages are locally
+strongly $L^2$ continuous, so their locally uniform limit is too. At zero,
+split the series into finitely many terms and a uniformly small $L^2$ tail;
+each finite correction has weakly zero trace by the previous paragraph.
+Together with the seed trace this gives
+$u\in C_w([0,\infty);L^2_{\rm loc})$ and $u(0)=u_0$.
+At each fixed $t>0$, the curl series converges absolutely in $L^1$ by
+\eqref{eq:increment-stage}, and its sum is the distributional curl of the
+velocity limit. Consequently
+\[
+ \sup_{0<t\leq T}\norm{\curl u(t)}1\leq
+ \sup_{0<t\leq T}\norm{\curl u^{(0)}(t)}1+
+ [NC\sqrt{\Theta(4T)}+1]\sum_q\sqrt{\delta_q}<\infty.
+\]
+Add the initial measure norm to obtain the bound including zero.
+Divergence zero is preserved distributionally.
+
+Strong $L^2$ convergence on compact positive-time cylinders passes the
+quadratic term to the limit in $L^1$, while
+$\norm{R^{(q)}(t)}1\leq\delta_q\Theta(t)$ removes the stress. Thus Euler
+holds on $(0,\infty)$. For a test meeting zero, use a temporal cutoff rising
+on $(\varepsilon,2\varepsilon)$. Uniform local energy makes the omitted
+convection integral tend to zero. Weak local $L^2$ continuity identifies
+the cutoff-derivative term with $\int u_0\cdot\varphi(0)$; replacing
+$\varphi(t)$ by $\varphi(0)$ in this term incurs an $O(\varepsilon)$ error.
+This proves precisely the target's initial-value weak formulation.
+\end{proof}
+
+\begin{lemma}[Canonical normalization from a fixed background]\label{lem:canonical}
+Suppose $u=U+v$, where $U\in C_0(\R^2;\R^2)$, $v\in L^2$, $\Div u=0$,
+and $\mu=\curl u\in\M$. Then $u=K*\mu$.
+\end{lemma}
+\begin{proof}
+The distribution $h=u-K*\mu$ has zero divergence and curl, so each component
+is harmonic; Weyl's lemma makes it a smooth harmonic function. Its mean-value
+estimate on $B_R(x)$ gives
+\[
+ |h(x)|\leq\frac1{|B_R|}\int_{B_R(x)}|U|
+ +\frac{C\norm v2}{R}
+ +\frac1{|B_R|}\int_{B_R(x)}|K*\mu|.
+\]
+The last term is at most $C\norm\mu\M/R$, because
+$\sup_y\int_{B_R(x)}|K(z-y)|\,dz\leq CR$. The first tends to zero since
+$U\in C_0$: separate a fixed large compact set from its uniformly small
+complement. Letting $R\to\infty$ proves $h=0$.
+\end{proof}
+
+\begin{theorem}[Global existence]\label{thm:global}
+For every datum in the exact target stated at the start of this document,
+there is a global velocity with all of its stated properties.
+\end{theorem}
+\begin{proof}
+Proposition~\ref{prop:iteration} gives the global velocity, the exact weak
+initial trace and formulation, and every-time finite measure curl with
+locally uniform variation. At each time take $U=V_0$ and
+$v=(V(t)-V_0)+W(t)+\sum_qw_q(t)\in L^2$ in
+Lemma~\ref{lem:canonical}; at zero use the prescribed datum directly.
+This proves the remaining canonical Biot--Savart identity at every time.
+No finite-horizon solutions have to be reconciled or restarted.
+\end{proof}
+
+\end{document}

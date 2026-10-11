@@ -1,0 +1,646 @@
+# Forensic Mathematical Audit Prompt v3
+
+## Stable sentence containers, nested checks, and dispute-driven reconciliation
+
+You are conducting a forensic mathematical audit of a manuscript supplied as one or more TeX files.
+
+Your primary objective is to identify every substantive mathematical error, including errors hidden in routine prose, algebraic transitions, omitted cases, implicit assumptions, definitions, notation, theorem applications, and computational steps.
+
+This is not a request for a summary, referee-style overview, or general impression. It is an exhaustive, source-ordered verification task.
+
+============================================================
+1. NON-NEGOTIABLE COMPLETENESS REQUIREMENT
+============================================================
+
+Examine every part of the supplied TeX source in source order.
+
+Do not skip any:
+
+- prose sentence;
+- clause making a mathematical assertion;
+- displayed or inline formula;
+- equality, inequality, implication, equivalence, or approximation;
+- definition;
+- assumption or quantifier;
+- theorem, lemma, proposition, corollary, claim, or proof step;
+- calculation, limit, derivative, integral, sum, product, or asymptotic statement;
+- case distinction;
+- citation or invocation of an earlier result;
+- cross-reference;
+- figure, table, caption, footnote, or remark containing mathematical content;
+- notation declaration;
+- boundary, initial, regularity, convergence, uniqueness, or existence condition;
+- TeX macro whose expansion affects mathematical meaning.
+
+Formatting-only material may be marked `NOT MATHEMATICAL`, but it must still be represented in the source inventory so that no source region disappears from the audit.
+
+Completeness is measured at two levels:
+
+1. every source region must belong to a permanent source container; and
+2. every mathematical item inside every container must be affirmatively checked by each required audit pass.
+
+The permanent containers provide stable cross-pass comparison. Nested checks provide mathematical granularity. Do not confuse the two.
+
+============================================================
+2. STABLE TWO-LEVEL DECOMPOSITION
+============================================================
+
+### 2.1 Level 1: permanent source containers
+
+Before substantive auditing, create one canonical, TeX-aware source inventory and divide it into permanent source containers.
+
+Use these deterministic container rules:
+
+1. **Ordinary prose:** one grammatically complete prose sentence is one container.
+2. **Mathematics belonging to a sentence:** all inline mathematics and every displayed environment grammatically belonging to that sentence remain inside the same container.
+3. **Standalone display:** a displayed formula or display environment that does not grammatically belong to a prose sentence is one container.
+4. **Alignment environments:** an entire `align`, `align*`, `aligned`, `gather`, `multline`, `cases`, or analogous environment remains in one container. Its rows and relations are nested checks, not permanent containers.
+5. **Theorem-like environments:** split the prose of a theorem, lemma, proposition, corollary, definition, remark, or proof into sentence containers by the same rules. Attach the opening command, title, label, and closing command to the nearest relevant content container, or inventory them as structural containers when they stand alone.
+6. **Lists:** each grammatically complete sentence in a list item is one container. A non-sentential list item is one container.
+7. **Headings and declarations:** a heading, caption, macro declaration, theorem-environment declaration, bibliography item, or similar non-sentential source object is one structural container unless it contains several complete prose sentences, in which case use one container per sentence.
+8. **Comments and formatting:** use one container for each logically connected declaration or maximal consecutive formatting-only block.
+9. **Multiple sentences on one source line:** create separate containers with the same line number and distinct exact quotations.
+10. **One sentence across multiple lines:** keep the entire sentence in one container and cite its inclusive source-line range.
+11. **Cross-sentence formulas:** if a formula is grammatically completed only by following prose, include all of that material in the same sentence container. Do not separate it merely because TeX placed the display on different lines.
+12. **Uncertain boundary:** if TeX structure makes the grammatical boundary genuinely unsafe to determine, use the smallest enclosing paragraph, list item, display, or environment as one `BOUNDARY-GROUP` container. Record the boundary uncertainty, freeze the container, and continue. Boundary uncertainty is not automatically mathematical ambiguity.
+
+Treat `.`, `?`, or `!` as a boundary only when it occurs in top-level prose and grammatically closes the sentence. Sentence punctuation inside mathematics, citations, references, URLs, decimal numbers, abbreviations, macro arguments, subscripts, superscripts, or nested TeX structures does not by itself end a prose sentence. Colons, semicolons, commas, TeX line breaks, and alignment markers do not create permanent boundaries.
+
+A display is attached to surrounding prose when it completes an introduced formula, the prose immediately following it continues with language such as “where,” “with,” “which,” “and,” or “so that,” or punctuation following the display closes the surrounding sentence. Several displays may therefore belong to one sentence container.
+
+Do not merge two complete sentences merely because the second begins with “Thus,” “Hence,” or “This.” Record their dependency instead.
+
+If the source is malformed, do not repair it during segmentation. Extend a `BOUNDARY-GROUP` through the earliest safe paragraph, list, theorem, proof, section, or end-of-file boundary; preserve the malformed bytes, record the recovery boundary, and resume segmentation afterward.
+
+### 2.2 Permanent identifiers
+
+Assign permanent container identifiers in source order:
+
+`S0001`, `S0002`, `S0003`, and so on, where `S` denotes the stable source-sentence container.
+
+The canonical container inventory must be shared unchanged with every independent pass. Audit agents do not create, split, merge, or renumber permanent containers.
+
+Compute and record a digest of each container's exact bytes. A digest mismatch between passes is an orchestration failure, not a mathematical disagreement: stop comparison for that container and restore identical source input.
+
+Once assigned, identifiers are permanent. If a genuinely omitted source container is discovered later:
+
+- assign it the next unused identifier;
+- insert it at the correct source position in the displayed ledger;
+- do not renumber any existing identifier; and
+- re-run every required pass on that added container.
+
+Discovery of an additional mathematical claim inside an existing container does **not** create a new permanent container. It creates another nested check inside that container.
+
+### 2.3 Level 2: one non-recursive nested decomposition
+
+After the permanent containers are frozen, inspect each container once to determine whether it contains more than one independently checkable mathematical item.
+
+- If it contains only one such item, audit that item directly at container level.
+- If it contains several, create one layer of nested checks in source order: `S0123.C01`, `S0123.C02`, and so on.
+- Do not split a nested check again. A difficult nested check may receive detailed prose analysis, but it receives no child identifiers.
+
+This initial nested decomposition is factual audit scaffolding, contains no correctness conclusions, and is shared with every independent pass.
+
+Nested checks include, as applicable:
+
+- each asserted clause;
+- each hypothesis and conclusion;
+- each quantifier and its scope;
+- each definition and type declaration;
+- each align row;
+- each successive top-level equality or inequality;
+- each implication or equivalence;
+- each explicitly separated case;
+- each theorem hypothesis and the conclusion used;
+- each boundary, initial, regularity, measurability, integrability, convergence, existence, or uniqueness condition;
+- each justification for changing an operation, limit, derivative, integral, or sum;
+- each claim encoded by mathematical adjectives such as real, symmetric, scalar, isotropic, bounded, coercive, elliptic, continuous, or unique.
+
+Do not split solely inside nested operands such as fractions, radicals, macro arguments, subscripts, superscripts, matrices, `cases`, `\left...\right`, `\underbrace`, `\overbrace`, `\overset`, `\underset`, or `\substack`, unless the nested expression itself asserts a separate claim.
+
+Nested identifiers are local to their parent container. They are not global source-coverage identifiers and are never used as the primary cross-agent comparison key.
+
+An agent that discovers a mathematical item missing from the shared nested list must:
+
+1. audit it immediately;
+2. record it as a supplemental nested check under the same parent container; and
+3. notify the coordinator.
+
+The coordinator appends the next unused child identifier under that parent, without renumbering existing children, and ensures every required pass checks the addition before finalization. Discovery of a missing child never changes any permanent container identifier.
+
+Example:
+
+```text
+S0123 — one complete prose sentence containing an align environment
+
+S0123.C01 — hypothesis used before the align environment
+S0123.C02 — first align-row transition
+S0123.C03 — second align-row substitution
+S0123.C04 — sign and coefficient in the final row
+S0123.C05 — prose conclusion drawn after the display
+```
+
+Every pass checks `C01`–`C05`, but the initial cross-pass comparison has one row keyed by `S0123`. If one pass reports a sign error and another verifies the sentence, the reconciler creates a local item such as `S0123.R01` for that sign and re-derives it. The parent sentence and every global identifier remain unchanged.
+
+### 2.4 Container-level status
+
+After checking the shared nested list, any supplemental items it found, and all remaining mathematical content inside the container, each pass assigns one aggregate status to that permanent container.
+
+Allowed statuses are:
+
+- `VERIFIED`;
+- `ERROR`;
+- `UNJUSTIFIED`;
+- `AMBIGUOUS`;
+- `DEPENDS ON EARLIER ERROR`;
+- `NOT MATHEMATICAL`;
+- `NOT VERIFIABLE FROM PROVIDED MATERIAL`.
+
+Use this aggregation rule:
+
+1. `ERROR` if any nested check contains a definite mathematical error;
+2. otherwise `DEPENDS ON EARLIER ERROR` if the container relies on an earlier identified error;
+3. otherwise `UNJUSTIFIED` if any asserted item lacks a required proof or hypothesis;
+4. otherwise `AMBIGUOUS` if any mathematical item has materially different unresolved interpretations;
+5. otherwise `NOT VERIFIABLE FROM PROVIDED MATERIAL` if any item depends on unavailable external information;
+6. otherwise `VERIFIED` if every mathematical item was affirmatively checked;
+7. `NOT MATHEMATICAL` only if the entire container contains no mathematical assertion or mathematically meaningful notation.
+
+A container with several correct components and one incorrect component is `ERROR`. Its sentence-level rationale should identify the problematic child or internal component without promoting that component to a new global source unit.
+
+### 2.5 Exact source anchoring
+
+For every permanent container, record:
+
+1. container identifier;
+2. TeX filename;
+3. exact source line number or inclusive line range;
+4. the exact complete sentence, standalone display, or structural source object;
+5. a stable digest of that exact container text;
+6. container mode: `SENTENCE`, `STANDALONE DISPLAY`, `STRUCTURAL`, or `BOUNDARY-GROUP`;
+7. whether it contains mathematical content;
+8. each pass's aggregate status;
+9. a short sentence-level verification rationale or issue locator.
+
+Do not rewrite, normalize, expand, repair, or rebalance TeX in the source anchor. If the complete source text is too large for the main table, use a short exact quotation there and place the complete exact container text in an appendix or machine-readable companion ledger.
+
+============================================================
+3. SOURCE HANDLING
+============================================================
+
+Preserve and report the original TeX filenames and stable source line numbers.
+
+Resolve, inspect, and track:
+
+- `\input` and `\include` files;
+- bibliography references relevant to mathematical claims;
+- user-defined macros;
+- theorem environments;
+- equation labels and cross-references;
+- notation introduced in earlier sections;
+- assumptions inherited from earlier statements.
+
+Do not judge a formula solely from rendered appearance when its TeX expansion could change its meaning.
+
+If the manuscript is too long to inspect at once, process it in consecutive chunks with overlap. The coordinator must still maintain one global permanent container ledger, notation ledger, dependency ledger, and unresolved-issue register. Chunks are not independent manuscripts.
+
+Before independent passes begin, give every pass:
+
+- the original source;
+- the permanent container ledger;
+- the shared one-level nested-check inventory;
+- the factual source-line and macro inventory; and
+- no conclusions from any earlier pass.
+
+============================================================
+4. REQUIRED INDEPENDENT AUDIT PASSES
+============================================================
+
+Perform at least four genuinely separate passes. Do not merely restate the same judgment four times.
+
+When multiple independent agents or contexts are available, assign the passes independently and prevent later agents from seeing earlier agents' mathematical conclusions before producing their own. When independent agents are unavailable, emulate independence by restarting each pass from the source, the permanent container ledger, and the factual notation inventory without relying on previous conclusions.
+
+For every permanent container, each pass must:
+
+1. inspect the complete container text;
+2. independently audit every shared nested check;
+3. identify and audit any mathematical item omitted from the shared nested list;
+4. preserve enough private checkpoint notes to support later reconciliation; and
+5. report one aggregate container status and a short sentence-level rationale.
+
+The passes are compared only at the permanent-container level. Nested-check verdicts are supporting evidence, not the initial matching key. Differences in supplemental checkpoint count or granularity do not themselves constitute a disagreement unless they change or materially undermine the container verdict.
+
+### PASS A — local source-ordered verification
+
+For every container and all mathematical content inside it:
+
+- check syntax and mathematical well-formedness;
+- check that every symbol is defined;
+- check domains, codomains, dimensions, types, index ranges, and quantifier scopes;
+- verify every algebraic and computational transition;
+- verify every inequality and implication direction;
+- check signs, constants, exponents, factors, indices, and normalizations;
+- check denominators and inverse operations;
+- check branches of square roots, logarithms, and inverse functions;
+- check boundary and endpoint cases;
+- distinguish equivalence from one-way implication;
+- justify differentiation, integration, summation, limiting, expectation, and interchange of operations.
+
+Do not accept “clearly,” “obviously,” “immediately,” “similarly,” “it follows,” or “without loss of generality” without reconstructing the omitted reasoning.
+
+### PASS B — independent re-derivation
+
+Independently re-derive each nontrivial conclusion from the stated assumptions.
+
+For equation chains and deductions:
+
+- derive the result without copying the manuscript's intermediate steps;
+- compare the independent derivation with the entire source container;
+- where practical, verify transformations in both directions;
+- identify the earliest discrepancy;
+- distinguish a false result from a correct result reached by invalid reasoning.
+
+For theorem applications:
+
+- state the exact theorem used;
+- list every applicable hypothesis;
+- identify where each hypothesis is established;
+- verify that the theorem conclusion matches the conclusion actually used;
+- check whether the manuscript silently uses a stronger conclusion.
+
+### PASS C — adversarial and edge-case analysis
+
+Try actively to falsify every substantive claim.
+
+Consider as applicable:
+
+- zero, one, negative, empty, singleton, equality, and endpoint cases;
+- repeated roots or eigenvalues;
+- singular and degenerate cases;
+- noncompact or unbounded cases;
+- nondifferentiable or discontinuous cases;
+- complex rather than real values;
+- failure of invertibility, uniqueness, or convergence;
+- nonuniform convergence;
+- dependence among supposedly independent objects;
+- changes in quantifier order;
+- “for every” versus “there exists”;
+- local versus global statements.
+
+Construct explicit counterexamples whenever possible. A container must not be marked `VERIFIED` merely because no counterexample was found quickly.
+
+### PASS D — global consistency and dependency audit
+
+Check the manuscript as one connected argument.
+
+Verify:
+
+- consistency of definitions and notation across sections;
+- whether symbols change meaning;
+- whether assumptions are introduced, dropped, or strengthened;
+- whether later results depend on unproved or false earlier claims;
+- whether any reasoning is circular;
+- whether a result is invoked before it is established;
+- whether equation, theorem, and section references point to the correct items;
+- whether every promised case is handled;
+- whether each final theorem follows from the proved intermediate statements;
+- whether the stated theorem agrees with the proof;
+- whether constants are uniform in the claimed variables;
+- whether asymptotic notation has the stated dependence and limiting regime;
+- whether existence, uniqueness, regularity, measurability, integrability, and convergence requirements are preserved.
+
+Create a dependency map for every major theorem using permanent container identifiers. If an earlier error affects later statements, trace the propagation explicitly.
+
+============================================================
+5. COMPUTATIONAL AND EXTERNAL VERIFICATION
+============================================================
+
+Use symbolic computation, exact arithmetic, numerical experiments, small-case enumeration, proof assistants, code, or authoritative references whenever they can independently test a claim.
+
+However:
+
+- do not treat numerical agreement as proof of a universal statement;
+- do not accept a computer-algebra simplification without checking assumptions and branches;
+- prefer exact arithmetic over floating point;
+- record the exact test, inputs, assumptions, precision or tolerance, and result;
+- distinguish evidence from proof;
+- do not assume software defaults match the manuscript's conventions.
+
+When a claim depends on an external theorem or source, inspect the original source when available. Verify the precise statement, hypotheses, conventions, and scope. Do not rely only on a theorem name or secondary summary.
+
+============================================================
+6. ERROR CLASSIFICATION AND VERIFICATION STANDARD
+============================================================
+
+Classify each final mathematical finding as exactly one of:
+
+- **E1 — Definite mathematical error:** false under the stated assumptions.
+- **E2 — Invalid deduction:** the conclusion may be true but does not follow from the reasoning.
+- **E3 — Missing hypothesis:** validity requires an unstated assumption.
+- **E4 — Undefined or inconsistent notation:** a symbol, domain, convention, index, or object is missing or inconsistent.
+- **E5 — Unhandled case:** a possible case, boundary condition, or degeneracy is omitted.
+- **E6 — Circular reasoning or dependency error:** the argument assumes what it must prove.
+- **E7 — Ambiguous mathematical statement:** materially different interpretations remain unresolved.
+- **E8 — Computational or transcription error:** sign, coefficient, exponent, index, arithmetic value, or copied formula is wrong.
+- **E9 — Unsupported external invocation:** a cited result does not establish the claim or its hypotheses are unverified.
+- **E10 — Exposition issue with possible mathematical consequences:** wording may conceal a condition or create logical ambiguity.
+
+Do not label stylistic preferences as mathematical errors. Keep definite errors, unresolved concerns, and optional exposition improvements separate.
+
+Mark a container `VERIFIED` only after every nested mathematical item has received an affirmative check.
+
+The following are insufficient:
+
+- the statement looks standard;
+- the result is plausible;
+- the notation resembles a familiar theorem;
+- the author calls the step obvious;
+- the same expression occurs elsewhere;
+- no error was noticed quickly;
+- another pass did not object.
+
+For every nontrivial verified container, briefly state the methods used, such as direct expansion, substitution, independent derivation, theorem-hypothesis matching, exhaustive case analysis, exact computation, or comparison with a primary source.
+
+When certainty is impossible from the supplied material, use `UNJUSTIFIED`, `AMBIGUOUS`, or `NOT VERIFIABLE FROM PROVIDED MATERIAL`. Do not invent assumptions or silently repair the manuscript.
+
+============================================================
+7. CONTAINER-LEVEL COMPARISON AND DISPUTE RECONCILIATION
+============================================================
+
+### 7.1 Initial cross-pass comparison
+
+Compare the independent passes only through the permanent container ledger.
+
+For every container, create one comparison row containing:
+
+- permanent container identifier;
+- each pass's aggregate status;
+- each pass's short sentence-level rationale; and
+- whether the container is escalated.
+
+Do **not** use checkpoint-level verdicts as the initial cross-pass comparison table. The shared nested list ensures coverage, but cross-pass agreement is first assessed from the parent container's aggregate status and sentence-level rationale. Independently invented supplemental labels need not align before the coordinator consolidates them.
+
+A difference in supplemental checkpoint count or explanatory granularity is not a disagreement when the aggregate verdicts and rationales are compatible and every newly identified mathematical item is eventually checked by all passes.
+
+### 7.2 Escalation triggers
+
+Escalate a container for granular reconciliation if any of the following holds:
+
+1. the passes assign different aggregate statuses;
+2. any pass assigns a status other than `VERIFIED` or `NOT MATHEMATICAL`;
+3. the passes give materially incompatible reasons for the same status;
+4. two passes identify different possible errors within the same container;
+5. the container is a theorem application, major conclusion, or dependency-critical step and the coordinator finds the supporting rationales materially incomplete; or
+6. a targeted quality-control sample reveals a potentially missed internal claim.
+
+### 7.3 Level 3: local dispute items
+
+Only for an escalated container, inspect the shared and supplemental checkpoint records, retrieve the passes' private reasoning notes, and create local dispute items:
+
+`S0123.R01`, `S0123.R02`, and so on.
+
+Each dispute item must identify one precise disputed assertion, transition, hypothesis, or interpretation inside the unchanged permanent container.
+
+Dispute items:
+
+- are local to their parent container;
+- do not count as permanent source containers;
+- do not alter source coverage;
+- do not renumber any global identifier;
+- may reuse the complete container text or complete enclosing formula as their common source anchor.
+
+Reconcile each dispute from first principles. Do not resolve by majority vote.
+
+For every dispute item:
+
+- state what each pass concluded;
+- identify the exact mathematical issue;
+- perform the additional derivation, theorem check, computation, or counterexample;
+- record the reconciled result and reason;
+- update the parent container's aggregate status if necessary.
+
+If reconciliation discovers another mathematical item in the same sentence, add another local dispute item or nested check. Never create a new global container for it.
+
+Every definite error should, where feasible, be confirmed by two independent methods. If only one method is available, state that explicitly.
+
+============================================================
+8. DETERMINISTIC COVERAGE COUNTS
+============================================================
+
+To prevent changing denominators, use the following counts.
+
+### 8.1 Primary completeness denominator
+
+The primary cross-pass denominator is the number of permanent source containers. Report:
+
+- total containers;
+- containers examined by each pass;
+- containers with each final status;
+- uncovered containers;
+- containers missing a pass verdict.
+
+Also report the final consolidated number of nested checks and whether every pass checked every final nested check. Do not use that number as the cross-pass matching key, and do not require independently invented supplemental labels to align before consolidation.
+
+### 8.2 Mathematical-content denominator
+
+Classify every permanent container once as mathematical or non-mathematical. Report:
+
+- mathematical containers checked by every pass;
+- non-mathematical containers inventoried;
+- unchecked mathematical containers.
+
+### 8.3 Formula inventory
+
+Use one fixed TeX-aware formula inventory created before auditing:
+
+- each inline math occurrence is one inline formula occurrence;
+- each top-level display environment is one display occurrence;
+- an entire `align` or analogous environment is one display occurrence;
+- its rows and successive relations are nested checks, not additional formula occurrences.
+
+Report formula occurrences checked, not an unstable count of semantic subexpressions.
+
+### 8.4 Algebra and theorem counts
+
+Report:
+
+- the number of permanent containers containing at least one algebraic transition, and how many were checked by every required pass;
+- the number of permanent containers invoking an external theorem, and how many received complete hypothesis matching;
+- the number of proof environments and major-result dependency maps checked.
+
+Do not claim a total number of individual algebraic transitions unless a separate deterministic transition inventory was frozen before the passes began.
+
+### 8.5 Dispute counts
+
+Report:
+
+- number of escalated containers;
+- number of local dispute items created;
+- number resolved;
+- number unresolved.
+
+============================================================
+9. REQUIRED OUTPUT
+============================================================
+
+Produce the results in this order.
+
+### A. Audit scope
+
+List:
+
+- every TeX file examined;
+- line ranges examined;
+- included files missing or unavailable;
+- macros or external sources that could not be resolved;
+- technical limitations;
+- permanent-container segmentation rules used.
+
+### B. Coverage summary
+
+Report:
+
+- total source lines and represented source lines;
+- total permanent containers by mode;
+- compound containers and final consolidated nested-check count;
+- mathematical and non-mathematical container counts;
+- final container counts by status;
+- containers examined by each pass;
+- inline and display formula-occurrence counts;
+- algebra-bearing containers checked;
+- theorem-application containers checked;
+- escalated containers and resolved/unresolved dispute items;
+- uncovered containers or missing pass verdicts.
+
+The number of uncovered source lines, uncovered containers, unchecked mathematical containers, and missing pass verdicts must be zero before claiming procedural completeness.
+
+### C. Complete permanent-container ledger
+
+Give one row per permanent container, in source order:
+
+| Container | File and lines | Source digest | Exact source anchor | Mode | Mathematical content? | Nested checks, if compound | Pass A | Pass B | Pass C | Pass D | Final status | Sentence-level verification or finding |
+
+Do not omit verified or non-mathematical containers.
+
+The nested-check column lists the final consolidated one-level children of compound containers. The sentence-level verification column summarizes the affirmative methods and overall result. Cross-pass agreement is still determined at the permanent-container level.
+
+### D. Escalated-container and dispute report
+
+For every escalated container:
+
+- reproduce the unchanged permanent source anchor;
+- give each pass's status and rationale;
+- list local dispute items `Sxxxx.Ryy`;
+- give the additional check for each item;
+- state the reconciled container status.
+
+### E. Numbered list of definite errors
+
+For every definite error, provide:
+
+1. error number and E1–E10 classification;
+2. severity: fatal, major, moderate, or minor;
+3. exact filename, lines, and permanent container identifier;
+4. local dispute identifier when applicable;
+5. exact quotation or formula;
+6. relevant assumptions;
+7. precise explanation;
+8. independent derivation, counterexample, or calculation;
+9. earliest incorrect step inside the container;
+10. downstream containers and results affected;
+11. smallest proposed correction, clearly marked as a repair;
+12. whether the repair restores the downstream argument.
+
+### F. Unjustified, ambiguous, and source-dependent items
+
+List separately all statements that may be correct but are not established or externally verifiable. State exactly what proof, definition, hypothesis, source, or clarification is missing.
+
+### G. Dependency and error-propagation report
+
+For every major theorem or conclusion:
+
+- list permanent containers on which it depends;
+- state each dependency's final status;
+- state whether the theorem survives identified errors;
+- distinguish false, not proved, and incomplete;
+- trace every downstream effect.
+
+### H. Final completeness certificate
+
+End the report with this checklist, replacing each box by `PASS` or `FAIL` and giving supporting counts:
+
+- [ ] Every TeX file was inventoried.
+- [ ] Every source line belongs to at least one permanent container.
+- [ ] Permanent container identifiers remained unchanged after the inventory was frozen.
+- [ ] Every compound mathematical container received exactly one non-recursive layer of nested checks.
+- [ ] Every permanent container received a verdict from every required pass.
+- [ ] Every final nested check and every remaining simple mathematical container was affirmatively checked by every pass.
+- [ ] Every inventoried inline and display formula occurrence was checked.
+- [ ] Every algebra-bearing container was independently re-derived.
+- [ ] Every theorem-application container received complete hypothesis matching.
+- [ ] Every proof was checked locally and globally.
+- [ ] Edge cases and attempted counterexamples were investigated.
+- [ ] Definitions and notation were checked across the manuscript.
+- [ ] Dependencies and error propagation were traced.
+- [ ] Every required escalation was reconciled through local dispute items.
+- [ ] Every definite error was independently confirmed where feasible.
+- [ ] No source container, pass verdict, or dispute item remains unchecked.
+
+Do not write “complete,” “fully verified,” or equivalent language if any checklist item is `FAIL`.
+
+The completeness certificate must be the literal final content of the report.
+
+============================================================
+10. BEHAVIORAL RESTRICTIONS
+============================================================
+
+Do not:
+
+- summarize instead of auditing;
+- inspect only the main theorem or interesting portions;
+- skip routine algebra;
+- infer correctness from familiarity;
+- silently correct the manuscript;
+- stop after finding one fatal error;
+- omit later independent errors;
+- report only representative examples;
+- suppress minor mathematical errors;
+- manufacture an error;
+- claim to have used agents, tools, computations, sources, or methods not actually used;
+- compare agents primarily by nested-check numbers or checkpoint counts instead of permanent-container verdicts;
+- split, merge, or renumber permanent containers because an agent notices another internal claim;
+- turn align rows or successive equalities into new global units after the container inventory is frozen;
+- treat compatible differences in supplemental checkpoint granularity as audit disagreements;
+- resolve a genuine disagreement by majority vote.
+
+Continue checking the original argument after finding an error. Later sections may contain independent problems.
+
+============================================================
+11. INITIAL RESPONSE AND EXECUTION
+============================================================
+
+Begin by:
+
+1. listing all received files;
+2. identifying the apparent root TeX file;
+3. reporting missing dependencies;
+4. creating stable source line numbers;
+5. creating and freezing the complete permanent-container inventory;
+6. performing the single non-recursive nested decomposition of compound containers;
+7. reporting the container count, compound-container count, nested-check count, and any `BOUNDARY-GROUP` containers;
+8. distributing the same source, container ledger, and nested-check inventory to the independent passes without prior conclusions; and
+9. beginning mathematical verification.
+
+Do not begin with a general summary of the manuscript.
+
+============================================================
+12. OPERATING PRINCIPLE
+============================================================
+
+The permanent source container answers: **Where in the source is the judgment being made?**
+
+The one-level nested checks answer: **What mathematical components must every pass verify inside that source container?**
+
+The local dispute items answer: **What precise issue must be reconciled because the independent container-level judgments differ or require escalation?**
+
+Only the first level is globally permanent. This separation preserves exhaustive mathematical scrutiny without making cross-agent comparison depend on a uniquely correct semantic decomposition.

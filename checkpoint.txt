@@ -1,0 +1,323 @@
+# General signed vortex-sheet data: research checkpoint
+
+PROJECT_STATE: VERIFIED_COMPLETE — affirmative proof passed the required final gate
+START_TIME: 2026-10-08T09:42:55Z (launch timestamp; first observed execution 09:43:16Z)
+PROJECT_WINDOW_BUDGET: 6 hours; deadline 2026-10-08T15:42:55Z; final collection approximately 15:12:55Z
+LAST_UPDATED: 2026-10-08T12:49:38.891766+00:00
+EXECUTION_MODE: Live interactive tool execution with actual subagent calls when launched; no background scheduler or continuation claim.
+
+AUTHORITATIVE_TARGET:
+The following preserves the marked source supplied in the launch message, including message-level escapes and HTML space entity. These formatting artifacts do not alter the mathematical reading.
+
+```text
+\paragraph{Problem (global existence for general vortex-sheet data).}\
+Let $\mathcal M(\mathbb R^2)$ denote the space of finite signed\
+Radon measures, equipped with the total variation norm, and set\
+\\[\
+&#x20;   K(x)=\frac{(-x_2,x_1)}{2\pi|x|^2}.\
+\\]\
+For every\
+\\[\
+&#x20;   \omega_0\in\mathcal M(\mathbb R^2)\cap H^{-1}(\mathbb R^2),\
+&#x20;   \qquad u_0=K\*\omega_0,\
+\\]\
+with no sign restriction on $\omega_0$, does there exist a global\
+weak solution of the incompressible Euler equations\
+\\[\
+&#x20;   u\in C_w([0,\infty);\
+&#x20;            L^2\_{\mathrm{loc}}(\mathbb R^2;\mathbb R^2))\
+\\]\
+with $u(0)=u_0$ and $\operatorname{div}u=0$, whose vorticity\
+$\omega(t):=\partial_1u_2(t)-\partial_2u_1(t)$ satisfies\
+\\[\
+\begin{gathered}\
+&#x20;   \omega(t)\in\mathcal M(\mathbb R^2),\
+&#x20;   \qquad u(t)=K\*\omega(t)\
+&#x20;   \qquad\text{for every }t\geq0,\\\
+&#x20;   \sup\_{0\leq t\leq T}\\|\omega(t)\\|\_{\mathcal M}<\infty\
+&#x20;   \qquad\text{for every }T>0?\
+\end{gathered}\
+\\]\
+Here the Euler equations are required in the sense that\
+\\[\
+&#x20;   \int_0^T\!\!\int\_{\mathbb R^2}\
+&#x20;   \bigl(u\cdot\partial_t\varphi\
+&#x20;         +(u\otimes u):\nabla\varphi\bigr)\,dx\,dt\
+&#x20;   +\int\_{\mathbb R^2}u_0\cdot\varphi(0,\cdot)\,dx=0\
+\\]\
+for every $T>0$ and every divergence-free\
+$\varphi\in C_c^\infty([0,T)\times\mathbb R^2;\mathbb R^2)$.\
+The notation $C_w$ means weak continuity in $L^2$ on every\
+bounded spatial subdomain.
+```
+
+EXACT_LOGICAL_NEGATION:
+There exists a fixed finite signed Radon measure omega_0 in inhomogeneous H^{-1}(R^2) such that no single global velocity u has all the stated properties: weak local L^2 continuity with trace K*omega_0, distributional divergence zero and the Euler weak identity, finite-measure curl and Biot–Savart equality at every time, and locally-in-time bounded total variation. Failure of one chosen approximation scheme is not this negation.
+
+QUANTIFIER_ORDER:
+For every admissible omega_0, there exists one u on [0,infinity), such that for every finite T the stated finite bound and every admissible test identity hold, and for every t the measure and Biot–Savart requirements hold. Bounds may depend on omega_0 and T; no uniform bound over all data is required.
+
+DEFINITIONS_AND_CONVENTIONS:
+- H^{-1} means inhomogeneous Sobolev space. Do not replace by homogeneous H^{-1} or impose zero circulation.
+- curl u = partial_1 u_2 - partial_2 u_1; K=x^perp/(2*pi*|x|^2).
+- Finite signed real Radon measures; total variation is global in space.
+- No energy inequality, vorticity transport/renormalization, approximation selection, sign restriction, uniqueness, compact support, or global finite kinetic energy is required.
+- One global solution must satisfy all finite time horizons consistently.
+
+EDGE_CASES:
+- Zero datum; nonzero circulation and velocity tail; noncompactly supported data.
+- Signed cancellation; whether Jordan parts inherit H^{-1} requires proof.
+- Every-time conclusions versus almost-every-time limits.
+- Atomic measures and H^{-1} compatibility require checking.
+
+VERIFIED_FACTS:
+- Exact target: affirmative construction accepted at the documented LLM verification level. Authoritative final proof is audit_v3/proof.tex, SHA2568743ce99900bfb3df37bb4ccdae9aa9269cff12fc0a6abff7e4989a4eb426230.
+- Initial decomposition and bounded background: every signed finite inhomogeneous-H^-1 measure splits into a fixed C0 background and L1-intersect-L2 perturbation; the bounded-vorticity background uses the checked Crippa–Stefani2024 Theorem3.3 interface at finitep3. Manuscript Section1 supplies every-time representatives, relative L2 and velocity formulation.
+- Seed: biharmonic smoothing has exact strong local initial trace and globally L1 stress bounded near zero; Section2 gives all estimates and signs.
+- Local repair: one moving Lamb dipole at a time, two-moment symmetric antidivergence, two-scale raster d=H², full-cycle corrector and new-field-only smoothing produce arbitrarily small stress and L3/2 increments at universal leading L2+curl-L1 cost C√delta. Sections3–4 give the complete construction and ordered parameter choices.
+- Global closure: three-color dyadic patches and gap anchors preserve exact weak trace; summable L2/curl-L1 increments give Euler, every-time finite vorticity and finite-horizon variation; fixed-C0-background harmonic normalization gives canonical Biot–Savart at every time. Section5 proves all exact quantifiers.
+- Full dependency closure,23 external/standard theorem-application checks,8 proof dependency maps,419 source-container rows and all861 focus checks are in the complete final audit and evidence bundle.
+
+REVOKED_OR_REJECTED_CLAIMS:
+- Earlier natural signed quadratic compactness/Jordan-energy shortcuts and one-scale raster reconstruction were rejected; they are not used in the final proof.
+- Pre-freeze reversed mollifier commutator was corrected; the final source uses v_l tensor v_l minus (v tensor v)_l.
+- V1 missing fixed bump dilation, visit regularity/translation and several source-scope ambiguities were explicitly repaired in v2, with affected descendants rechecked.
+- The literal v1/v2 support-complement potential identity is false for annular bumps; v3 restricts it to |x|>1, which suffices for the tail estimate. It remains a historical definite error in the audit record.
+- Early external-audit completeness wording omitted the mapping display and was qualified by the addendum. Final source and all four final audits explicitly verify the full finitep3 map and actual theorem use; no endpoint L-infinity-to-Lipschitz claim is used.
+
+ACTIVE_ROUTES:
+- None remaining: the affirmative construction has passed the final gate. No negative resolution is claimed.
+
+PARKED_ROUTES_AND_REVISIT_CONDITIONS:
+- Natural approximation/signed diagonal compactness: conditional closure and counterexamples retained; it did not establish the target by itself.
+- Universal nonexistence: no fixed admissible obstruction datum found; radial bad-Jordan examples admit stationary solutions.
+- Adaptive vortex annihilation and affine-neutral representations: exact supporting model calculations retained, not dependencies of the final proof.
+- Reopen the earliest affected interface if a later mathematical review finds a material defect in the frozen affirmative source; propagate any revocation through the documented maps.
+
+LITERATURE_THEOREM_INTERFACES:
+- Crippa–Stefani, Calc.Var.PDE63,168(2024), DOI10.1007/s00526-024-02750-4: Theorem3.3, Assumptions2.1/3.1, Definition3.2; finitep3 mapping supplied by Theorem2.2(q1) and log-Lipschitz modulus separately by Corollary2.4. Whole plane, signedL1-intersect-Linfinity, no compact support or global energy. Only specialized external input.
+- Bruè–Colombo–Kumar arXiv2408.07934v1 informed the moving-dipole/time-average mechanism; its theorem is not substituted for the present exact target. The full-plane and exact weak-trace bridges are proved internally.
+
+WORKER_AND_AUDIT_RESULTS:
+- Final A/B/C/D: each419 parents/861 children/584 formulas;388 VERIFIED+31 NOT MATHEMATICAL parents and858 VERIFIED+3 scaffolding children. All changed assertions and affected dependencies reviewed on the same frozen v3 source.
+- Final B is a clean independent context begun at v2; its v3 work is a revision recheck. Original v1 B's accidental partial exposure is preserved and disclosed, not used as final independent B.
+- Separate source-bound final hostile whole-proof audit: PASS, no material gap; inventory/comparison scope separately certified by root.
+- Root direct reconciliation:54 escalated parents,57 items,57 resolved,0 unresolved. One historical definite mathematical error repaired.
+- Separate later A-comparator role: all419 parent rows/all1,676 full rationales compared; no new mandatory escalation. Its provisional report housekeeping findings were addressed. Independent A's prior artifact remains immutable.
+- All required mathematical and audit assignments are complete. Actual verification level is LLM reconstruction and source checks, not a formal proof certificate.
+
+CURRENT_BOTTLENECKS:
+- None in the accepted frozen proof. Final deliverable saving and presentation are the only release actions remaining at this checkpoint update.
+
+NEXT_PRIORITIZED_ACTIONS:
+1. Save the final proof PDF/TeX, complete audit HTML, versioned evidence bundle and this checkpoint.
+2. Deliver the exact affirmative theorem with complete proof/dependency/audit artifacts and the accurate verification level.
+
+## Research update 1: entry probes (provisional until independent verification)
+
+All six worker slots actually launched: signed_compactness, universal_obstruction, alternative_construction, jordan_energy, primary_interfaces, initial_velocity_interfaces.
+
+Candidate packets and concrete findings:
+- route_jordan_energy.md: compactly supported atomless singular signed measure mu=div F, F in L2, with both Jordan parts outside local H^-1. Explicit separated microscopic square-edge sheets and logarithmic cutoff proof. This refutes a Jordan-part energy reduction, not the target.
+- route_signed_compactness.md: exact signed diagonal cancellation criterion for Euler closure; TV nonconcentration sufficient but stronger. Spatial anisotropic scaled-velocity counterexample refutes automatic quadratic continuity from TV+energy bounds. Dynamic relevance still unresolved.
+- universal_obstruction: radial alternating circle sheets with finite-energy stationary Euler velocity despite both Jordan parts having infinite local energy. Candidate disproves a proposed obstruction, not the target. Also deriving necessary weak-vorticity identity and initial tangent path.
+- initial_velocity_interfaces: canonical K*mu is L2_loc via low/high frequency split. Noncompact zero-circulation data need not have global finite energy; fixed smooth low-frequency background U repairs the finite-energy perturbation estimate.
+- primary_interfaces: exact sign/symmetry/sparse-norm restrictions prevent direct theorem applications. Candidate concentration-cancellation lemma for stress supported on countably many Hölder-1/2 curves.
+- alternative_construction: convex-integration exact trace and uniform-TV interfaces remain missing; adaptive annihilation of nearest opposite vortices gives potentially controlled energy increments, but sign separation at a vanishing scale does not itself rule out neutral concentration.
+
+No complete proof or exact-negation candidate has appeared. No load-bearing candidate is yet marked independently verified.
+
+Next obligations:
+1. Complete and independently audit initial-space/background and weak-formulation packets.
+2. Test time-dependent concentration geometry, including whether trace-free defects admit controlled curves.
+3. Derive nearest-pair energy bound and expose all approximation errors for annihilation route.
+4. Deepen construction with bounded-TV curl at exact initial trace.
+
+## Research update 2: deeper routes and audit state
+
+Execution remains ACTIVE. The six-hour window has not expired. No terminal outcome is authorized yet.
+
+Independent verification completed (LLM reconstruction, not formal proof):
+- initial_velocity_interfaces sections1–5 received independent PASS from jordan_energy, hash3e31eba256e7da13d72aa77acd157a9931c36b81f708b1d06c71e6bdae3f9b50. Extension sections6+ were added later and are not covered by this hash.
+- signed_compactness sectionsA–H received independent PASS in audit_signed_compactness.md, hash22b1bea72797e839661840f6796bfc852c07bf59242212f48f0204593cad8ccb. Later one-path sectionI not covered.
+- primary_interfaces section3 graph cancellation received independent PASS in audit_graph_cancellation.md, sectionhashbcd690c89cee83389fdbdcbae644504a70af026c3cce1d0225d486cbdc373582. Extensions in that audit require separate verification.
+- Root separately reconstructed the local-velocity, Jordan square-sheet, signed-diagonal, and graph-test arguments without finding a material gap. Full four-pass manuscript audit still pending.
+
+Most promising evolving construction route:
+- BCK arxiv2408.07934v1 uses moving Lamb dipoles and time-averaged stress correction. Two independent workers derived endpoint curl estimates: curl of gradient/Leray corrections cancels, principal curl-L1 cost is C sqrt(delta), and time corrector curl cost is C tau H^{-1} times coefficient bounds. This is a proposed adaptation, not a theorem already supplying the target.
+- Exact initial trace and whole-plane localization are separate new obligations. Published approximate endpoint data cannot be silently substituted for the fixed target datum.
+- Root route_initial_subsolution.md gives a complete candidate seed: biharmonic smoothing U(t)=exp(-t^4 Delta^2)u0 has curl-L1 bound CM and symmetric Euler–Reynolds stress U tensor U−4t^3[grad Delta U+transpose], bounded in L1 by E^2+CtM for finiteenergydata. General target data split into a smooth bounded Euler background plus an L1 intersect L2 perturbation. Independent audit is active.
+- Whole-plane raster scan proposal: one compact-curl finiteenergy Lamb packet active at a time, with births/deaths in small coefficient buffers, zero mean and firstmoments of source-minus-auxiliary ensuring integrable symmetric inverse divergence. Every step still needs a complete algebra/error audit.
+- Root falsification: using a generic radial auxiliary kernel of radius equal to row spacing does NOT give strong L1 Riemann reconstruction (comb modulation persists). Repair proposed: auxiliary radius H, row spacing d=H^2; quadrature error <=C[d(||partial_perp a||1+H^-1||a||1)+H||grad a||1]. This must replace any unqualified one-scale assertion.
+
+Additional concrete packets:
+- route_dynamic_packets.md: translating finiteenergy packets escape compact sets at rateO(epsilon); neutral dipoles in bounded Lipschitz external fields; regular-level neutral triple dichotomy; checkerboard four-vortex scattering permits 90degree turning with fixedTV, defeating a naive turning-cost assertion. These point-vortex results are model probes, not target proofs.
+- route_jordan_energy.md additionally includes exact Gaussian dipole energy and compact-core counterexamples to monotonic energy reduction under closest-opposite annihilation. A weaker controlled energy-increment estimate remains viable.
+- route_universal_obstruction.md: all radial targetdata admit stationary solutions; explicit radial bad-Jordan example; necessary symmetrized identity and circulation conservation; first-order initial tangent compatibility; no universal sign-definite compact linear moment. No exact-negation datum obtained.
+- Affine-neutral route: worker found global affine pushforwards of radial neutral measures preserve integrated angular cancellation and energy; nonlinear area-preserving maps need not. Full packet/audit pending.
+
+Current assignments:
+- alternative_construction: complete whole-plane one-step raster repair and all endpointerrorbounds.
+- initial_velocity_interfaces: independent whole-plane repair/source moment and quadrature checks.
+- signed_compactness: endpoint iteration and initialtrace adaptation.
+- universal_obstruction: hostile time-strip iteration audit and abstract extension lemma.
+- primary_interfaces: independent audit of root initialsubsolution, including generalinhomogeneousdata.
+- jordan_energy: affine-neutral cancellation and nonlinear-transport counterexample packet.
+
+No full affirmative or negative resolution candidate has been assembled. Classical approximation route is reduced to vanishing solenoidal quadratic defect; the adaptive construction route seeks to avoid needing that automatic compactness.
+
+
+## Research update 3: exact-data seed and whole-plane endpoint construction
+
+Timing: still active, approximately 2026-10-08T10:40Z; deadline remains 15:42:55Z. No stopping condition has occurred.
+
+Accepted local audit results (not a full four-pass proof certification):
+- audit_initial_subsolution.md independently passes the finite-energy biharmonic seed and its extension to every target datum by a smooth bounded Euler background plus an L1-intersect-L2 perturbation. The compact radial mollifier alternative makes K-K*eta exactly supported in the unit ball and simplifies the splitting.
+- The same audit falsifies a hidden cross-stress claim: small L2 increment plus bounded curl variation need not imply L1 product with a nonzero-circulation background. A tail w=e_theta/(r log r) supplies the obstruction. Repair: require arbitrarily small, summable L3/2 increments, pairing with background in L3.
+- Multiple independent direct calculations have checked the Lamb dipole orientation, radius derivative, zero mean and first moments, symmetric inverse divergence, source mean 2*pi*xi, and two-scale raster normalization. A complete one-step lemma is still being assembled and audited; these checks do not yet certify the target.
+
+Current strongest route:
+1. Exact-data seed: ubar=b+rho_t*v0, rhohat=exp(-|xi|^4), rho_t scale t, and Rbar=W^2+bW+Wb-4t^3 sym(grad Delta W). Uniform global L1 stress and uniform curl-L1 for t>0, exact strong local L2 initial trace.
+2. Whole-plane stress repair: translated/scaled Lamb packets with at most one active principal packet, compact mean-corrected source, integrable symmetric antidivergence, raster row spacing d=H^2, auxiliary radius H, cycle length comparable H^6. Leading L2 and curl-L1 cost C sqrt(stress mass); all stress errors and L3/2 increment can be made arbitrarily small.
+3. Exact weak trace: three-color dyadic time patches. Each color leaves gap times approaching zero. Euler--Reynolds identity with bounded local energy and L1 stress makes compact solenoidal velocity pairings Lipschitz; zero corrections at gap times force weakly zero initial trace. A summable uniform L2 series preserves it.
+4. Iterate delta_q=16^(-q), with only bounded temporal overlap. Every fixed positive-time curl series converges in L1, uniformly bounded up to zero. Canonical Biot--Savart follows from absence of a harmonic discrepancy in weak L2.
+
+Falsified shortcuts and repairs:
+- Generic radial auxiliary radius equal to row spacing leaves persistent comb modulation. Use two distinct scales, d=H^2.
+- Time corrector Q is zero and continuous at cycle endpoints but its derivative generally jumps. Do not claim globally smooth time output.
+- Bare L-infinity_t L1 stress does not imply uniform spatial tail truncation. Use strong L1 continuity on each closed piece with one-sided limits.
+- Cell-dependent remollification of the entire old velocity creates jumps; variable mollifier scale adds an unproved forcing. Avoid it entirely. Old velocity enters the local repair only through its finite L3 norm; mollify new blocks at a fixed spatial scale per cell.
+
+Current proposed admissible class: positive-time velocity continuous in local L2 with bounded L3 on compact time intervals; stresses strongly L1-continuous on finitely many closed pieces of each positive-time compact; locally finite inherited temporal boundary set at each finite stage. Refine boundaries at the next stage. Stress jumps create no time delta, while every new velocity correction vanishes at its cycle endpoints. Need full exact statement and audit.
+
+Worker assignments:
+- signed_compactness assembles candidate_proof.tex from explicit packets, marking unresolved dependencies.
+- alternative_construction and initial_velocity_interfaces independently develop whole-plane repair.
+- jordan_energy performs hostile local-repair audit and assembles exact piecewise-time lemma.
+- universal_obstruction develops conditional time-strip theorem, route_time_strip_iteration.md.
+- primary_interfaces audits cross-stress closure, piecewise regularity, trace iteration, and external background theorem.
+- Root reconstructs all interfaces and will freeze permanent source containers for four independent manuscript audit passes if a complete candidate emerges.
+
+Current bottleneck: prove the precise prescribed-piece one-step property with compact time support, uniform leading curl cost, arbitrary L3/2 smallness, and stable piecewise-time regularity. No affirmative or negative resolution is claimed.
+
+
+## Research update 4: finite-step proof and assembly
+
+Local verification has advanced, but no complete-proof audit has occurred and no resolution is claimed.
+- audit_fullplane_repair.md reconstructs the full finite-step repair and now includes Section10, the exact prescribed-piece property P_pw: old u only C_tL3 and C_tL2loc, S piecewise C_tL1; finitely many coarse frozen smooth compact tensors S_k, repeated complete four-direction cycles, separate error/increment/L3/2 budgets, and compact temporal support. The leading C sqrt(delta) cost is independent of coefficient derivatives and box size. This is one independent worker reconstruction, not the required four-pass certification.
+- audit_iteration_interfaces.md independently passes the time-gap trace lemma, three-color dyadic iteration, inherited piecewise-time closure, and minimum background class, conditional on P_pw.
+- external_background_certificate.md directly checks Crippa--Stefani 2024 Theorem3.3 and all kernel/domain assumptions; proves every-time canonical bounded-vorticity background, norm preservation, global-L2-Lipschitz velocity differences, C_tL3 continuity, and velocity Euler formulation without assuming finite global kinetic energy. Root reopened the primary theorem and hypotheses.
+- projected_bump_certificate.md gives elementary radial-potential bounds for the only projected profiles needed by the time corrector; no general Calderon--Zygmund Lp theorem is necessary.
+- Root caught and author corrected a literal mollifier-commutator sign error in repair_interface_addendum.md: correct stress is v_l tensor v_l minus (v tensor v)_l. Norm estimates survive; the reversed exact identity is revoked.
+- Full-cycle averaging is explicit: one Q over all four direction slots, not a reset at each slot. Quarter-time normalization has factor4, giving the complete rank-one tensor sum at every instant.
+
+Current manuscript candidate_proof.tex is being assembled by signed_compactness and is still labeled unverified. It must include a complete proposed proof of P_pw before source freeze. Root identified minor notation/transcription issues for correction. A fresh neutral source_inventory worker has read the audit instructions and is preparing byte-preserving TeX-aware sentence containers, formula inventory, and nested checks; no IDs are frozen until the source is frozen. Four fresh independent audit passes will receive the same source and factual inventory without previous mathematical conclusions.
+
+Permitted stopping conditions: none yet. Continue the same six-hour project window ending 15:42:55Z.
+
+
+## Research update 5: frozen complete candidate
+
+Frozen at approximately 2026-10-08T11:01Z:
+- audit_v1/proof.tex, identical to candidate_proof.tex.
+- SHA256 b6741b471ba2f128b147f5a5c05fea0afe639c2c3a535b99a5afaf03ea6d4a43.
+- audit_v1/proof.pdf: 13-page compilation; earlier complete visual preflight had no clipping, and the final build has clean TeX logs.
+- candidate_dependencies.md records active predecessor files and source hashes.
+
+The source now contains a complete proposed affirmative proof, including a proved-in-the-manuscript LER lemma rather than an assumed repair property. It has not passed complete-proof verification and is not a certified resolution. Root and assembler corrected representative choices at stress jumps, explicit floor-mass terms, original versus scanned coefficient notation, initial perturbation notation, Bessel denominator justification, and exact projected-bump pressure signs before freezing.
+
+The neutral source_inventory worker is creating the canonical byte-preserving TeX sentence inventory, formula inventory, factual notation ledger, and one-level nested checks from this frozen file. Four fresh independent contexts will receive only this source and the neutral inventory, without earlier mathematical audit conclusions. A separate fragile-interface falsification pass may run concurrently. If any material gap appears, revoke the affected descendants and repair from the earliest invalid step; a failed audit is not a stopping condition.
+
+Current route disposition:
+- Active: complete candidate stress-repair construction and exhaustive verification.
+- Parked: natural approximation/signed diagonal compactness; reopen if the construction fails and new dynamical concentration control appears.
+- Parked: universal nonexistence; no fixed admissible obstruction datum found, and radial/bad-Jordan examples have stationary solutions.
+- Supporting packets: initial-space normalization, canonical closure, exact-data subsolution, projected bump, and colored time iteration.
+
+Next actions: finish canonical inventory; run four complete independent audits; reconcile every issue by direct reconstruction; if repaired, update source with permanent IDs preserved and rerun all affected checks; save verified report and manuscript only after actual audit closure.
+
+No stopping condition has occurred. The actual deadline remains 2026-10-08T15:42:55Z.
+
+
+## Research update 6: exhaustive audits active
+
+Actual fresh assignments: audit_a (local source-ordered), audit_b (independent re-derivation), audit_c (adversarial), audit_d (global dependency), fragile_interface_hostile (separate vulnerable-chain falsification), and external_interface_fresh (clean additional external-theorem reconstruction). All use frozen audit_v1/proof.tex; four main passes share 419 containers, 834 nested checks, 571 formula occurrences. Neutral inventory SHA256 efbd3fc4311f910b394581f46718f3b73a03f99a5891b38d2e7e2be24d7b9b71. Root independently verified exact source byte reconstruction and every container/child digest; this mechanical check is not mathematical verification.
+
+Audits are incomplete. Early independent derivations reproduce the main dipole/source moment, raster normalization, global L1 antidivergence and time iteration mechanisms. Reported source issues, not silently repaired:
+- S0049 pronoun ambiguity can incorrectly assert m*a_hat is L2; only positive-order derivative multipliers have that property.
+- Scaled pressure P_r lacks an explicit definition.
+- U_H must be explicitly selected as a fixed dilation family; radial probability/support alone do not give uniform derivative/Lp scaling.
+- S0242 raw principal velocity is not piecewise C-infinity in time before spatial mollification; Q is, and the later smoothed correction has the needed regularity.
+- Root additionally notes implicit center translations in packet/E formulas should be explicit, with C1 visit coefficients stated.
+
+These are recorded in audit_v1/root_issue_notes.md and will be reconciled only after the independent verdicts are complete. No construction failure or target resolution has been established by the audits yet. Frozen source remains unchanged.
+
+Independence disclosure: pass B accidentally saw a C support-agent external-theorem conclusion through list_agents after B had already completed and messaged its own independent E1 reconstruction. It will not use that exposed conclusion. A fresh additional context independently rechecks the entire E1/upgrade interface. All audit contexts are now expressly instructed not to use list_agents or open other passes' files.
+
+Durable snapshot frozen_candidate_v1.zip contains exact source, PDF, canonical inventories, target, procedures, dependency manifest and inventory generator. vortex_sheet_candidate_v1.pdf is also saved as a standalone artifact. Current project remains ACTIVE; the actual deadline remains 15:42:55Z.
+
+
+## Research update 7: v1 audit discrepancies and versioned source repair
+
+All four original pass JSON ledgers now exist and cover all419 permanent source containers and834 original shared children. Pass A records385 VERIFIED,3 AMBIGUOUS,31 NOT MATHEMATICAL; pass B346 VERIFIED,10 AMBIGUOUS,32 UNJUSTIFIED,31 NOT MATHEMATICAL; passes C/D each388 VERIFIED,31 NOT MATHEMATICAL. Agreement is not being used as verification: B explicitly propagates the absent fixed bump-dilation specification to32 downstream claims, whereas C/D infer the intended choice. Root accepts that the specification must be made explicit before a literal proof verdict.
+
+Additional source issues found: LER's open patch J must be an open interval for the enclosing [a,b] argument; the grouped stress is symmetric but individual mixed factors are not; peak amplitudes are uniformly bounded as cycle count varies, not fixed across counts. The zero-trace subsequence should explicitly have times decreasing to zero. None establishes a counterexample to the intended construction.
+
+A neutral append-only v1 supplement assigns six extra focused checks, taking834 to840 children without changing any419 parent or original child. Its frozen SHA256 is6c93b60ef4b6b83665605caf389746d2009bb6f4e7520be9f01dfa67cd5082e2. Every original pass is being asked to check all six additions. Empty/whitespace/layout-only child spans S0130.C05/C10/C11 are preserved and disclosed as scaffolding, not invented mathematical claims.
+
+Root prepared audit_v2/proof.tex and source_change_manifest.json with12 local same-sentence repairs; no original frozen file was overwritten. New source SHA256 is1ffbeee20c4208e954396b55c3f4bc5289e478d76555579b09d5e7fbfae975bd. Repairs specify the derivative multiplier, unit direction/scaled pressure, C1 visit parameters, explicit translations, fixed dilation family, post-mollification time smoothness, grouped symmetry, interval patch, bounded peak amplitudes, zero-time sequence, and positive radius cap. These repairs are NOT yet verified. The neutral inventory worker is preserving all permanent IDs and re-anchoring the revised exact source before a new exhaustive audit.
+
+Independent focused reports external_interface_fresh.md and fragile_interface_hostile.md give scoped PASS results. The latter directly proves the necessary integrated anisotropic dipole stress equals2*pi*(xi tensor xi)^dev, checks force/torque/impulse cancellation, and reconstructs the full cycle and trace interfaces. Root_parameter_certificate.md records a separate direct reconstruction of ordered small-parameter choices and global summability. An additional clean global_counterattack_fresh agent is attacking the entire v1 argument for fatal construction obstructions. No global proof verdict is entered.
+
+Independence correction: B's initial pre-exposure primary HTML retrieval did not include one image-only mapping display from Assumption3.1. B later retrieved the original PDF and checked that mapping after its accidental list_agents exposure. This chronology will be reported accurately. A fresh independent B context will audit v2 exhaustively, avoiding any inherited exposure; the separate fresh E1 report already checks the full original theorem interface cleanly.
+
+Next: complete v1 supplemental checks and discrepancy reconciliation; freeze v2 inventory; obtain four complete revision-bound audits including fresh B, plus final independent whole-proof challenge; recheck every changed claim and dependency; compile/render/inspect and persist final artifacts only if all obligations close. The actual six-hour deadline remains15:42:55Z, and no stopping condition has occurred.
+
+
+## Research update 8: source refinements, full v2 rechecks, and hostile challenge
+
+The v1 supplement is now checked by all four original passes:840 children each. The two explicit added focuses cause A/C/D to revise S0158 and S0164 to UNJUSTIFIED, while B retains its earlier UNJUSTIFIED/AMBIGUOUS judgments. Original pass files remain immutable; each supplement records the updates. A post-audit comparison assistant assembled419 parent comparison rows and52 escalated parents/55 proposed local disputes in audit_v1/container_comparison.json/.md. Root reconciliation remains active.
+
+V2 source and neutral inventory were frozen and distributed to A,C,D plus a completely fresh B context audit_b_v2_fresh. Source hash1ffbeee20c4208e954396b55c3f4bc5289e478d76555579b09d5e7fbfae975bd; inventory hash6f43080009e044109938412d2f40e6ba7374ec8777e8be2962c7c1489ea8e0eb. Counts419 parents,855 children,579 formulas,949 lines. Root compiled the13-page PDF with two clean pdflatex passes and visually inspected all13 pages; audit_v2/render_qa.json records layout-only verification. Mathematical ledgers are finalizing; source not yet globally verified.
+
+V2 A found one definite minor local scope error at S0229: an allowed annular radial probability bump has a central hole where G*U is constant, so the identity G*U=G is false on the entire complement of support. It holds for |x|>1, which is all that the tail estimate needs; the preceding core bound handles the hole. Root independently confirms this by angular averaging and radial Poisson flux. The construction is not refuted, but literal source requires repair.
+
+Root also checked the complete primary PDF mapping display in Crippa--Stefani Assumption3.1. Its fixed finite exponent p=3 is sufficient: K maps L1 intersect uniformly-local L3 to bounded Holder-1/3 velocity, and bounded vorticity lies in that domain. The source's printed endpoint p=infinity display must not be read as a general L-infinity-to-Lipschitz claim. external_interface_fresh is writing a separate addendum qualifying its initial completeness scope and documenting the valid finite-p theorem interface. A fresh B v2 context independently checks the primary source without the earlier provenance exposure.
+
+Root prepared audit_v3/proof.tex with three same-sentence refinements: explicit finite p=3 theorem interface (S0058), exterior-disk identity (S0229), and concrete cutoff equal1 on[3/4,3/2] ensuring a positive dyadic partition denominator (S0362). Source hash8743ce99900bfb3df37bb4ccdae9aa9269cff12fc0a6abff7e4989a4eb426230. The neutral inventory worker is preserving every parent/child identity and adding necessary current-version focuses. These refinements remain unverified until all four rechecks and dependency attestations finish.
+
+The clean additional global_counterattack_fresh report is complete with a scoped PASS after reading the entire frozen v1 source and exact target. It independently reconstructs the noncompact background, integrated dipole tensor pi*I+2*pi*xi tensor xi, two-moment anti-divergence, raster normalizations, full-cycle correction, ordered parameter limits, anchor trace and canonical closure. Its compact-time diagnostic agrees with the primary Bruè--Colombo--Kumar paper, which already constructs torus vorticity in Lp for some p>1; there is no claim that their result is below L1. Their theorem is a mechanism precedent, not a substitute for exact arbitrary weak initial trace on the plane.
+
+Next: collect remaining v2 ledgers, reconcile all exact-source issues by derivation, complete four revision-bound v3 audits (with any further repair if needed), recheck final fragile/primary interfaces, assemble complete source-ordered audit report and durable proof bundle. Actual deadline15:42:55Z remains unchanged. No permitted stopping condition has occurred.
+
+## Research update 9: final frozen revision and reconciliation
+
+All four v2 source-bound ledgers are complete: A387 VERIFIED/1 ERROR(S0229)/31 NOT MATHEMATICAL; B,C,D388 VERIFIED/31 NOT MATHEMATICAL, all419 parents and855 children. The clean fresh B preserves independence; no earlier exposed B context is used for the final four-pass set. Root directly confirmed the annular-bump counterexample and its exterior-disk repair.
+
+The v3 neutral inventory is frozen: source SHA2568743ce99900bfb3df37bb4ccdae9aa9269cff12fc0a6abff7e4989a4eb426230, inventory SHA256312e27c6941704d244f102a3907c290d82db5d41e68208e88b592b68d32adce7. It preserves all419 parent IDs and has861 children,584 formulas(525inline/59display),951 source lines,106 algebra-bearing and23 theorem-application containers. A,B(fresh),C,D are conducting exhaustive current-version rechecks; final results not yet all available. A separate final hostile whole-proof challenge is running against the same v3 source.
+
+Root mechanically confirmed every byte span and digest; this verifies integrity only. The v3 PDF compiles to13pages. Five changed page images(2,3,8,12,13) have been freshly visually inspected; the other eight are byte-identical to inspected v2 pages. Final build log has no warnings; initial-pass unresolved references resolved on second compilation.
+
+Root has directly reconstructed all57 local disputes across54 escalated containers in audit_final/reconciliation_work.json, including propagated fixed-bump-family omissions, time regularity/translation clarifications, the definite annular-scope error, finite-p external mapping, and positive dyadic denominator. Each has an explicit derivation and versioned repair/disposition. No dispute is marked finally closed until the current source and affected dependencies receive all required rechecks. The full external_mapping_addendum.md corrects the earlier external report's overbroad completeness wording and documents p=3, the exact original mapping display, and its actual uses in Theorem3.3.
+
+Current bottleneck is final verification and evidence reconciliation, not a missing user datum. The proposed affirmative proof remains provisional. Next: collect current four419/861 ledgers and strongest hostile report; reconcile any new issue; assemble complete A–H audit with all rows, errors, source interfaces and dependency maps; persist final artifacts only with accurate verification status. Actual deadline remains15:42:55Z.
+
+## Research update 10: final audit receipts and gate status
+
+Final source remains v3 SHA2568743ce99900bfb3df37bb4ccdae9aa9269cff12fc0a6abff7e4989a4eb426230. All four independent current-version passes now return mathematical PASS, with388 VERIFIED/31 NOT MATHEMATICAL parents and858 VERIFIED/3 scaffolding children each. Every pass covers419 parents,861 children,584 formulas,106 algebra-bearing containers,23 theorem applications and8 proofs. The source-bound JSON/report hashes and exact parent/child/formula digest checks are recorded in audit_final/evidence_integrity.json. No current pass proposed a new child or adverse finding.
+
+The separate final_hostile_whole_proof.md re-read all951 current source lines and exact target, independently rechecked the original finite-p theorem interface, and reconstructed dipole tensor/pressure, source moments, parameter order, stress identity, all-time pasting, weak trace and canonical closure. It returns scoped PASS with no material gap and accurately excludes certification of separate four-pass coverage. Root read that complete report and directly reconstructed the same construction interfaces; no new mathematical defect identified.
+
+The combined audit_report.html generator now includes all419 parent rows, all54 escalated containers/57disputes, historical findings,23 theorem checks and8 dependency maps. It remains marked PENDING until root final reconciliation. Original passA, after freezing its independent result, has a separate disclosed post-audit task to compare every current parent rationale across all four passes for material incompatibility and review report accuracy. It does not modify its immutable independent audit. No new source edits are being made.
+
+Remaining obligations: finish post-audit parent comparison; resolve any newly exposed issue from first principles; close final57disputes and all checklist items only on actual evidence; save final proof, source, complete audit and provenance bundle. No terminal outcome has yet been issued. Actual deadline15:42:55Z remains unchanged.
+
+## Research update 11: verified-complete stopping condition
+
+The final root gate was recorded at 2026-10-08T12:46:34.391724+00:00 after all mathematical and procedural obligations closed. Permitted stopping condition:VERIFIED_COMPLETE. Outcome:PROVED, at the explicitly stated LLM verification level. The six-hour deadline was not exhausted; no elapsed time, background execution or future continuation is being inferred.
+
+The current manuscript proves the exact user target, including arbitrary sign/noncompact support/nonzero circulation, weak L2-local continuity at zero, the initial Euler identity, every-time finite measure curl and canonical Biot–Savart, and total variation uniformly bounded on every finite horizon. No energy inequality or stronger trace topology was substituted.
+
+Final audit report has allA–H sections,419 complete parent rows,861 focus checks in the companion ledger,54 escalated-parent reports,57 closed disputes,23 theorem checks and8 dependency maps. Its literal final content is the16-item counted PASS checklist. The strongest source-bound hostile whole-proof report and all four independent ledgers are retained. The post-audit comparator found no additional mathematical escalation; its report/evidence housekeeping was resolved without altering immutable pass files. The final gate binds all relevant source and audit hashes.
+
+The13-page final proof PDF compiled successfully and received rendered visual QA. The audit HTML passed structural, anchor, count and JavaScript syntax checks; an HTML browser screenshot was unavailable and is not claimed. All final-source hashes are unchanged since the completed mathematical audits.
