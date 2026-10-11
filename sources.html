@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Source material for the AI-written manuscript on sign-changing vortex-sheet data: original ChatGPT conversation, prompts, manuscript versions, research files, and checksums.">
+  <meta name="description" content="AI-generated research on sign-changing vortex-sheet data: model, prompt, manuscript, original chat, source ZIP and SHA-256 checksum.">
   <meta name="theme-color" content="#fbfaf6">
   <title>Source material · Signed vorticity</title>
   <style>
     :root{color-scheme:light;--paper:#fbfaf6;--ink:#253b35;--muted:#586d64;--accent:#2e6a5b;--rule:#d6dfd4;--wash:#eaf0e5;--serif:Georgia,"Times New Roman",serif;--sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
     *{box-sizing:border-box}
-    html{scroll-padding-top:2rem}
     body{margin:0;color:var(--ink);background:var(--paper);font:19px/1.75 var(--serif);-webkit-text-size-adjust:100%}
     a{color:var(--accent);text-underline-offset:.22em;text-decoration-thickness:1px}
     a:hover{color:#1d4d41}
@@ -23,95 +22,40 @@
     .brand em,.brand b{font-weight:400;color:var(--accent)}
     .nav{display:flex;gap:26px;flex-wrap:wrap;font:13px/1.6 var(--sans)}
     .nav a{display:inline-block;padding:10px 0;text-decoration:none;color:var(--muted)}
-    .nav a:hover{color:var(--accent)}
-    main{max-width:790px;margin:auto;padding:68px 0 76px}
-    .eyebrow,.section-label{font:11px/1.7 var(--sans);text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin:0 0 22px}
-    h1,h2,h3{font-weight:400}
-    h1{font-size:clamp(36px,4.4vw,58px);line-height:1.12;letter-spacing:-.045em;margin:0 0 27px;text-wrap:balance}
-    h1 em{color:var(--accent);font-style:italic}
-    h2{font-size:33px;line-height:1.2;letter-spacing:-.025em;margin:0 0 22px}
-    h3{font-size:22px;line-height:1.35;margin:0 0 10px;letter-spacing:-.015em}
-    p{margin:0 0 19px}
-    strong{font-weight:600}
-    .lead{font-size:22px;line-height:1.6;color:var(--muted);margin-bottom:29px}
-    .actions{display:flex;align-items:center;flex-wrap:wrap;gap:18px 26px;font:13px/1.5 var(--sans)}
-    .button{display:inline-flex;align-items:center;gap:16px;padding:13px 19px;border:1px solid var(--accent);background:var(--accent);color:var(--paper);text-decoration:none}
-    .button:hover{color:#fff;background:#1d4d41;border-color:#1d4d41}
-    .plain-link{text-decoration:none;border-bottom:1px solid var(--rule);padding:5px 0}
-    .hero{padding-bottom:48px;border-bottom:1px solid var(--rule)}
-    .ai-note{margin:0 0 28px;padding:19px 23px;border-left:2px solid var(--accent);background:var(--wash);font:15px/1.75 var(--sans)}
-    .ai-note strong{display:block;margin-bottom:5px;color:var(--accent);font-weight:600}
-    .ai-note p{margin:0}
-    .section{margin-top:49px;scroll-margin-top:30px}
-    .section-label{color:var(--muted);margin-bottom:12px}
-    .math{font-family:"Cambria Math","STIX Two Math",var(--serif);white-space:normal}
-    .math i{font-style:italic}
-    sub,sup{line-height:0;font-size:.72em}
-    .equation{overflow-x:auto;max-width:100%;padding:12px 8px;margin:20px 0 24px;text-align:center;scrollbar-width:thin}
-    math{font-size:1.12em;font-family:"Cambria Math","STIX Two Math",math}
-    math[display="block"]{margin:0 auto;width:max-content;min-width:0}
-    .theorem{border-left:2px solid var(--accent);padding:2px 0 2px 27px;margin-top:26px}
-    .theorem > :last-child{margin-bottom:0}
-    .theorem-label{font:11px/1.7 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:17px}
-    .result-list{list-style:none;margin:27px 0 0;padding:0;border-top:1px solid var(--rule)}
-    .result-list li{display:grid;grid-template-columns:170px minmax(0,1fr);gap:24px;padding:21px 0;border-bottom:1px solid var(--rule)}
-    .result-list h3{font-size:18px;line-height:1.6;margin:0}
-    .result-list p{font-size:17px;color:var(--muted);margin:0;line-height:1.7}
-    .team-section{margin-top:38px;padding:29px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-    .team-section h2{font-size:30px;margin-bottom:21px}
-    .team-list{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 28px;padding:0;margin:0}
-    .team-list a{font-size:21px;text-decoration:none}
-    .team-list a:hover{text-decoration:underline}
-    .acknowledgements{margin-top:38px;padding-top:29px;border-top:1px solid var(--rule)}
-    .acknowledgements h2{font-size:29px}
-    .acknowledgements p{font-size:18px;color:var(--muted)}
-    .acknowledgements > :last-child{margin-bottom:0}
-    .question{margin:26px 0;padding:21px 26px;border-left:2px solid var(--accent);background:var(--wash);font-size:21px;line-height:1.6}
-    .community{margin-top:35px;padding:31px 34px;background:var(--wash)}
-    .community h2{font-size:30px;margin-bottom:17px}
-    .community p{color:var(--muted);font-size:18px}
-    .community > :last-child{margin-bottom:0}
-    .community a{overflow-wrap:anywhere}
-    .invitation{background:#edf3ef}
-    details{margin:27px 0 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:18px 0}
-    summary{cursor:pointer;font:14px/1.6 var(--sans);color:var(--accent)}
-    .details-body{padding-top:23px;font-size:17px}
-    .details-body > :last-child{margin-bottom:0}
-    .details-body .equation{font-size:16px}
-    .paper{margin-top:48px;padding-top:34px;border-top:1px solid var(--rule)}
-    .paper h3{font-size:24px}
-    .metadata{font:12px/1.7 var(--sans);color:var(--muted);margin:13px 0 23px}
+    .nav a:hover,.nav a[aria-current="page"]{color:var(--accent)}
+    .nav a[aria-current="page"]{text-decoration:underline;text-underline-offset:.4em}
+    main{max-width:900px;margin:auto;padding:61px 0 70px}
+    h1,h2{font-weight:400;letter-spacing:-.035em}
+    h1{font-size:48px;line-height:1.15;margin:0 0 21px}
+    .intro{max-width:730px;color:var(--muted);font-size:20px;line-height:1.7;margin:0}
+    .entry{margin-top:44px;padding-top:34px;border-top:1px solid var(--rule)}
+    .entry-number{display:flex;align-items:center;gap:12px;font:12px/1.5 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin:0 0 20px}
+    .entry-number::before{content:"";height:6px;width:6px;flex:none;border-radius:50%;background:currentColor}
+    h2{font-size:38px;line-height:1.25;margin:0 0 29px;text-wrap:balance}
+    h2 a{color:inherit;text-decoration:none}
+    .metadata{display:grid;grid-template-columns:175px minmax(0,1fr);gap:10px 28px;font:16px/1.75 var(--sans);margin:0}
+    .metadata dt{color:var(--muted)}
+    .metadata dd{margin:0;min-width:0}
+    details{margin:0}
+    summary{cursor:pointer;color:var(--accent);text-decoration:underline;text-underline-offset:.22em;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    .prompt-body{padding-top:16px;font-size:14px}
+    .prompt-body p{margin:0 0 12px}
+    .prompt-body ul{padding-left:20px;margin:0 0 17px}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:430px;overflow:auto;background:var(--wash);padding:18px;font:12px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;margin:15px 0 0}
+    .resource-links{display:flex;flex-wrap:wrap;gap:12px 28px;list-style:none;padding:0;margin:32px 0 25px;font:16px/1.6 var(--sans)}
+    .resource-links a{display:inline-block;padding-bottom:5px;border-bottom:1px solid var(--rule);text-decoration:none}
+    .checksum{margin:0;font:12px/1.7 var(--sans);color:var(--muted)}
+    .checksum span{display:block;margin-bottom:7px}
+    .checksum code{display:block;font:13px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;user-select:all}
+    .revision-note{margin:31px 0 0;font:15px/1.8 var(--sans);color:var(--muted);max-width:800px}
     .footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding:25px 0 31px;border-top:1px solid var(--rule);font:11px/1.7 var(--sans);color:var(--muted)}
     .footer p{margin:0}
     .footer a{color:inherit;text-decoration:none}
     .footer-links{display:flex;flex-wrap:wrap;gap:22px}
-    @media(max-width:760px){.shell{padding:0 25px}.header{min-height:0;flex-direction:column;align-items:flex-start;padding:28px 0 17px;gap:14px}.brand{font-size:26px}.nav{gap:22px;font-size:12px}.nav a{padding:6px 0}main{padding:41px 0 54px}.hero{padding-bottom:34px}h1{font-size:42px}.lead{font-size:20px}.section{margin-top:38px}h2{font-size:29px}.result-list li{grid-template-columns:1fr;gap:7px;padding:19px 0}.theorem{padding-left:19px}.equation{font-size:17px}.footer{align-items:flex-start}}
-    @media(max-width:400px){.shell{padding:0 19px}body{font-size:18px}h1{font-size:35px}.nav{gap:17px}.actions{gap:15px}.equation{padding-left:0;padding-right:0}.theorem{padding-left:15px}}
-    @media(max-width:640px){.team-list{grid-template-columns:1fr;gap:10px}.community{padding:25px 23px}.community h2{font-size:28px}.question{padding:19px 21px;font-size:19px}}
-    @media print{body{background:#fff;color:#000;font-size:11pt}.shell{max-width:none;padding:0}.header{min-height:0;padding-bottom:15px}.nav,.skip,.actions,.footer{display:none}main{padding:25px 0;max-width:none}h1{font-size:30pt}.lead{font-size:13pt}.section{margin-top:26px}h2{font-size:20pt}.community,.question{background:none;border:1px solid #bbb}.equation{overflow:visible}.theorem,.team-section{break-inside:avoid}a{color:inherit}}
-  
-    .nav a[aria-current="page"]{color:var(--accent);text-decoration:underline;text-underline-offset:.4em}
-    .source-record{margin-top:39px;padding-top:30px;border-top:1px solid var(--rule)}
-    .source-record h2{font-size:29px}
-    .provenance{font:15px/1.7 var(--sans);margin:25px 0 28px}
-    .provenance > div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:25px;padding:13px 0;border-bottom:1px solid var(--rule)}
-    .provenance dt{color:var(--muted)}
-    .provenance dd{margin:0}
-    .source-note{font-size:17px;color:var(--muted)}
-    .source-note a{overflow-wrap:anywhere}
-    .file-list{list-style:none;margin:24px 0;padding:0;border-top:1px solid var(--rule)}
-    .file-list li{padding:17px 0;border-bottom:1px solid var(--rule)}
-    .file-list a{font-size:20px}
-    .file-list small{display:block;font:13px/1.7 var(--sans);color:var(--muted);margin-top:4px}
-    .file-list .file-size{font:12px/1.7 var(--sans);color:var(--muted);white-space:nowrap;margin-left:10px}
-    code{font-size:.84em;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
-    pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--wash);padding:22px;font:12px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;max-height:600px;overflow:auto}
-    .hash-list{list-style:none;padding:0;margin:0}
-    .hash-list li{margin:0 0 17px;font:13px/1.7 var(--sans)}
-    .hash-list code{display:block;margin-top:4px;font-size:12px;overflow-wrap:anywhere}
-    .status-list{padding-left:22px;color:var(--muted);font-size:17px}
-    .status-list li{margin:9px 0}
-    @media(max-width:640px){.provenance > div{grid-template-columns:1fr;gap:3px}.file-list .file-size{display:block;margin:3px 0 0}.source-record h2{font-size:26px}pre{padding:16px}}
+    @media(max-width:760px){.shell{padding:0 25px}.header{min-height:0;flex-direction:column;align-items:flex-start;padding:28px 0 17px;gap:14px}.brand{font-size:26px}.nav{gap:22px;font-size:12px}.nav a{padding:6px 0}main{padding:40px 0 48px}h1{font-size:39px}.intro{font-size:18px}.entry{margin-top:31px;padding-top:28px}h2{font-size:31px}.metadata{grid-template-columns:150px minmax(0,1fr);gap:9px 20px;font-size:15px}.resource-links{font-size:15px;gap:11px 22px}.footer{align-items:flex-start}}
+    @media(max-width:540px){.shell{padding:0 20px}.metadata{grid-template-columns:1fr;gap:2px}.metadata dd{margin-bottom:10px}h2{font-size:29px}.entry-number{font-size:11px}.resource-links{flex-direction:column;align-items:flex-start;margin-top:23px}.checksum code{font-size:12px}}
+    @media print{body{background:#fff;color:#000;font-size:11pt}.shell{max-width:none;padding:0}.nav,.skip,.footer{display:none}main{max-width:none;padding:24px 0}h1{font-size:28pt}h2{font-size:23pt}.entry{break-inside:avoid}a{color:inherit}}
 </style>
 </head>
 <body id="top">
@@ -129,59 +73,26 @@
       </nav>
     </header>
     <main id="main-content">
-      <section class="hero" aria-labelledby="source-title">
-        <p class="eyebrow">The manuscript and its history</p>
-        <h1 id="source-title">Source <em>material</em></h1>
-        <p class="lead">Here we collect the AI-written manuscript and the material behind it. We share the original output, prompts, and revisions to make the work easier to inspect and discuss.</p>
-        <aside class="ai-note" aria-label="AI authorship and subsequent revision">
-          <strong>AI-written, including the later polishing</strong>
-          <p>The initial manuscript was generated with ChatGPT. It was subsequently polished with ChatGPT in separate conversations. The current manuscript is therefore a later version of the original AI-generated output.</p>
-        </aside>
-        <div class="actions">
-          <a class="button" href="https://chatgpt.com/share/6acba0b0-703c-83eb-be9f-134acc07ed1d">Read the original chat <span aria-hidden="true">↗</span></a>
-          <a class="plain-link" href="#original-run">View the research record <span aria-hidden="true">↓</span></a>
-        </div>
-      </section>
-
-      <section class="section" id="current-manuscript" aria-labelledby="current-title">
-        <p class="section-label">01 / Current version</p>
-        <h2 id="current-title">The revised manuscript</h2>
-        <p><em>Global weak Euler flows with finite signed initial vorticity.</em> This is the AI-written manuscript linked from the homepage, following the later polishing with ChatGPT.</p>
-        <ul class="file-list"><li><a href="paper.pdf" download>Current manuscript · PDF <span aria-hidden="true">↓</span></a><span class="file-size">446.6 KiB</span><small>Global weak Euler flows with finite signed initial vorticity · 25 pages.</small></li>
-<li><a href="revised-manuscript.tex" download>Current manuscript · LaTeX <span aria-hidden="true">↓</span></a><span class="file-size">82.0 KiB</span><small>The separately supplied signed_vorticity_euler_revised.tex, with its original bytes preserved.</small></li></ul>
-        <p class="source-note">The separate polishing conversations have not yet been linked here.</p>
-      </section>
-
-      <section class="source-record" id="original-run" aria-labelledby="run-title">
-        <p class="section-label">02 / Original research run</p>
-        <h2 id="run-title">Existence of weak 2D Euler solutions for sign-changing vortex-sheet data</h2>
-        <dl class="provenance">
-          <div><dt>Date</dt><dd><time datetime="2026-10-08">8 October 2026</time>, according to the shared chat and research checkpoint.</dd></div>
-          <div><dt>AI model</dt><dd>GPT-6 Astra (Ultra).</dd></div>
-          <div><dt>Human involvement</dt><dd>Problem selection, prompting, and requests for manuscript revision. The drafting and subsequent polishing were performed with ChatGPT.</dd></div>
-          <div><dt>Prompt</dt><dd><a href="#prompts">Initial request and attached research and audit instructions</a>.</dd></div>
-          <div><dt>Conversation</dt><dd><a href="https://chatgpt.com/share/6acba0b0-703c-83eb-be9f-134acc07ed1d">Original shared ChatGPT conversation</a>.</dd></div>
-        </dl>
-        <ul class="file-list"><li><a href="original-manuscript.pdf" download>Original manuscript · PDF <span aria-hidden="true">↓</span></a><span class="file-size">302.2 KiB</span><small>The final PDF from the original research workspace.</small></li>
-<li><a href="original-manuscript.tex" download>Original manuscript · LaTeX <span aria-hidden="true">↓</span></a><span class="file-size">44.3 KiB</span><small>The original vortex_sheet_proof.tex; this differs from the revised manuscript above.</small></li>
-<li><a href="original-research-bundle.zip" download>Original research bundle · ZIP <span aria-hidden="true">↓</span></a><span class="file-size">5.61 MiB</span><small>The unchanged bundle from the original run: manuscript, prompts, checkpoint, research notes, and audits.</small></li>
-<li><a href="original-tex.zip" download>Original LaTeX archive · ZIP <span aria-hidden="true">↓</span></a><span class="file-size">16.8 KiB</span><small>The supplied vortex_sheet_main_tex.zip; its LaTeX matches the original manuscript, not the revised version.</small></li></ul>
-        <p class="source-note">The original research bundle is preserved unchanged. Its SHA-256 is <code>f8f831ac0bfa95c2eed2385363704e0fc2ca22b2f1d0ed2be946475809de720e</code>.</p>
-      </section>
-
-      <section class="source-record" id="prompts" aria-labelledby="prompts-title">
-        <p class="section-label">03 / Prompts and research record</p>
-        <h2 id="prompts-title">What the model was asked to do</h2>
-        <p>The initial request specified the mathematical problem and a research procedure, with separate instructions for auditing the argument. The files below preserve that material.</p>
-        <ul class="file-list"><li><a href="original-prompt.txt" download>Initial research request <span aria-hidden="true">↓</span></a><span class="file-size">2.2 KiB</span><small>Text recovered from the original shared chat, including its original formatting and escape characters.</small></li>
-<li><a href="research-goal.txt" download>Research procedure <span aria-hidden="true">↓</span></a><span class="file-size">16.0 KiB</span><small>The original attached mathematical_research_goal (1).md, served as plain text with unchanged content.</small></li>
-<li><a href="audit-prompt.txt" download>Audit instructions <span aria-hidden="true">↓</span></a><span class="file-size">34.9 KiB</span><small>The original attached mathematical_audit_prompt_v3 (1).md, served as plain text with unchanged content.</small></li>
-<li><a href="checkpoint.txt" download>Research checkpoint <span aria-hidden="true">↓</span></a><span class="file-size">41.1 KiB</span><small>The original checkpoint, including the target problem, progress notes, and recorded timestamps; served as plain text.</small></li></ul>
-        <details>
-          <summary>Read the initial research request</summary>
-          <div class="details-body">
-            <p class="source-note">This is the message text recovered from the public shared chat. Its formatting and escape characters are retained.</p>
-            <pre tabindex="0" aria-label="Original research request">@mathematical_research_goal (1).md @mathematical_audit_prompt_v3 (1).md I am attaching `mathematical_research_goal.md`.    Read that file completely and treat it as the governing research procedure.  The authoritative mathematical problem is the complete LaTeX source between  the two TARGET_PROBLEM markers below.    PROJECT_WINDOW_BUDGET: 6 hours    \&lt;TARGET_PROBLEM_BEGIN&gt; \paragraph{Problem (global existence for general vortex-sheet data).}\
+      <h1>Source material</h1>
+      <p class="intro">Here we collect the AI-generated manuscript and source material from the original ChatGPT run.</p>
+      <article class="entry" id="vortex-sheet" aria-labelledby="entry-title">
+        <p class="entry-number">Source 01</p>
+        <h2 id="entry-title"><a href="#vortex-sheet">Existence of weak 2D Euler solutions for sign-changing vortex-sheet data</a></h2>
+        <dl class="metadata">
+          <dt>Date</dt><dd><time datetime="2026-10-08">08.10.2026</time></dd>
+          <dt>Model</dt><dd>OpenAI GPT-6 Astra Ultra</dd>
+          <dt>Human contribution</dt><dd>Problem selection and prompting.</dd>
+          <dt>Prompt</dt>
+          <dd>
+            <details>
+              <summary>Read the prompt and research instructions</summary>
+              <div class="prompt-body">
+                <ul>
+                  <li><a href="original-prompt.txt">Initial research request</a></li>
+                  <li><a href="research-goal.txt">Research instructions</a></li>
+                  <li><a href="audit-prompt.txt">Audit instructions</a></li>
+                </ul>
+                <pre tabindex="0" aria-label="Original research request">@mathematical_research_goal (1).md @mathematical_audit_prompt_v3 (1).md I am attaching `mathematical_research_goal.md`.    Read that file completely and treat it as the governing research procedure.  The authoritative mathematical problem is the complete LaTeX source between  the two TARGET_PROBLEM markers below.    PROJECT_WINDOW_BUDGET: 6 hours    \&lt;TARGET_PROBLEM_BEGIN&gt; \paragraph{Problem (global existence for general vortex-sheet data).}\
 Let $\mathcal M(\mathbb R^2)$ denote the space of finite signed\
 Radon measures, equipped with the total variation norm, and set\
 \\[\
@@ -220,58 +131,22 @@ for every $T&gt;0$ and every divergence-free\
 $\varphi\in C_c^\infty([0,T)\times\mathbb R^2;\mathbb R^2)$.\
 The notation $C_w$ means weak continuity in $L^2$ on every\
 bounded spatial subdomain. \&lt;TARGET_PROBLEM_END&gt;    This is a bounded mathematical research project, not a request for an  immediate literature-status answer.    Begin the procedure in `mathematical_research_goal.md` now. As the first  persistence action, create and maintain `checkpoint.md`. Copy the exact marked  problem into that checkpoint before beginning heavy route work.    Do not terminate except under a stopping condition permitted by  `mathematical_research_goal.md`.</pre>
-          </div>
-        </details>
-      </section>
-
-      <section class="source-record" id="archive" aria-labelledby="archive-title">
-        <p class="section-label">04 / Complete file snapshot</p>
-        <h2 id="archive-title">Research files and later versions</h2>
-        <p>The complete supplied snapshot also includes intermediate drafts, research notes, audit records, and later project files. It is distributed in two archives. Together, they preserve all 252 entries from the supplied archive, with the original file names and bytes.</p>
-        <ul class="file-list"><li><a href="research-workspace.zip" download>Complete research workspace · ZIP <span aria-hidden="true">↓</span></a><span class="file-size">20.17 MiB</span><small>222 original workspace files, plus the five supplied provenance and checksum files.</small></li>
-<li><a href="project-snapshot.zip" download>Later project snapshot · ZIP <span aria-hidden="true">↓</span></a><span class="file-size">9.22 MiB</span><small>25 project files from the 11 October 2026 snapshot, including further manuscript versions.</small></li></ul>
-        <p class="source-note">To inspect the complete snapshot, extract both archives into the same folder. The <code>chat-files/</code> and <code>current-project-files/</code> folders preserve the distinction between the original research workspace and the later project snapshot. The separately supplied revised manuscript above is a further, distinct version.</p>
-        <details>
-          <summary>Archive provenance and checksums</summary>
-          <div class="details-body">
-            <p>The two downloads repackage <code>delort_project_files(1).zip</code> so each file can be uploaded through GitHub’s website. The ZIP containers have changed; their combined contents preserve all original entries. The SHA-256 of the originally supplied ZIP is <code>b26b55653514c95499b32bd0640acce2e7929737100ca79457ba5f5d1e66459e</code>.</p>
-            <p>All 251 entries in the supplied <code>SHA256SUMS.txt</code> and all 394 entries in its nested-archive manifest were checked against the supplied bytes. The two repackaged archives were also checked member by member against the original archive.</p>
-            <p>Checksums establish byte identity relative to the published hashes. They do not independently establish authorship or mathematical correctness.</p>
-            <p><a href="SHA256SUMS.txt" download>Download checksums for this page’s files</a>. Paths in this manifest are relative to the website’s main folder.</p>
-            <ul class="hash-list"><li>paper.pdf<code>fe69cff5235d3a0b390177a0c9c8ff59413ecd4c857001d867d830fadf81df0e</code></li>
-<li>audit-prompt.txt<code>e219549985e59b61d44d9eacae59261b79d803f5d108adba944c00b6cce8013f</code></li>
-<li>checkpoint.txt<code>d6c08e4f5745e3d53b617d8847ddef38117ec2293939a83828b98f45742a0479</code></li>
-<li>original-manuscript.pdf<code>f5fe5eceb2e8ca03fc81e03d16d31fce6b8492830f2b7fa348737114c0fb11df</code></li>
-<li>original-manuscript.tex<code>8743ce99900bfb3df37bb4ccdae9aa9269cff12fc0a6abff7e4989a4eb426230</code></li>
-<li>original-prompt.txt<code>0f3c43695aee86f716917ca6030bead98d37d2fd8d10fe04110d2737671f4e66</code></li>
-<li>original-research-bundle.zip<code>f8f831ac0bfa95c2eed2385363704e0fc2ca22b2f1d0ed2be946475809de720e</code></li>
-<li>original-tex.zip<code>c1e8e669a27dd1ace2045d4644b3364a60ae91f7cf66855b42b10428711034bf</code></li>
-<li>project-snapshot.zip<code>74ffa7c86b839e110c839ba219e66ea72104427cf3f7bfdb67594c7acd4d57a3</code></li>
-<li>research-goal.txt<code>c772afdacc8ce90ac2d0ad4631c1e06d708f334226b417cafa8f81c7a846fec0</code></li>
-<li>research-workspace.zip<code>caa6e9bcef9ba1d2c2240b10ed5f0d825f9a4e1e70268a3d5bc9ae491a8133bd</code></li>
-<li>revised-manuscript.tex<code>cc7011eb073945df64acd83548b6dedbd3efef390ea682d7f75842462268b03e</code></li></ul>
-          </div>
-        </details>
-      </section>
-
-      <section class="community" id="record-status" aria-labelledby="record-title">
-        <h2 id="record-title">An open record</h2>
-        <p>The original chat, prompts, manuscript files, research records, and checksums are available above. The remaining gaps in this record are:</p>
-        <ul class="status-list">
-          <li>Links or transcripts for the separate conversations used to polish the manuscript.</li>
-          <li>A downloadable full conversation export; the file snapshot itself is not a chat transcript.</li>
+              </div>
+            </details>
+          </dd>
+        </dl>
+        <ul class="resource-links" aria-label="Original source resources">
+          <li><a href="original-manuscript.pdf">Read the manuscript (PDF)</a></li>
+          <li><a href="https://chatgpt.com/share/6acba0b0-703c-83eb-be9f-134acc07ed1d">View the chat</a></li>
+          <li><a href="original-research-bundle.zip" download>Download the source ZIP</a></li>
         </ul>
-        <p>The included audits are AI-generated checks. Their completion labels do not document independent human verification of the proof. Questions and corrections are welcome at <a href="mailto:josef.demmel@fau.de">josef.demmel@fau.de</a>.</p>
-      </section>
-
-      <section class="acknowledgements" aria-labelledby="thanks-title">
-        <h2 id="thanks-title">Acknowledgements</h2>
-        <p>We thank <a href="https://lukasniebel.github.io/">Lukas Niebel</a> for the idea of this homepage and his help in setting it up. This page is inspired by <a href="https://weneedabp.github.io/index.html">We need ABP</a> and its <a href="https://weneedabp.github.io/ai.html">source material page</a>, which we warmly encourage you to visit.</p>
-      </section>
+        <p class="checksum"><span>ZIP SHA-256</span><code>f8f831ac0bfa95c2eed2385363704e0fc2ca22b2f1d0ed2be946475809de720e</code></p>
+        <p class="revision-note">The manuscript was subsequently polished with ChatGPT in separate conversations. The <a href="paper.pdf">current PDF</a> and <a href="revised-manuscript.tex" download>LaTeX source</a> reflect those later revisions; the PDF and ZIP above preserve the original run’s materials.</p>
+      </article>
     </main>
     <footer class="footer">
       <p>Signed vorticity · Source material</p>
-      <nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Homepage</a><a href="mailto:josef.demmel@fau.de">Get in touch</a><a href="#top">Back to top <span aria-hidden="true">↑</span></a></nav>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Homepage</a><a href="https://weneedabp.github.io/ai.html">Inspired by We need ABP</a><a href="mailto:josef.demmel@fau.de">Get in touch</a></nav>
     </footer>
   </div>
 </body>
