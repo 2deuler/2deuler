@@ -56,14 +56,15 @@
     .result-list li{display:grid;grid-template-columns:170px minmax(0,1fr);gap:24px;padding:21px 0;border-bottom:1px solid var(--rule)}
     .result-list h3{font-size:18px;line-height:1.6;margin:0}
     .result-list p{font-size:17px;color:var(--muted);margin:0;line-height:1.7}
-    .steps{list-style:none;margin:27px 0 0;padding:0;counter-reset:steps}
-    .steps li{counter-increment:steps;display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:0 0 26px}
-    .steps li::before{content:"0" counter(steps);font:12px/1.8 var(--sans);color:var(--accent);padding-top:5px}
-    .steps p{font-size:18px;color:var(--muted);margin:0}
-    .note{background:var(--wash);padding:29px 32px;margin-top:31px}
-    .note h3{font-size:24px}
-    .note p{color:var(--muted);font-size:17px}
-    .note > :last-child{margin-bottom:0}
+    .team-section{margin-top:38px;padding:29px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+    .team-section h2{font-size:30px;margin-bottom:21px}
+    .team-list{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 28px;padding:0;margin:0}
+    .team-list a{font-size:21px;text-decoration:none}
+    .team-list a:hover{text-decoration:underline}
+    .acknowledgements{margin-top:38px;padding-top:29px;border-top:1px solid var(--rule)}
+    .acknowledgements h2{font-size:29px}
+    .acknowledgements p{font-size:18px;color:var(--muted)}
+    .acknowledgements > :last-child{margin-bottom:0}
     .question{margin:26px 0;padding:21px 26px;border-left:2px solid var(--accent);background:var(--wash);font-size:21px;line-height:1.6}
     .community{margin-top:35px;padding:31px 34px;background:var(--wash)}
     .community h2{font-size:30px;margin-bottom:17px}
@@ -83,10 +84,10 @@
     .footer p{margin:0}
     .footer a{color:inherit;text-decoration:none}
     .footer-links{display:flex;flex-wrap:wrap;gap:22px}
-    @media(max-width:760px){.shell{padding:0 25px}.header{min-height:0;flex-direction:column;align-items:flex-start;padding:28px 0 17px;gap:14px}.brand{font-size:26px}.nav{gap:22px;font-size:12px}.nav a{padding:6px 0}main{padding:41px 0 54px}.hero{padding-bottom:34px}h1{font-size:42px}.lead{font-size:20px}.section{margin-top:38px}h2{font-size:29px}.result-list li{grid-template-columns:1fr;gap:7px;padding:19px 0}.note{padding:23px}.theorem{padding-left:19px}.equation{font-size:17px}.steps{margin-top:22px}.steps li{grid-template-columns:29px minmax(0,1fr);gap:13px}.footer{align-items:flex-start}}
-    @media(max-width:400px){.shell{padding:0 19px}body{font-size:18px}h1{font-size:35px}.nav{gap:17px}.actions{gap:15px}.note{padding:20px}.equation{padding-left:0;padding-right:0}.theorem{padding-left:15px}}
-    @media(max-width:640px){.community{padding:25px 23px}.community h2{font-size:28px}.question{padding:19px 21px;font-size:19px}}
-    @media print{body{background:#fff;color:#000;font-size:11pt}.shell{max-width:none;padding:0}.header{min-height:0;padding-bottom:15px}.nav,.skip,.actions,.footer{display:none}main{padding:25px 0;max-width:none}h1{font-size:30pt}.lead{font-size:13pt}.section{margin-top:26px}h2{font-size:20pt}.note,.community,.question{background:none;border:1px solid #bbb}.equation{overflow:visible}.theorem,.steps li{break-inside:avoid}a{color:inherit}}
+    @media(max-width:760px){.shell{padding:0 25px}.header{min-height:0;flex-direction:column;align-items:flex-start;padding:28px 0 17px;gap:14px}.brand{font-size:26px}.nav{gap:22px;font-size:12px}.nav a{padding:6px 0}main{padding:41px 0 54px}.hero{padding-bottom:34px}h1{font-size:42px}.lead{font-size:20px}.section{margin-top:38px}h2{font-size:29px}.result-list li{grid-template-columns:1fr;gap:7px;padding:19px 0}.theorem{padding-left:19px}.equation{font-size:17px}.footer{align-items:flex-start}}
+    @media(max-width:400px){.shell{padding:0 19px}body{font-size:18px}h1{font-size:35px}.nav{gap:17px}.actions{gap:15px}.equation{padding-left:0;padding-right:0}.theorem{padding-left:15px}}
+    @media(max-width:640px){.team-list{grid-template-columns:1fr;gap:10px}.community{padding:25px 23px}.community h2{font-size:28px}.question{padding:19px 21px;font-size:19px}}
+    @media print{body{background:#fff;color:#000;font-size:11pt}.shell{max-width:none;padding:0}.header{min-height:0;padding-bottom:15px}.nav,.skip,.actions,.footer{display:none}main{padding:25px 0;max-width:none}h1{font-size:30pt}.lead{font-size:13pt}.section{margin-top:26px}h2{font-size:20pt}.community,.question{background:none;border:1px solid #bbb}.equation{overflow:visible}.theorem,.team-section{break-inside:avoid}a{color:inherit}}
   </style>
 </head>
 <body id="top">
@@ -97,8 +98,8 @@
       <nav class="nav" aria-label="Main navigation">
         <a href="#overview">Overview</a>
         <a href="#main-result">Main result</a>
-        <a href="#construction">Construction</a>
         <a href="#paper">Paper <span aria-hidden="true">↗</span></a>
+        <a href="#team">Team</a>
         <a href="#invitation">Contact</a>
       </nav>
     </header>
@@ -168,31 +169,15 @@
         </details>
       </section>
 
-      <section class="section" id="construction" aria-labelledby="construction-title">
-        <p class="section-label">03 / The construction</p>
-        <h2 id="construction-title">Approximate. Repair. Pass to the limit.</h2>
-        <p>The argument separates the initial trace from the removal of the equation error. Each repair keeps the velocity fixed at the endpoints of its time interval.</p>
-        <ol class="steps">
-          <li><div><h3>Build the initial approximation</h3><p>Smooth the initial vorticity at successively smaller scales and evolve the approximations by exact Euler flows. Join them at carefully chosen times so that both the velocity error and the Reynolds stress vanish at the initial time. <a href="paper.pdf#page=8" aria-label="Read Section 3 in the PDF">Section 3</a>.</p></div></li>
-          <li><div><h3>Repair the stress with moving dipoles</h3><p>Approximate the stress by constant matrices on rectangles. A concentrated dipole visits their rows in succession. Its force, averaged over a complete cycle, supplies the required stress cancellation. A time correction vanishes at both ends of each cycle. <a href="paper.pdf#page=11" aria-label="Read Sections 4 and 5 in the PDF">Sections 4–5</a>.</p></div></li>
-          <li><div><h3>Iterate and join the intervals</h3><p>Repeat the repair on dyadic time intervals. The corrections are summable in velocity <span class="math"><i>L</i><sup>2</sup></span> and vorticity <span class="math"><i>L</i><sup>1</sup></span>. The limit solves Euler, and the fixed endpoint velocities allow the intervals to join while retaining the initial trace. <a href="paper.pdf#page=19" aria-label="Read Section 6 in the PDF">Section 6</a>.</p></div></li>
-        </ol>
-        <p>The key idea comes from the convex-integration scheme of <a href="https://arxiv.org/abs/2408.07934">Bruè, Colombo and Kumar</a>: concentrated dipoles move rapidly, and their effect cancels the stress after averaging in time. Here that mechanism is adapted to arbitrary signed measure data, with control of the initial trace and with each repair preserving the endpoint velocities.</p>
-        <div class="note">
-          <h3>Why infinitely many solutions?</h3>
-          <p>Change the starting approximate flow near <span class="math"><i>t</i> = 1</span> before repairing it. Because the repair preserves the velocity at that time, the resulting solutions remain distinct. This is the separation argument in Section 7.</p>
-        </div>
-      </section>
-
       <section class="section" id="scope" aria-labelledby="scope-title">
-        <p class="section-label">04 / Scope</p>
+        <p class="section-label">03 / Scope</p>
         <h2 id="scope-title">The solution class matters</h2>
         <p>The result concerns <strong>weak velocity solutions</strong>. It does not assert an energy inequality, preservation of the sign of vorticity, propagation of higher <span class="math"><i>L</i><sup><i>p</i></sup></span> norms, or renormalized transport.</p>
         <p>It also does not identify a vanishing-viscosity limit or a physically selected continuation of a vortex sheet. In particular, the nonuniqueness statement is not a nonuniqueness result within the bounded-vorticity class of Yudovich.</p>
       </section>
 
       <section class="paper" id="paper" aria-labelledby="download-title">
-        <p class="section-label">05 / The paper</p>
+        <p class="section-label">04 / The paper</p>
         <h2 id="download-title">Read the full argument</h2>
         <h3>Global weak Euler flows with finite signed initial vorticity</h3>
         <p class="metadata">Research manuscript · 25 pages · PDF</p>
@@ -201,14 +186,25 @@
           <a class="plain-link" href="paper.pdf" download="global-weak-euler-flows.pdf">Download PDF <span aria-hidden="true">↓</span></a>
         </div>
       </section>
+      <section class="team-section" id="team" aria-labelledby="team-title">
+        <h2 id="team-title">Team</h2>
+        <ul class="team-list">
+          <li><a href="https://www.math.fau.de/ls-analysis/prof-dr-emil-wiedemann/">Emil Wiedemann</a></li>
+          <li><a href="https://www.math.fau.de/person/josef-demmel/">Josef Demmel</a></li>
+        </ul>
+      </section>
       <section class="community" id="our-purpose" aria-labelledby="purpose-title">
         <h2 id="purpose-title">Our purpose</h2>
         <p>We want to understand new arguments for the existence of weak Euler solutions with sign-changing vortex-sheet data: identify their main mechanisms, examine what they imply, make the ideas accessible, and explore their limits.</p>
-        <p>This page brings together the AI-generated manuscript and our efforts to examine and explain its arguments. Our aim is to develop a clear, independently checked exposition and to make the relation to Delort’s problem and the construction of Bruè–Colombo–Kumar easy to follow. We aim for transparency and to share relevant AI interactions whenever feasible.</p>
+        <p>This page brings together the original AI-generated manuscript and our efforts to interpret and explain it. We hope to collect comments, questions, and expositions that can be read alongside the original argument. We aim for transparency and to share the relevant AI interactions whenever feasible. Over time, we hope to complement the AI-generated work with human expositions.</p>
       </section>
       <section class="community invitation" id="invitation" aria-labelledby="invitation-title">
         <h2 id="invitation-title">Invitation</h2>
         <p>Everyone is invited to collaborate and discuss. If you would like to examine an argument, point out a gap, contribute an exposition, or exchange ideas, please contact <a href="mailto:josef.demmel@fau.de">josef.demmel@fau.de</a>. Questions, corrections, and comments are very welcome.</p>
+      </section>
+      <section class="acknowledgements" id="acknowledgements" aria-labelledby="thanks-title">
+        <h2 id="thanks-title">Acknowledgements</h2>
+        <p>We would like to thank <a href="https://lukasniebel.github.io/">Lukas Niebel</a> for the idea of this homepage and for his help in setting it up. This page is inspired by <a href="https://weneedabp.github.io/index.html">We need ABP</a>, which we warmly encourage you to visit.</p>
       </section>
     </main>
     <footer class="footer">
