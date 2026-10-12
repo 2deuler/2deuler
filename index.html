@@ -146,7 +146,7 @@
         <p>The two-dimensional Euler equations describe the motion of an ideal incompressible fluid:</p>
         <div class="equation" tabindex="0" role="group" aria-label="Two-dimensional incompressible Euler equations">
           <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
-            <mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><mi mathvariant="normal">div</mi><mo>(</mo><mi>u</mi><mo>⊗</mo><mi>u</mi><mo>)</mo><mo>+</mo><mi>∇</mi><mi>p</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1em"/><mi mathvariant="normal">div</mi><mi>u</mi><mo>=</mo><mn>0</mn><mo>.</mo></mrow>
+            <mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><mi mathvariant="normal">div</mi><mo stretchy="false">(</mo><mi>u</mi><mo>⊗</mo><mi>u</mi><mo stretchy="false">)</mo><mo>+</mo><mi>∇</mi><mi>p</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1em"/><mi mathvariant="normal">div</mi><mspace width=".1667em"/><mi>u</mi><mo>=</mo><mn>0</mn><mo>.</mo></mrow>
           </math>
         </div>
         <p>A vortex sheet concentrates vorticity on a curve. Delort proved global weak existence for compactly supported vorticity in <span class="math"><i>H</i><sup>−1</sup></span> that is a measure of one sign. In his <a href="https://www.numdam.org/article/SEDP_1990-1991____A2_0.pdf#page=13">discussion of the sign condition</a>, he asked whether existence still holds for general signed measures.</p>
@@ -158,10 +158,22 @@
       <section class="section" id="main-result" aria-labelledby="result-title">
         <p class="section-label">The manuscript’s main claim</p>
         <h2 id="result-title">No restriction on the initial sign</h2>
-        <p>Write <span class="math">ℳ(ℝ<sup>2</sup>)</span> for the finite signed Radon measures and use the inhomogeneous space <span class="math"><i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>. The initial velocity is given by the Biot–Savart law:</p>
+        <p>Write <span class="math">ℳ(ℝ<sup>2</sup>)</span> for the finite signed Radon measures. The initial velocity is given by the Biot–Savart law:</p>
         <div class="equation" tabindex="0" role="group" aria-label="The initial velocity and Biot–Savart kernel">
           <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
-            <mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><mi>K</mi><mo>∗</mo><msub><mi>μ</mi><mn>0</mn></msub><mo>,</mo><mspace width="1em"/><mi>K</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mrow><mo>(</mo><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mrow><mn>2</mn><mi>π</mi><msup><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow><mn>2</mn></msup></mrow></mfrac><mo>,</mo><mspace width=".7em"/><mi>x</mi><mo>≠</mo><mn>0</mn><mo>.</mo></mrow>
+            <mrow>
+              <mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><mi>K</mi><mo>∗</mo><msub><mi>μ</mi><mn>0</mn></msub></mrow><mo>,</mo>
+              <mspace width="1em"/>
+              <mrow>
+                <mrow><mi>K</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>=</mo>
+                <mfrac>
+                  <mrow><mo stretchy="false">(</mo><mo form="prefix">−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow>
+                  <mrow><mn>2</mn><mi>π</mi><msup><mrow><mo stretchy="false" form="prefix" lspace="0em" rspace="0em">|</mo><mi>x</mi><mo stretchy="false" form="postfix" lspace="0em" rspace="0em">|</mo></mrow><mn>2</mn></msup></mrow>
+                </mfrac>
+              </mrow><mo>,</mo>
+              <mspace width=".7em"/>
+              <mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><mo>.</mo>
+            </mrow>
           </math>
         </div>
         <div class="theorem">
@@ -169,7 +181,7 @@
           <p>For every <span class="math"><i>μ</i><sub>0</sub> ∈ ℳ(ℝ<sup>2</sup>) ∩ <i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>, there are <strong>infinitely many distinct global weak velocity solutions</strong> with initial value <span class="math"><i>u</i><sub>0</sub></span>. They satisfy</p>
           <div class="equation" tabindex="0" role="group" aria-label="The velocity difference is continuous in L2 and vanishes at the initial time">
             <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
-              <mrow><mi>u</mi><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub><mo>∈</mo><mi>C</mi><mo>(</mo><mo>[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo>)</mo><mo>;</mo><msup><mi>L</mi><mn>2</mn></msup><mo>)</mo><mo>,</mo><mspace width=".7em"/><mo>(</mo><mi>u</mi><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub><mo>)</mo><mo>(</mo><mn>0</mn><mo>)</mo><mo>=</mo><mn>0</mn><mo>.</mo></mrow>
+              <mrow><mi>u</mi><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>L</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>,</mo><mspace width=".7em"/><mo stretchy="false">(</mo><mi>u</mi><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>.</mo></mrow>
             </math>
           </div>
           <p>The vorticity <span class="math"><i>μ</i> = curl <i>u</i></span> is weakly-* continuous as a finite measure and strongly continuous in <span class="math"><i>H</i><sup>−1</sup></span>, with <span class="math"><i>μ</i>(0) = <i>μ</i><sub>0</sub></span>. At every positive time it is an <span class="math"><i>L</i><sup>1</sup></span> density, continuously depending on time in that norm.</p>
@@ -184,10 +196,10 @@
           <div class="details-body">
             <p>All spatial function spaces below are over <span class="math">ℝ<sup>2</sup></span>.</p>
             <div class="equation" tabindex="0" role="group" aria-label="Vorticity continuity in finite measures and H minus one">
-              <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>μ</mi><mo>∈</mo><msub><mi>C</mi><mrow><mi>w</mi><mo>∗</mo></mrow></msub><mo>(</mo><mo>[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo>)</mo><mo>;</mo><mi>ℳ</mi><mo>)</mo><mo>∩</mo><mi>C</mi><mo>(</mo><mo>[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo>)</mo><mo>;</mo><msup><mi>H</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>)</mo><mo>.</mo></mrow></math>
+              <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>μ</mi><mo>∈</mo><msub><mi>C</mi><mrow><mi>w</mi><mo>∗</mo></mrow></msub><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><mi>ℳ</mi><mo stretchy="false">)</mo><mo>∩</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>H</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math>
             </div>
             <div class="equation" tabindex="0" role="group" aria-label="Vorticity is continuous in L1 for positive times">
-              <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>μ</mi><mo>∈</mo><mi>C</mi><mo>(</mo><mo>(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo>)</mo><mo>;</mo><msup><mi>L</mi><mn>1</mn></msup><mo>)</mo><mo>.</mo></mrow></math>
+              <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>μ</mi><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>L</mi><mn>1</mn></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math>
             </div>
             <p>Here weak-* continuity is tested against functions in <span class="math"><i>C</i><sub>0</sub>(ℝ<sup>2</sup>)</span>. For <span class="math"><i>μ</i><sub>0</sub> ∈ <i>L</i><sup>1</sup></span>, one also has <span class="math"><i>μ</i> ∈ <i>C</i>([0, ∞); <i>L</i><sup>1</sup>)</span>. For singular initial data, continuity in total variation at zero is not asserted.</p>
           </div>
