@@ -4,100 +4,118 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="An AI-written manuscript on weak 2D Euler solutions for sign-changing vortex-sheet data. Delort's problem, the original ChatGPT conversation, source files, and an invitation to discuss the argument.">
-  <meta name="theme-color" content="#fbfaf6">
+  <meta name="theme-color" content="#f5f2ec">
   <title>Existence of weak 2D Euler solutions for sign-changing vortex-sheet data</title>
   <!-- All styling is included here. Equations use native MathML: no scripts or external fonts are required. -->
   <!-- To update the paper, replace paper.pdf in the same folder, keeping that filename. -->
   <style>
-    :root{color-scheme:light;--paper:#fbfaf6;--ink:#253b35;--muted:#586d64;--accent:#2e6a5b;--rule:#d6dfd4;--wash:#eaf0e5;--serif:Georgia,"Times New Roman",serif;--sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+
+    :root{color-scheme:light;--paper:#f5f2ec;--surface:#fdfbf7;--ink:#302b27;--muted:#696158;--accent:#89543a;--line:#dcd5ca;--wash:#eee7dc;--serif:Georgia,"Times New Roman",serif;--sans:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
     *{box-sizing:border-box}
-    html{scroll-padding-top:2rem}
-    body{margin:0;color:var(--ink);background:var(--paper);font:19px/1.75 var(--serif);-webkit-text-size-adjust:100%}
-    a{color:var(--accent);text-underline-offset:.22em;text-decoration-thickness:1px}
-    a:hover{color:#1d4d41}
+    html{scroll-padding-top:28px}
+    body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.85 var(--sans);-webkit-text-size-adjust:100%}
+    a{color:var(--accent);text-underline-offset:.23em;text-decoration-thickness:1px}
+    a:hover{color:#613820}
     a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
-    ::selection{color:var(--ink);background:#d4e5cd}
-    .shell{width:100%;max-width:1200px;margin:auto;padding:0 48px}
-    .skip{position:absolute;left:20px;top:-100px;padding:10px 16px;background:var(--paper);z-index:10;font:14px var(--sans)}
+    ::selection{background:#e3d3be;color:var(--ink)}
+    .shell{max-width:1256px;padding:0 52px;margin:0 auto}
+    .skip{position:absolute;left:20px;top:-100px;padding:10px 16px;background:var(--surface);z-index:10;font-size:14px}
     .skip:focus{top:15px}
-    .header{min-height:108px;display:flex;justify-content:space-between;align-items:center;gap:24px;border-bottom:1px solid var(--rule)}
-    .brand{font:28px/1.2 var(--serif);letter-spacing:-.04em;color:var(--ink);text-decoration:none;white-space:nowrap}
-    .brand em,.brand b{font-weight:400;color:var(--accent)}
-    .nav{display:flex;gap:26px;flex-wrap:wrap;font:13px/1.6 var(--sans)}
-    .nav a{display:inline-block;padding:10px 0;text-decoration:none;color:var(--muted)}
-    .nav a:hover{color:var(--accent)}
-    main{max-width:790px;margin:auto;padding:68px 0 76px}
-    .eyebrow,.section-label{font:11px/1.7 var(--sans);text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin:0 0 22px}
-    h1,h2,h3{font-weight:400}
-    h1{font-size:clamp(36px,4.4vw,58px);line-height:1.12;letter-spacing:-.045em;margin:0 0 27px;text-wrap:balance}
-    h1 em{color:var(--accent);font-style:italic}
-    h2{font-size:33px;line-height:1.2;letter-spacing:-.025em;margin:0 0 22px}
-    h3{font-size:22px;line-height:1.35;margin:0 0 10px;letter-spacing:-.015em}
-    p{margin:0 0 19px}
+    .header{min-height:94px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:inline-flex;align-items:center;gap:11px;white-space:nowrap;color:var(--ink);font-size:15px;font-weight:600;letter-spacing:-.025em;text-decoration:none}
+    .brand svg{width:29px;height:29px;flex:none;color:var(--accent)}
+    .nav{display:flex;flex-wrap:wrap;align-items:center;gap:6px 19px;font-size:12px;line-height:1.6}
+    .nav a{padding:8px 0;color:var(--muted);text-decoration:none;white-space:nowrap}
+    .nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
+    .nav a[aria-current="page"]{box-shadow:0 1px 0 var(--accent)}
+    main{padding:0 0 82px}
+    h1,h2,h3{font-family:var(--sans);font-weight:500;color:var(--ink)}
+    h1{font-size:clamp(40px,4.8vw,61px);line-height:1.12;letter-spacing:-.055em;margin:0;text-wrap:balance}
+    h2{font-size:30px;line-height:1.3;letter-spacing:-.035em;margin:0 0 23px}
+    h3{font-size:21px;line-height:1.5;letter-spacing:-.025em;margin:0 0 10px}
+    p{margin:0 0 22px}
     strong{font-weight:600}
-    .lead{font-size:22px;line-height:1.6;color:var(--muted);margin-bottom:29px}
-    .actions{display:flex;align-items:center;flex-wrap:wrap;gap:18px 26px;font:13px/1.5 var(--sans)}
-    .button{display:inline-flex;align-items:center;gap:16px;padding:13px 19px;border:1px solid var(--accent);background:var(--accent);color:var(--paper);text-decoration:none}
-    .button:hover{color:#fff;background:#1d4d41;border-color:#1d4d41}
-    .plain-link{text-decoration:none;border-bottom:1px solid var(--rule);padding:5px 0}
-    .hero{padding-bottom:48px;border-bottom:1px solid var(--rule)}
-    .ai-note{margin:0 0 28px;padding:19px 23px;border-left:2px solid var(--accent);background:var(--wash);font:15px/1.75 var(--sans)}
-    .ai-note strong{display:block;margin-bottom:5px;color:var(--accent);font-weight:600}
+    .eyebrow,.section-label{font-size:12px;line-height:1.6;color:var(--accent);letter-spacing:.02em;margin:0}
+    .actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 25px;font-size:13px;line-height:1.7}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:24px;background:var(--ink);color:var(--surface);border:1px solid var(--ink);border-radius:5px;padding:12px 19px;text-decoration:none}
+    .button:hover{background:#4a3a2f;border-color:#4a3a2f;color:var(--surface)}
+    .plain-link{text-decoration:none;box-shadow:0 1px 0 var(--line);padding:5px 0}
+    .footer{border-top:1px solid var(--line);padding:27px 0 34px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 24px;font-size:11px;line-height:1.7;color:var(--muted)}
+    .footer p{margin:0}
+    .footer a{color:var(--muted);text-decoration:none}
+    .footer a:hover{text-decoration:underline}
+    .footer-links{display:flex;flex-wrap:wrap;gap:20px}
+    @media(max-width:1000px){.header{flex-wrap:wrap;justify-content:flex-start;gap:8px 28px;padding:24px 0}.nav{flex-basis:100%;gap:6px 23px}.shell{padding:0 34px}}
+    @media(max-width:600px){.shell{padding:0 22px}.header{padding:22px 0 20px}.nav{font-size:11px;gap:4px 17px}.brand{font-size:14px}body{font-size:17px;line-height:1.8}h1{font-size:38px;line-height:1.16;letter-spacing:-.045em}h2{font-size:27px}.footer{align-items:flex-start}main{padding-bottom:48px}}
+    @media(max-width:380px){.shell{padding:0 18px}h1{font-size:33px}.nav{gap:4px 13px}}
+
+    .hero{display:grid;grid-template-columns:minmax(0,1fr) 244px;grid-template-areas:"eyebrow ." "title note" "lead note" "actions note";column-gap:68px;row-gap:25px;padding:59px 0 73px;border-bottom:1px solid var(--line)}
+    .hero .eyebrow{grid-area:eyebrow}
+    .hero h1{grid-area:title;max-width:840px}
+    .hero .lead{grid-area:lead;font-size:18px;line-height:1.85;max-width:660px;color:var(--muted);margin:0}
+    .hero .actions{grid-area:actions;margin-top:5px}
+    .ai-note{grid-area:note;align-self:end;border-left:1px solid var(--line);padding:4px 0 3px 25px;font-size:13px;line-height:1.85;color:var(--muted)}
+    .ai-note::before{content:"";display:block;width:30px;height:3px;background:var(--accent);margin:0 0 19px;border-radius:2px}
+    .ai-note strong{display:block;font-size:15px;line-height:1.55;color:var(--ink);margin-bottom:13px}
     .ai-note p{margin:0}
-    .section{margin-top:49px;scroll-margin-top:30px}
-    .section-label{color:var(--muted);margin-bottom:12px}
+    .section{display:grid;grid-template-columns:152px minmax(0,1fr);column-gap:50px;max-width:1020px;margin:70px auto 0;scroll-margin-top:35px}
+    .section > *{grid-column:2;min-width:0}
+    .section > .section-label{grid-column:1;grid-row:1/span 2;padding-top:7px;max-width:134px;color:var(--muted)}
+    .section > :last-child{margin-bottom:0}
     .math{font-family:"Cambria Math","STIX Two Math",var(--serif);white-space:normal}
     .math i{font-style:italic}
     sub,sup{line-height:0;font-size:.72em}
-    .equation{overflow-x:auto;max-width:100%;padding:12px 8px;margin:20px 0 24px;text-align:center;scrollbar-width:thin}
+    .equation{overflow-x:auto;max-width:100%;padding:15px 4px;margin:4px 0 26px;text-align:center;scrollbar-width:thin}
     math{font-size:1.12em;font-family:"Cambria Math","STIX Two Math",math}
-    math[display="block"]{margin:0 auto;width:max-content;min-width:0}
-    .theorem{border-left:2px solid var(--accent);padding:2px 0 2px 27px;margin-top:26px}
+    math[display="block"]{width:max-content;min-width:0;margin:0 auto}
+    .question{font:24px/1.6 var(--serif);letter-spacing:-.015em;padding:4px 0 4px 23px;margin:6px 0 28px;border-left:2px solid #bd9b7a;color:#674d3d}
+    .theorem{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px 29px;margin:2px 0 0}
+    .theorem-label{font-size:11px;line-height:1.8;letter-spacing:.015em;color:var(--accent);margin-bottom:19px}
     .theorem > :last-child{margin-bottom:0}
-    .theorem-label{font:11px/1.7 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:17px}
-    .result-list{list-style:none;margin:27px 0 0;padding:0;border-top:1px solid var(--rule)}
-    .result-list li{display:grid;grid-template-columns:170px minmax(0,1fr);gap:24px;padding:21px 0;border-bottom:1px solid var(--rule)}
-    .result-list h3{font-size:18px;line-height:1.6;margin:0}
-    .result-list p{font-size:17px;color:var(--muted);margin:0;line-height:1.7}
-    .team-section{margin-top:38px;padding:29px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-    .team-section h2{font-size:30px;margin-bottom:21px}
-    .team-list{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 28px;padding:0;margin:0}
-    .team-list a{font-size:21px;text-decoration:none}
-    .team-list a:hover{text-decoration:underline}
-    .acknowledgements{margin-top:38px;padding-top:29px;border-top:1px solid var(--rule)}
-    .acknowledgements h2{font-size:29px}
-    .acknowledgements p{font-size:18px;color:var(--muted)}
-    .acknowledgements > :last-child{margin-bottom:0}
-    .question{margin:26px 0;padding:21px 26px;border-left:2px solid var(--accent);background:var(--wash);font-size:21px;line-height:1.6}
-    .community{margin-top:35px;padding:31px 34px;background:var(--wash)}
-    .community h2{font-size:30px;margin-bottom:17px}
-    .community p{color:var(--muted);font-size:18px}
-    .community > :last-child{margin-bottom:0}
-    .community a{overflow-wrap:anywhere}
-    .invitation{background:#edf3ef}
-    details{margin:27px 0 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:18px 0}
-    summary{cursor:pointer;font:14px/1.6 var(--sans);color:var(--accent)}
-    .details-body{padding-top:23px;font-size:17px}
+    .theorem .equation{font-size:17px;margin-bottom:21px}
+    .result-list{list-style:none;padding:0;margin:18px 0 0}
+    .result-list li{display:grid;grid-template-columns:163px minmax(0,1fr);gap:20px;padding:21px 0;border-bottom:1px solid var(--line)}
+    .result-list h3{font-size:15px;line-height:1.75;margin:0}
+    .result-list p{font-size:15px;line-height:1.8;color:var(--muted);margin:0}
+    details{margin-top:22px;padding:15px 0}
+    summary{cursor:pointer;color:var(--accent);font-size:13px;line-height:1.8}
+    .details-body{padding-top:23px;font-size:16px}
     .details-body > :last-child{margin-bottom:0}
     .details-body .equation{font-size:16px}
-    .paper{margin-top:48px;padding-top:34px;border-top:1px solid var(--rule)}
-    .paper h3{font-size:24px}
-    .metadata{font:12px/1.7 var(--sans);color:var(--muted);margin:13px 0 23px}
-    .footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding:25px 0 31px;border-top:1px solid var(--rule);font:11px/1.7 var(--sans);color:var(--muted)}
-    .footer p{margin:0}
-    .footer a{color:inherit;text-decoration:none}
-    .footer-links{display:flex;flex-wrap:wrap;gap:22px}
-    @media(max-width:760px){.shell{padding:0 25px}.header{min-height:0;flex-direction:column;align-items:flex-start;padding:28px 0 17px;gap:14px}.brand{font-size:26px}.nav{gap:22px;font-size:12px}.nav a{padding:6px 0}main{padding:41px 0 54px}.hero{padding-bottom:34px}h1{font-size:42px}.lead{font-size:20px}.section{margin-top:38px}h2{font-size:29px}.result-list li{grid-template-columns:1fr;gap:7px;padding:19px 0}.theorem{padding-left:19px}.equation{font-size:17px}.footer{align-items:flex-start}}
-    @media(max-width:400px){.shell{padding:0 19px}body{font-size:18px}h1{font-size:35px}.nav{gap:17px}.actions{gap:15px}.equation{padding-left:0;padding-right:0}.theorem{padding-left:15px}}
-    @media(max-width:640px){.team-list{grid-template-columns:1fr;gap:10px}.community{padding:25px 23px}.community h2{font-size:28px}.question{padding:19px 21px;font-size:19px}}
-    @media print{body{background:#fff;color:#000;font-size:11pt}.shell{max-width:none;padding:0}.header{min-height:0;padding-bottom:15px}.nav,.skip,.actions,.footer{display:none}main{padding:25px 0;max-width:none}h1{font-size:30pt}.lead{font-size:13pt}.section{margin-top:26px}h2{font-size:20pt}.community,.question{background:none;border:1px solid #bbb}.equation{overflow:visible}.theorem,.team-section{break-inside:avoid}a{color:inherit}}
+    .paper{max-width:1020px;margin:72px auto 0;padding:38px 42px;background:var(--wash);border-radius:12px}
+    .paper .section-label{margin-bottom:13px}
+    .paper h2{font-size:27px;margin-bottom:13px}
+    .paper h3{font:24px/1.5 var(--serif);letter-spacing:-.015em;max-width:650px;margin-bottom:12px}
+    .paper .metadata{font-size:11px;line-height:1.9;color:var(--muted);margin:0 0 19px}
+    .paper > p:not(.section-label):not(.metadata){font-size:15px;line-height:1.8;color:var(--muted);max-width:760px}
+    .team-section{display:grid;grid-template-columns:152px minmax(0,1fr);gap:50px;max-width:1020px;margin:55px auto 0;padding:0 0 33px;border-bottom:1px solid var(--line)}
+    .team-section h2{font-size:14px;letter-spacing:0;color:var(--muted);padding-top:5px;margin:0}
+    .team-list{list-style:none;display:flex;flex-wrap:wrap;gap:14px 40px;margin:0;padding:0}
+    .team-list a{font-size:19px;text-decoration:none;color:var(--ink)}
+    .team-list a::after{content:" ↗";font-size:13px;color:var(--accent)}
+    .team-list a:hover{text-decoration:underline}
+    .community{max-width:min(818px,calc(100% - 202px));margin:53px max(0px,calc((100% - 1020px)/2)) 0 auto}
+    .community h2{font-size:26px;margin-bottom:18px}
+    .community p{font-size:17px;line-height:1.9;color:var(--muted)}
+    .community > :last-child{margin-bottom:0}
+    .community a{overflow-wrap:anywhere}
+    .invitation{padding-top:32px;border-top:1px solid var(--line);margin-top:33px}
+    .acknowledgements{max-width:min(818px,calc(100% - 202px));margin:40px max(0px,calc((100% - 1020px)/2)) 0 auto}
+    .acknowledgements h2{font-size:14px;letter-spacing:0;color:var(--muted);margin-bottom:11px}
+    .acknowledgements p{font-size:13px;line-height:1.9;color:var(--muted);margin:0}
+    @media(max-width:1100px){.hero{grid-template-columns:minmax(0,1fr) 220px;column-gap:40px}.section,.team-section{grid-template-columns:130px minmax(0,1fr);column-gap:35px}.community,.acknowledgements{max-width:calc(100% - 165px);margin-right:0}}
+    @media(max-width:850px){.hero{display:flex;flex-direction:column;gap:24px;padding:35px 0 43px}.hero h1{font-size:clamp(38px,6vw,54px);max-width:750px}.hero .lead{max-width:700px}.ai-note{align-self:stretch;border:0;border-top:1px solid var(--line);padding:20px 0 0;max-width:670px;font-size:13px}.ai-note::before{display:none}.ai-note strong{margin-bottom:7px}.hero .actions{margin-top:0}.section{display:block;margin-top:46px}.section > .section-label{max-width:none;margin-bottom:13px;padding:0}.paper{padding:29px;margin-top:48px}.team-section{display:block;margin-top:38px}.team-section h2{margin-bottom:15px;padding:0}.community,.acknowledgements{max-width:none;margin-right:0}.community{margin-top:38px}.acknowledgements{margin-top:30px}}
+    @media(max-width:600px){.hero{padding-top:23px;gap:21px}.hero h1{font-size:38px}.hero .lead{font-size:16px}.theorem{padding:22px 19px}.theorem .equation{font-size:15px}.result-list li{grid-template-columns:1fr;gap:6px;padding:17px 0}.question{font-size:22px;padding-left:17px}.paper{padding:25px 22px}.paper h3{font-size:22px}.paper .actions{gap:12px 18px}.community p{font-size:16px}.team-list{gap:10px 28px}.team-list a{font-size:18px}.equation{font-size:16px}}
+    @media(max-width:380px){.hero h1{font-size:33px}.team-list{flex-direction:column}}
+
+    @media print{body{background:#fff;color:#000;font-size:11pt}.shell{max-width:none;padding:0}.header{min-height:0;padding:0 0 15px}.nav,.skip,.actions,.footer{display:none}main,.source-page main{padding:24px 0;max-width:none}.hero{display:block;padding:0 0 24px}.hero h1,h1{font-size:29pt}.hero .lead{font-size:12pt;margin-top:20px}.ai-note{border:0;padding:16px 0 0;margin-top:10px}.ai-note::before{display:none}.section{display:block;margin-top:28px}.section-label{margin-bottom:10px!important}h2{font-size:20pt}.paper,.entry,.theorem{background:none;border:1px solid #bbb;border-radius:0}.community,.acknowledgements{max-width:none;margin-right:0}.equation{overflow:visible}.checksum{background:none}a{color:inherit}.theorem,.team-section,.entry{break-inside:avoid}}
   </style>
 </head>
 <body id="top">
   <a class="skip" href="#main-content">Skip to content</a>
   <div class="shell">
     <header class="header">
-      <a class="brand" href="#top" aria-label="Signed vorticity, home">Signed <em>vorticity</em><b>.</b></a>
+      <a class="brand" href="#top" aria-label="Signed vorticity, home"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 12c4-6 11-6 14 0s7 6 9 2M4 20c2-4 6-4 9 1s11 5 14-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Signed vorticity</span></a>
       <nav class="nav" aria-label="Main navigation">
         <a href="#overview">Overview</a>
         <a href="#main-result">Main result</a>
@@ -110,7 +128,7 @@
     <main id="main-content">
       <section class="hero" aria-labelledby="paper-title">
         <p class="eyebrow">Delort’s vortex-sheet problem</p>
-        <h1 id="paper-title">Existence of weak 2D Euler solutions for <em>sign-changing vortex-sheet data</em></h1>
+        <h1 id="paper-title">Existence of weak 2D Euler solutions for sign-changing vortex-sheet data</h1>
         <p class="lead">A manuscript proposing global weak flows from arbitrary finite signed vorticity in <span class="math"><i>H</i><sup>−1</sup></span>, with a strong initial velocity trace and integrable vorticity at every positive time.</p>
         <aside class="ai-note" aria-label="Manuscript status">
           <strong>Currently an AI-written manuscript</strong>
@@ -123,7 +141,7 @@
       </section>
 
       <section class="section" id="overview" aria-labelledby="overview-title">
-        <p class="section-label">01 / The problem</p>
+        <p class="section-label">The problem</p>
         <h2 id="overview-title">Delort’s question</h2>
         <p>The two-dimensional Euler equations describe the motion of an ideal incompressible fluid:</p>
         <div class="equation" tabindex="0" role="group" aria-label="Two-dimensional incompressible Euler equations">
@@ -138,7 +156,7 @@
       </section>
 
       <section class="section" id="main-result" aria-labelledby="result-title">
-        <p class="section-label">02 / The manuscript’s main claim</p>
+        <p class="section-label">The manuscript’s main claim</p>
         <h2 id="result-title">No restriction on the initial sign</h2>
         <p>Write <span class="math">ℳ(ℝ<sup>2</sup>)</span> for the finite signed Radon measures and use the inhomogeneous space <span class="math"><i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>. The initial velocity is given by the Biot–Savart law:</p>
         <div class="equation" tabindex="0" role="group" aria-label="The initial velocity and Biot–Savart kernel">
@@ -177,14 +195,14 @@
       </section>
 
       <section class="section" id="scope" aria-labelledby="scope-title">
-        <p class="section-label">03 / Scope</p>
+        <p class="section-label">Scope</p>
         <h2 id="scope-title">The solution class matters</h2>
         <p>The result concerns <strong>weak velocity solutions</strong>. It does not assert an energy inequality, preservation of the sign of vorticity, propagation of higher <span class="math"><i>L</i><sup><i>p</i></sup></span> norms, or renormalized transport.</p>
         <p>It also does not identify a vanishing-viscosity limit or a physically selected continuation of a vortex sheet. In particular, the nonuniqueness statement is not a nonuniqueness result within the bounded-vorticity class of Yudovich.</p>
       </section>
 
       <section class="paper" id="paper" aria-labelledby="download-title">
-        <p class="section-label">04 / The paper</p>
+        <p class="section-label">The paper</p>
         <h2 id="download-title">Read the full argument</h2>
         <h3>Global weak Euler flows with finite signed initial vorticity</h3>
         <p class="metadata">AI-written manuscript · Subsequently polished with ChatGPT · 25 pages</p>
