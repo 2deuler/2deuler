@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="AI-generated research on sign-changing vortex-sheet data: model, prompt, manuscript, original chat, source ZIP and SHA-256 checksum.">
+  <meta name="description" content="Source material for AI-assisted research on two-dimensional Euler equations: manuscripts, prompter credits, source archives and SHA-256 checksums.">
   <meta name="theme-color" content="#f5f2ec">
-  <title>Source material · Signed vorticity</title>
+  <title>Source material · 2D Euler</title>
   <style>
 
     :root{color-scheme:light;--paper:#f5f2ec;--surface:#fdfbf7;--ink:#302b27;--muted:#696158;--accent:#89543a;--line:#dcd5ca;--wash:#eee7dc;--serif:Georgia,"Times New Roman",serif;--sans:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
@@ -76,31 +76,41 @@
     @media(max-width:600px){.source-page main{padding-top:23px;padding-bottom:48px}.source-page h1{font-size:35px}.intro{font-size:16px}.entry{padding:24px 21px;margin-top:26px}.entry h2{font-size:25px}.metadata{grid-template-columns:1fr;gap:2px;font-size:13px}.metadata dd{margin-bottom:10px}.resource-links{margin:17px 0 21px}.resource-links a{padding:9px 12px}.checksum{padding:12px 14px}.checksum code{font-size:11px}}
 
     @media print{body{background:#fff;color:#000;font-size:11pt}.shell{max-width:none;padding:0}.header{min-height:0;padding:0 0 15px}.nav,.skip,.actions,.footer{display:none}main,.source-page main{padding:24px 0;max-width:none}.hero{display:block;padding:0 0 24px}.hero h1,h1{font-size:29pt}.hero .lead{font-size:12pt;margin-top:20px}.ai-note{border:0;padding:16px 0 0;margin-top:10px}.ai-note::before{display:none}.section{display:block;margin-top:28px}.section-label{margin-bottom:10px!important}h2{font-size:20pt}.paper,.entry,.theorem{background:none;border:1px solid #bbb;border-radius:0}.community,.acknowledgements{max-width:none;margin-right:0}.equation{overflow:visible}.checksum{background:none}a{color:inherit}.theorem,.team-section,.entry{break-inside:avoid}}
+
+    .math{font-family:"Cambria Math","STIX Two Math",var(--serif)}
+    sub,sup{line-height:0;font-size:.72em}
+    .archive-details{margin-top:23px;font-size:13px;line-height:1.8;border-top:1px solid var(--line);padding-top:19px}
+    .archive-body{padding-top:17px;color:var(--muted)}
+    .archive-body p{margin-bottom:15px}
+    .archive-caption{font-size:11px}
+    .archive-parts{list-style:none;padding:0;margin:0}
+    .archive-parts li{padding:12px 0;border-top:1px solid var(--line)}
+    .archive-parts code{display:block;font:11px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;color:var(--ink);margin-top:6px;user-select:all}
+    .part-size{font-size:11px;white-space:nowrap}
   </style>
 </head>
 <body id="top" class="source-page">
   <a class="skip" href="#main-content">Skip to content</a>
   <div class="shell">
     <header class="header">
-      <a class="brand" href="index.html" aria-label="Delort's Question, home"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 12c4-6 11-6 14 0s7 6 9 2M4 20c2-4 6-4 9 1s11 5 14-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Delort's Question</span></a>
+      <a class="brand" href="index.html" aria-label="2D Euler, home"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 12c4-6 11-6 14 0s7 6 9 2M4 20c2-4 6-4 9 1s11 5 14-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>2D Euler</span></a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="index.html#overview">Overview</a>
-        <a href="index.html#main-result">Main result</a>
-        <a href="index.html#paper">Paper <span aria-hidden="true">↗</span></a>
+        <a href="index.html">Home</a>
+        <a href="delort.html">Delort’s question</a>
+        <a href="nonuniqueness.html">Nonuniqueness</a>
         <a href="sources.html" aria-current="page">Source material</a>
-        <a href="index.html#team">Team</a>
-        <a href="index.html#invitation">Contact</a>
       </nav>
     </header>
     <main id="main-content">
       <h1>Source material</h1>
-      <p class="intro">Here we collect the AI-generated manuscript and source material from the original ChatGPT run.</p>
+      <p class="intro">Here we collect the AI-assisted manuscripts and source material for the two projects.</p>
       <article class="entry" id="vortex-sheet" aria-labelledby="entry-title">
-        <p class="entry-number">Original research run</p>
-        <h2 id="entry-title"><a href="#vortex-sheet">Existence of weak 2D Euler solutions for sign-changing vortex-sheet data</a></h2>
+        <p class="entry-number">01 · Delort’s question · Original research run</p>
+        <h2 id="entry-title"><a href="delort.html">Existence of weak 2D Euler solutions for sign-changing vortex-sheet data</a></h2>
         <dl class="metadata">
           <dt>Date</dt><dd><time datetime="2026-10-08">08.10.2026</time></dd>
           <dt>Model</dt><dd>OpenAI GPT-6 Astra Ultra</dd>
+          <dt>Prompter</dt><dd><a href="https://www.math.fau.de/person/josef-demmel/">Josef Demmel</a></dd>
           <dt>Human contribution</dt><dd>Problem selection and prompting.</dd>
           <dt>Prompt</dt>
           <dd>
@@ -163,9 +173,93 @@ bounded spatial subdomain. \&lt;TARGET_PROBLEM_END&gt;    This is a bounded math
         <p class="checksum"><span>ZIP SHA-256</span><code>f8f831ac0bfa95c2eed2385363704e0fc2ca22b2f1d0ed2be946475809de720e</code></p>
         <p class="revision-note">The manuscript was subsequently polished with ChatGPT in separate conversations. The <a href="paper.pdf">current PDF</a> and <a href="revised-manuscript.tex" download>LaTeX source</a> reflect those later revisions; the PDF and ZIP above preserve the original run’s materials.</p>
       </article>
+      <article class="entry" id="nonuniqueness" aria-labelledby="nonuniqueness-source-title">
+        <p class="entry-number">02 · Nonuniqueness · Revised manuscript</p>
+        <h2 id="nonuniqueness-source-title"><a href="nonuniqueness.html">Nonuniqueness of 2D Euler flows with <span class="math"><i>L</i><sup><i>p</i></sup></span> vorticity</a></h2>
+        <dl class="metadata">
+          <dt>Manuscript</dt><dd>Non-unique vanishing-viscosity selection for planar Euler</dd>
+          <dt>Research request</dt><dd><time datetime="2026-10-08">08.10.2026</time></dd>
+          <dt>Model</dt><dd>OpenAI GPT-6.1 Sol (Ultra)</dd>
+          <dt>Prompters</dt><dd><a href="https://dmi.unibas.ch/de/personen/umberto-pappalettera/">Umberto Pappalettera</a> and <a href="https://sites.google.com/view/massimo-sorella/home-page">Massimo Sorella</a></dd>
+          <dt>Human contribution</dt><dd>Problem formulation, prompting, and feedback.</dd>
+          <dt>Prompt</dt>
+          <dd>
+            <details>
+              <summary>Read the research request and follow-up</summary>
+              <div class="prompt-body">
+                <p>The following requests introduced the vanishing-viscosity problem on <time datetime="2026-10-08">8 October 2026</time>. They are reproduced verbatim from the shared conversation.</p>
+                <p><strong>Research request</strong></p>
+                <pre tabindex="0" aria-label="Original vanishing-viscosity research request">But this positive criterion I think is too strong to be verified in general.
+
+Let us reverse the question: Can you prove the existence of \omega_0 \in L^1 \cal L^p with zero average so that the vanishing viscosity limit does not converge along the full sequence \nu \downarrow 0, but has different accumulation points?</pre>
+                <p style="margin-top:20px"><strong>Follow-up request</strong></p>
+                <pre tabindex="0" aria-label="Follow-up vanishing-viscosity research request">I like the strategy
+
+
+
+1. The active cascade survives diffusion, uniformly in its depth.
+2. Smaller scales dissipate before transmitting a significant unstable-mode impulse.
+3. Older seeds do not override the selected orientation
+
+
+
+Pursue this strategy to construct an example of non-unique vanishing viscosity limit</pre>
+              </div>
+            </details>
+          </dd>
+        </dl>
+        <ul class="resource-links" aria-label="Nonuniqueness source resources">
+          <li><a href="nonuniqueness-paper.pdf">Read the manuscript (PDF)</a></li>
+          <li><a href="https://chatgpt.com/share/6acfb29a-fcf8-83ed-bfd6-176ad73474b9">View the chat</a></li>
+          <li><a href="nonuniqueness-tex.zip" download>Download the LaTeX ZIP</a></li>
+        </ul>
+        <p class="checksum"><span>LaTeX ZIP SHA-256</span><code>05e0a662243db163f9cb9eb4914451e3c4c96cfde44e8f12874b2b3a4fb2ddd8</code></p>
+        <p class="revision-note">The shared chat contains the research discussion and subsequent review and revision. The PDF and LaTeX ZIP contain the supplied revised manuscript, dated <time datetime="2026-10-09">9 October 2026</time>. The project snapshot below collects the available files as of <time datetime="2026-10-14">14 October 2026</time>.</p>
+        <details class="archive-details">
+          <summary>Download the project snapshot · 8 ZIP parts</summary>
+          <div class="archive-body">
+            <p>Download all eight parts and extract them into the same folder to restore the full snapshot. Each part is an independent ZIP; all original paths and file contents are preserved. <a href="nonuniqueness-project-readme.txt">Read the archive notes</a>.</p>
+            <p class="archive-caption">SHA-256 checksums are shown beneath each download.</p>
+            <ol class="archive-parts">
+              <li>
+                <a href="nonuniqueness-project-01.zip" download>Project snapshot · Part 1 of 8</a> <span class="part-size">(23.73 MiB)</span>
+                <code>0ad87fc91b144035ea593d2536fc38aebc4fbf0b01e96083634693d6652cd645</code>
+              </li>
+              <li>
+                <a href="nonuniqueness-project-02.zip" download>Project snapshot · Part 2 of 8</a> <span class="part-size">(23.73 MiB)</span>
+                <code>945f12c7955a86dfe645e639827d7240435c3ea4497743337c81f8ad273ed064</code>
+              </li>
+              <li>
+                <a href="nonuniqueness-project-03.zip" download>Project snapshot · Part 3 of 8</a> <span class="part-size">(23.73 MiB)</span>
+                <code>0029f335907f0e4a2e9a1a9ff46fc41f804d662cf8bd1b5bc05483ec34819054</code>
+              </li>
+              <li>
+                <a href="nonuniqueness-project-04.zip" download>Project snapshot · Part 4 of 8</a> <span class="part-size">(23.73 MiB)</span>
+                <code>3ad051d8bc45fd6a8f8a026b398047ba7a53045b8ee6fa0063d43fbaabea370e</code>
+              </li>
+              <li>
+                <a href="nonuniqueness-project-05.zip" download>Project snapshot · Part 5 of 8</a> <span class="part-size">(23.73 MiB)</span>
+                <code>253afa9c1f9abe1874087907c138c60d1121f807be5f6566eebc497277814c2f</code>
+              </li>
+              <li>
+                <a href="nonuniqueness-project-06.zip" download>Project snapshot · Part 6 of 8</a> <span class="part-size">(23.73 MiB)</span>
+                <code>83ace2546573a6e08fb16e2e4a3e50e7de936a501282d9d02da92c60ed03a00c</code>
+              </li>
+              <li>
+                <a href="nonuniqueness-project-07.zip" download>Project snapshot · Part 7 of 8</a> <span class="part-size">(23.73 MiB)</span>
+                <code>5c39f5b57d4389ab62465c116e1c33295de1ba4704a43090b483df21edb48aec</code>
+              </li>
+              <li>
+                <a href="nonuniqueness-project-08.zip" download>Project snapshot · Part 8 of 8</a> <span class="part-size">(23.73 MiB)</span>
+                <code>8108f2fe5676e0a6321485eb51a70cd0a060657c2c1b505fbd22aa6f676ad111</code>
+              </li>
+            </ol>
+          </div>
+        </details>
+      </article>
     </main>
     <footer class="footer">
-      <p>Signed vorticity · Source material</p>
+      <p>Two-dimensional Euler equations · Source material</p>
       <nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Homepage</a><a href="https://weneedabp.github.io/ai.html">Inspired by We need ABP</a><a href="mailto:josef.demmel@fau.de">Get in touch</a></nav>
     </footer>
   </div>
