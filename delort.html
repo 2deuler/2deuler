@@ -68,20 +68,18 @@
     .equation{overflow-x:auto;max-width:100%;padding:15px 4px;margin:4px 0 26px;text-align:center;scrollbar-width:thin}
     math{font-size:1.12em;font-family:"Cambria Math","STIX Two Math",math}
     math[display="block"]{width:max-content;min-width:0;margin:0 auto}
-    .question{font:24px/1.6 var(--serif);letter-spacing:-.015em;padding:4px 0 4px 23px;margin:6px 0 28px;border-left:2px solid #bd9b7a;color:#674d3d}
+    .discussion-quotation{margin:5px 0 28px}
+    .discussion-translation{font:23px/1.65 var(--serif);letter-spacing:-.01em;padding:3px 0 3px 23px;margin:0 0 14px;border-left:2px solid #bd9b7a;color:#674d3d}
+    .discussion-translation p,.discussion-original p{margin:0}
+    .discussion-quotation figcaption{font-size:12px;line-height:1.8;color:var(--muted);margin:18px 0 0;padding-left:25px}
+    .discussion-original{font-size:14px;line-height:1.85;color:var(--muted);padding-left:25px}
+    .discussion-original .original-label{font-size:11px;letter-spacing:.02em;margin-bottom:8px}
+    .discussion-original blockquote{margin:0}
+    .approach{margin-top:26px}
     .theorem{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px 29px;margin:2px 0 0}
     .theorem-label{font-size:11px;line-height:1.8;letter-spacing:.015em;color:var(--accent);margin-bottom:19px}
     .theorem > :last-child{margin-bottom:0}
     .theorem .equation{font-size:17px;margin-bottom:21px}
-    .result-list{list-style:none;padding:0;margin:18px 0 0}
-    .result-list li{display:grid;grid-template-columns:163px minmax(0,1fr);gap:20px;padding:21px 0;border-bottom:1px solid var(--line)}
-    .result-list h3{font-size:15px;line-height:1.75;margin:0}
-    .result-list p{font-size:15px;line-height:1.8;color:var(--muted);margin:0}
-    details{margin-top:22px;padding:15px 0}
-    summary{cursor:pointer;color:var(--accent);font-size:13px;line-height:1.8}
-    .details-body{padding-top:23px;font-size:16px}
-    .details-body > :last-child{margin-bottom:0}
-    .details-body .equation{font-size:16px}
     .paper{max-width:1020px;margin:72px auto 0;padding:38px 42px;background:var(--wash);border-radius:12px}
     .paper .section-label{margin-bottom:13px}
     .paper h2{font-size:27px;margin-bottom:13px}
@@ -105,7 +103,7 @@
     .acknowledgements p{font-size:13px;line-height:1.9;color:var(--muted);margin:0}
     @media(max-width:1100px){.hero{grid-template-columns:minmax(0,1fr) 220px;column-gap:40px}.section,.team-section{grid-template-columns:130px minmax(0,1fr);column-gap:35px}.community,.acknowledgements{max-width:calc(100% - 165px);margin-right:0}}
     @media(max-width:850px){.hero{display:flex;flex-direction:column;gap:24px;padding:35px 0 43px}.hero h1{font-size:clamp(38px,6vw,54px);max-width:750px}.hero .lead{max-width:700px}.ai-note{align-self:stretch;border:0;border-top:1px solid var(--line);padding:20px 0 0;max-width:670px;font-size:13px}.ai-note::before{display:none}.ai-note strong{margin-bottom:7px}.hero .actions{margin-top:0}.section{display:block;margin-top:46px}.section > .section-label{max-width:none;margin-bottom:13px;padding:0}.paper{padding:29px;margin-top:48px}.team-section{display:block;margin-top:38px}.team-section h2{margin-bottom:15px;padding:0}.community,.acknowledgements{max-width:none;margin-right:0}.community{margin-top:38px}.acknowledgements{margin-top:30px}}
-    @media(max-width:600px){.hero{padding-top:23px;gap:21px}.hero h1{font-size:38px}.hero .lead{font-size:16px}.theorem{padding:22px 19px}.theorem .equation{font-size:15px}.result-list li{grid-template-columns:1fr;gap:6px;padding:17px 0}.question{font-size:22px;padding-left:17px}.paper{padding:25px 22px}.paper h3{font-size:22px}.paper .actions{gap:12px 18px}.community p{font-size:16px}.team-list{gap:10px 28px}.team-list a{font-size:18px}.equation{font-size:16px}}
+    @media(max-width:600px){.hero{padding-top:23px;gap:21px}.hero h1{font-size:38px}.hero .lead{font-size:16px}.theorem{padding:22px 19px}.theorem .equation{font-size:15px}.discussion-translation{font-size:21px;padding-left:17px}.discussion-quotation figcaption,.discussion-original{padding-left:19px}.paper{padding:25px 22px}.paper h3{font-size:22px}.paper .actions{gap:12px 18px}.community p{font-size:16px}.team-list{gap:10px 28px}.team-list a{font-size:18px}.equation{font-size:16px}}
     @media(max-width:380px){.hero h1{font-size:33px}.team-list{flex-direction:column}}
 
     @media print{body{background:#fff;color:#000;font-size:11pt}.shell{max-width:none;padding:0}.header{min-height:0;padding:0 0 15px}.nav,.skip,.actions,.footer{display:none}main,.source-page main{padding:24px 0;max-width:none}.hero{display:block;padding:0 0 24px}.hero h1,h1{font-size:29pt}.hero .lead{font-size:12pt;margin-top:20px}.ai-note{border:0;padding:16px 0 0;margin-top:10px}.ai-note::before{display:none}.section{display:block;margin-top:28px}.section-label{margin-bottom:10px!important}h2{font-size:20pt}.paper,.entry,.theorem{background:none;border:1px solid #bbb;border-radius:0}.community,.acknowledgements{max-width:none;margin-right:0}.equation{overflow:visible}.checksum{background:none}a{color:inherit}.theorem,.team-section,.entry{break-inside:avoid}}
@@ -140,68 +138,54 @@
 
       <section class="section" id="overview" aria-labelledby="overview-title">
         <p class="section-label">The problem</p>
-        <h2 id="overview-title">Delort’s question</h2>
+        <h2 id="overview-title">Delort’s discussion</h2>
         <p>The two-dimensional Euler equations describe the motion of an ideal incompressible fluid:</p>
         <div class="equation" tabindex="0" role="group" aria-label="Two-dimensional incompressible Euler equations">
           <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
             <mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><mi mathvariant="normal">div</mi><mo stretchy="false">(</mo><mi>u</mi><mo>⊗</mo><mi>u</mi><mo stretchy="false">)</mo><mo>+</mo><mi>∇</mi><mi>p</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1em"/><mi mathvariant="normal">div</mi><mspace width=".1667em"/><mi>u</mi><mo>=</mo><mn>0</mn><mo>.</mo></mrow>
           </math>
         </div>
-        <p>A vortex sheet concentrates vorticity on a curve. Delort proved global weak existence for compactly supported vorticity in <span class="math"><i>H</i><sup>−1</sup></span> that is a measure of one sign. In his <a href="https://www.numdam.org/article/SEDP_1990-1991____A2_0.pdf#page=13">discussion of the sign condition</a>, he asked whether existence still holds for general signed measures.</p>
-        <p class="question">Can one construct global weak Euler solutions from vortex-sheet data of both signs, while keeping the vorticity a finite measure?</p>
+        <p>A vortex sheet concentrates vorticity on a curve. Delort proved global weak existence for compactly supported vorticity in <span class="math"><i>H</i><sup>−1</sup></span> that is a measure of one sign. He concluded with the following discussion.</p>
+        <figure class="discussion-quotation">
+          <blockquote class="discussion-translation" lang="en">
+            <p>Let us conclude with a remark on the positivity assumption imposed on the initial data <span class="math"><i>ω</i><sub>0</sub></span>. One may ask whether the vortex-sheet problem admits a solution with no assumption on the initial vorticity other than that it be a compactly supported measure belonging to <span class="math"><i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>.</p>
+          </blockquote>
+          <div class="discussion-original" lang="fr">
+            <p class="original-label">Texte original</p>
+            <blockquote><p>Terminons par une remarque concernant l’hypothèse de positivité faite sur les données de Cauchy <span class="math"><i>ω</i><sub>0</sub></span>. On peut se demander si le problème des nappes de tourbillon admet une solution sans autre condition sur le tourbillon initial que d’être une mesure à support compact appartenant à <span class="math"><i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>.</p></blockquote>
+          </div>
+          <figcaption>English translation and French original from <a href="https://www.numdam.org/article/SEDP_1990-1991____A2_0.pdf#page=13">Delort’s discussion of the sign condition</a>.</figcaption>
+        </figure>
         <p>The sign condition provides the compactness needed to pass to the nonlinear Euler equation. For general signed measures, that mechanism can fail. The manuscript proposes to address Delort’s question by constructing the solutions directly, for arbitrary finite signed initial vorticity in <span class="math"><i>H</i><sup>−1</sup></span>, without requiring compact support.</p>
-        <p>The approach uses <strong>convex integration in the style of <a href="https://arxiv.org/abs/2408.07934">Bruè–Colombo–Kumar</a></strong>: begin with an approximate Euler flow and remove its equation error through the time-averaged effect of moving dipoles. The corrections remain summable both in velocity <span class="math"><i>L</i><sup>2</sup></span> and in vorticity <span class="math"><i>L</i><sup>1</sup></span>.</p>
       </section>
 
       <section class="section" id="main-result" aria-labelledby="result-title">
         <p class="section-label">The manuscript’s main claim</p>
         <h2 id="result-title">No restriction on the initial sign</h2>
-        <p>Write <span class="math">ℳ(ℝ<sup>2</sup>)</span> for the finite signed Radon measures. The initial velocity is given by the Biot–Savart law:</p>
-        <div class="equation" tabindex="0" role="group" aria-label="The initial velocity and Biot–Savart kernel">
+        <p>Write <span class="math">ℳ(ℝ<sup>2</sup>)</span> for the finite signed Radon measures and set</p>
+        <div class="equation" tabindex="0" role="group" aria-label="Initial velocity u zero equals nabla perpendicular Delta inverse omega zero">
           <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
-            <mrow>
-              <mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><mi>K</mi><mo>∗</mo><msub><mi>μ</mi><mn>0</mn></msub></mrow><mo>,</mo>
-              <mspace width="1em"/>
-              <mrow>
-                <mrow><mi>K</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>=</mo>
-                <mfrac>
-                  <mrow><mo stretchy="false">(</mo><mo form="prefix">−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow>
-                  <mrow><mn>2</mn><mi>π</mi><msup><mrow><mo stretchy="false" form="prefix" lspace="0em" rspace="0em">|</mo><mi>x</mi><mo stretchy="false" form="postfix" lspace="0em" rspace="0em">|</mo></mrow><mn>2</mn></msup></mrow>
-                </mfrac>
-              </mrow><mo>,</mo>
-              <mspace width=".7em"/>
-              <mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><mo>.</mo>
-            </mrow>
+            <mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><msup><mi>∇</mi><mo>⊥</mo></msup><msup><mi>Δ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>ω</mi><mn>0</mn></msub><mo>.</mo></mrow>
           </math>
         </div>
         <div class="theorem">
           <p class="theorem-label">Theorem 1.1 · As stated in the AI-assisted manuscript</p>
-          <p>For every <span class="math"><i>μ</i><sub>0</sub> ∈ ℳ(ℝ<sup>2</sup>) ∩ <i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>, there are <strong>infinitely many distinct global weak velocity solutions</strong> with initial value <span class="math"><i>u</i><sub>0</sub></span>. They satisfy</p>
+          <p>For every <span class="math"><i>ω</i><sub>0</sub> ∈ ℳ(ℝ<sup>2</sup>) ∩ <i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>, there are <strong>infinitely many distinct global weak velocity solutions</strong> with initial value <span class="math"><i>u</i><sub>0</sub></span>. They satisfy</p>
           <div class="equation" tabindex="0" role="group" aria-label="The velocity difference is continuous in L2 and vanishes at the initial time">
             <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
               <mrow><mi>u</mi><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>L</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>,</mo><mspace width=".7em"/><mo stretchy="false">(</mo><mi>u</mi><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>.</mo></mrow>
             </math>
           </div>
-          <p>The vorticity <span class="math"><i>μ</i> = curl <i>u</i></span> is weakly-* continuous as a finite measure and strongly continuous in <span class="math"><i>H</i><sup>−1</sup></span>, with <span class="math"><i>μ</i>(0) = <i>μ</i><sub>0</sub></span>. At every positive time it is an <span class="math"><i>L</i><sup>1</sup></span> density, continuously depending on time in that norm.</p>
-        </div>
-        <ul class="result-list">
-          <li><h3>Strong initial trace</h3><p>The difference <span class="math"><i>u</i>(<i>t</i>) − <i>u</i><sub>0</sub></span> tends to zero in global <span class="math"><i>L</i><sup>2</sup></span>. The initial velocity itself need not have finite global kinetic energy.</p></li>
-          <li><h3>Continuity in <span class="math"><i>L</i><sup>1</sup></span></h3><p>When the initial vorticity has an <span class="math"><i>L</i><sup>1</sup></span> density, strong <span class="math"><i>L</i><sup>1</sup></span> continuity extends all the way to the initial time.</p></li>
-          <li><h3>Circulation conserved</h3><p>The Biot–Savart identity holds at every time, and <span class="math"><i>μ</i>(<i>t</i>)(ℝ<sup>2</sup>) = <i>μ</i><sub>0</sub>(ℝ<sup>2</sup>)</span>. Nonzero circulation is allowed.</p></li>
-        </ul>
-        <details>
-          <summary>Read the precise vorticity regularity</summary>
-          <div class="details-body">
-            <p>All spatial function spaces below are over <span class="math">ℝ<sup>2</sup></span>.</p>
-            <div class="equation" tabindex="0" role="group" aria-label="Vorticity continuity in finite measures and H minus one">
-              <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>μ</mi><mo>∈</mo><msub><mi>C</mi><mrow><mi>w</mi><mo>∗</mo></mrow></msub><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><mi>ℳ</mi><mo stretchy="false">)</mo><mo>∩</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>H</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math>
-            </div>
-            <div class="equation" tabindex="0" role="group" aria-label="Vorticity is continuous in L1 for positive times">
-              <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>μ</mi><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>L</mi><mn>1</mn></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math>
-            </div>
-            <p>Here weak-* continuity is tested against functions in <span class="math"><i>C</i><sub>0</sub>(ℝ<sup>2</sup>)</span>. For <span class="math"><i>μ</i><sub>0</sub> ∈ <i>L</i><sup>1</sup></span>, one also has <span class="math"><i>μ</i> ∈ <i>C</i>([0, ∞); <i>L</i><sup>1</sup>)</span>. For singular initial data, continuity in total variation at zero is not asserted.</p>
+          <p>The vorticity <span class="math"><i>ω</i> = curl <i>u</i></span> satisfies <span class="math"><i>ω</i>(0) = <i>ω</i><sub>0</sub></span> and the following regularity properties. All spatial function spaces below are over <span class="math">ℝ<sup>2</sup></span>.</p>
+          <div class="equation" tabindex="0" role="group" aria-label="Vorticity continuity in finite measures and H minus one">
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ω</mi><mo>∈</mo><msub><mi>C</mi><mrow><mi>w</mi><mo>∗</mo></mrow></msub><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><mi>ℳ</mi><mo stretchy="false">)</mo><mo>∩</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>H</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math>
           </div>
-        </details>
+          <div class="equation" tabindex="0" role="group" aria-label="Vorticity is continuous in L1 for positive times">
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ω</mi><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>L</mi><mn>1</mn></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math>
+          </div>
+          <p>Here weak-* continuity is tested against functions in <span class="math"><i>C</i><sub>0</sub>(ℝ<sup>2</sup>)</span>. For <span class="math"><i>ω</i><sub>0</sub> ∈ <i>L</i><sup>1</sup></span>, one also has <span class="math"><i>ω</i> ∈ <i>C</i>([0, ∞); <i>L</i><sup>1</sup>)</span>. For singular initial data, continuity in total variation at zero is not asserted.</p>
+        </div>
+        <p class="approach">The approach uses <strong>convex integration in the style of <a href="https://arxiv.org/abs/2408.07934">Bruè–Colombo–Kumar</a></strong>: begin with an approximate Euler flow and remove its equation error through the time-averaged effect of moving dipoles. The corrections remain summable both in velocity <span class="math"><i>L</i><sup>2</sup></span> and in vorticity <span class="math"><i>L</i><sup>1</sup></span>.</p>
       </section>
 
       <section class="section" id="scope" aria-labelledby="scope-title">
