@@ -87,6 +87,11 @@
     .archive-parts li{padding:12px 0;border-top:1px solid var(--line)}
     .archive-parts code{display:block;font:11px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;color:var(--ink);margin-top:6px;user-select:all}
     .part-size{font-size:11px;white-space:nowrap}
+    .source-download-feedback{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;margin:-9px 0 20px;color:var(--muted);font-size:12px;line-height:1.8}
+    .source-download-feedback p{margin:0}
+    #cancel-source-download{font:inherit;color:var(--accent);border:0;background:none;padding:0;text-decoration:underline;text-underline-offset:.23em;cursor:pointer}
+    #cancel-source-download:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+    .resource-links a[aria-disabled="true"]{opacity:.7;cursor:progress}
   </style>
 </head>
 <body id="top" class="source-page">
@@ -111,7 +116,7 @@
           <dt>Date</dt><dd><time datetime="2026-10-08">08.10.2026</time></dd>
           <dt>Model</dt><dd>OpenAI GPT-6 Astra Ultra</dd>
           <dt>Prompter</dt><dd><a href="https://www.math.fau.de/person/josef-demmel/">Josef Demmel</a></dd>
-          <dt>Human contribution</dt><dd>Problem selection and prompting.</dd>
+          <dt>Human contribution</dt><dd>None.</dd>
           <dt>Prompt</dt>
           <dd>
             <details>
@@ -175,13 +180,13 @@ bounded spatial subdomain. \&lt;TARGET_PROBLEM_END&gt;    This is a bounded math
       </article>
       <article class="entry" id="nonuniqueness" aria-labelledby="nonuniqueness-source-title">
         <p class="entry-number">02 · Nonuniqueness · Revised manuscript</p>
-        <h2 id="nonuniqueness-source-title"><a href="nonuniqueness.html">Nonuniqueness of 2D Euler flows with <span class="math"><i>L</i><sup><i>p</i></sup></span> vorticity</a></h2>
+        <h2 id="nonuniqueness-source-title"><a href="nonuniqueness.html">Non-unique vanishing-viscosity solutions of 2D Euler with vorticity in <span class="math"><i>L</i><sup><i>p</i></sup></span></a></h2>
         <dl class="metadata">
           <dt>Manuscript</dt><dd>Non-unique vanishing-viscosity selection for planar Euler</dd>
           <dt>Research request</dt><dd><time datetime="2026-10-08">08.10.2026</time></dd>
           <dt>Model</dt><dd>OpenAI GPT-6.1 Sol (Ultra)</dd>
           <dt>Prompters</dt><dd><a href="https://dmi.unibas.ch/de/personen/umberto-pappalettera/">Umberto Pappalettera</a> and <a href="https://sites.google.com/view/massimo-sorella/home-page">Massimo Sorella</a></dd>
-          <dt>Human contribution</dt><dd>Problem formulation, prompting, and feedback.</dd>
+          <dt>Human contribution</dt><dd>Essentially none.</dd>
           <dt>Prompt</dt>
           <dd>
             <details>
@@ -211,14 +216,19 @@ Pursue this strategy to construct an example of non-unique vanishing viscosity l
         <ul class="resource-links" aria-label="Nonuniqueness source resources">
           <li><a href="nonuniqueness-paper.pdf">Read the manuscript (PDF)</a></li>
           <li><a href="https://chatgpt.com/share/6acfb29a-fcf8-83ed-bfd6-176ad73474b9">View the chat</a></li>
-          <li><a href="nonuniqueness-tex.zip" download>Download the LaTeX ZIP</a></li>
+          <li><a href="#nonuniqueness-parts" id="download-source-zip" aria-describedby="source-download-status">Download source ZIP</a></li>
         </ul>
-        <p class="checksum"><span>LaTeX ZIP SHA-256</span><code>05e0a662243db163f9cb9eb4914451e3c4c96cfde44e8f12874b2b3a4fb2ddd8</code></p>
-        <p class="revision-note">The shared chat contains the research discussion and subsequent review and revision. The PDF and LaTeX ZIP contain the supplied revised manuscript, dated <time datetime="2026-10-09">9 October 2026</time>. The project snapshot below collects the available files as of <time datetime="2026-10-14">14 October 2026</time>.</p>
-        <details class="archive-details">
-          <summary>Download the project snapshot · 8 ZIP parts</summary>
+        <div class="source-download-feedback">
+          <p id="source-download-status" role="status" aria-live="polite">All project files · approximately 190 MiB.</p>
+          <button type="button" id="cancel-source-download" hidden>Cancel</button>
+        </div>
+        <noscript><p class="revision-note">Use the eight ZIP downloads below to obtain all project files.</p></noscript>
+        <p class="checksum"><span>Source ZIP SHA-256</span><code id="source-zip-checksum">478c15fbee9be3d72994a62456157d9735ecec485a93777dd0c1f8d64c6a9ef8</code></p>
+        <p class="revision-note">The shared chat contains the research discussion and subsequent review and revision. The PDF is the supplied revised manuscript, dated <time datetime="2026-10-09">9 October 2026</time>. The source ZIP contains the full project snapshot with all available files as of <time datetime="2026-10-14">14 October 2026</time>.</p>
+        <details class="archive-details" id="nonuniqueness-parts">
+          <summary>Alternative download · 8 ZIP parts</summary>
           <div class="archive-body">
-            <p>Download all eight parts and extract them into the same folder to restore the full snapshot. Each part is an independent ZIP; all original paths and file contents are preserved. <a href="nonuniqueness-project-readme.txt">Read the archive notes</a>.</p>
+            <p>If you prefer smaller downloads, download all eight parts and extract them into the same folder to restore the full snapshot. Each part is an independent ZIP; all original paths and file contents are preserved. <a href="nonuniqueness-project-readme.txt">Read the archive notes</a>.</p>
             <p class="archive-caption">SHA-256 checksums are shown beneath each download.</p>
             <ol class="archive-parts">
               <li>
@@ -263,5 +273,347 @@ Pursue this strategy to construct an example of non-unique vanishing viscosity l
       <nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Homepage</a><a href="https://weneedabp.github.io/ai.html">Inspired by We need ABP</a><a href="mailto:josef.demmel@fau.de">Get in touch</a></nav>
     </footer>
   </div>
+<script>
+(() => {
+'use strict';
+const sourceParts = [
+  {
+    "name": "nonuniqueness-project-01.zip",
+    "size": 24879934,
+    "sha256": "0ad87fc91b144035ea593d2536fc38aebc4fbf0b01e96083634693d6652cd645"
+  },
+  {
+    "name": "nonuniqueness-project-02.zip",
+    "size": 24879538,
+    "sha256": "945f12c7955a86dfe645e639827d7240435c3ea4497743337c81f8ad273ed064"
+  },
+  {
+    "name": "nonuniqueness-project-03.zip",
+    "size": 24878972,
+    "sha256": "0029f335907f0e4a2e9a1a9ff46fc41f804d662cf8bd1b5bc05483ec34819054"
+  },
+  {
+    "name": "nonuniqueness-project-04.zip",
+    "size": 24881108,
+    "sha256": "3ad051d8bc45fd6a8f8a026b398047ba7a53045b8ee6fa0063d43fbaabea370e"
+  },
+  {
+    "name": "nonuniqueness-project-05.zip",
+    "size": 24880148,
+    "sha256": "253afa9c1f9abe1874087907c138c60d1121f807be5f6566eebc497277814c2f"
+  },
+  {
+    "name": "nonuniqueness-project-06.zip",
+    "size": 24879767,
+    "sha256": "83ace2546573a6e08fb16e2e4a3e50e7de936a501282d9d02da92c60ed03a00c"
+  },
+  {
+    "name": "nonuniqueness-project-07.zip",
+    "size": 24880871,
+    "sha256": "5c39f5b57d4389ab62465c116e1c33295de1ba4704a43090b483df21edb48aec"
+  },
+  {
+    "name": "nonuniqueness-project-08.zip",
+    "size": 24879262,
+    "sha256": "8108f2fe5676e0a6321485eb51a70cd0a060657c2c1b505fbd22aa6f676ad111"
+  }
+];
+
+/**
+ * Merge ordinary, single-disk ZIP32 archives without inflating their members.
+ * Input: Uint8Array[] in the desired part order.
+ * Output: { blob: Blob, entryCount: number, byteLength: number }.
+ *
+ * No DOM, filesystem, external library, or network access is used. The caller
+ * must authenticate the input bytes (for example, with published SHA-256s).
+ * This validates archive structure; it does not decompress data to check CRCs.
+ * ZIP64, encryption, split archives, noncontiguous local records, and methods
+ * other than stored/deflate are intentionally unsupported.
+ */
+function mergeSourceZipParts(parts) {
+  const U32_LIMIT = 0xffffffff;
+  const U16_LIMIT = 0xffff;
+  const LOCAL_SIGNATURE = 0x04034b50;
+  const CENTRAL_SIGNATURE = 0x02014b50;
+  const EOCD_SIGNATURE = 0x06054b50;
+  const DESCRIPTOR_SIGNATURE = 0x08074b50;
+  const ZIP64_LOCATOR_SIGNATURE = 0x07064b50;
+  const localChunks = [];
+  const centralChunks = [];
+  const names = new Set();
+  let localBytes = 0;
+  let centralBytes = 0;
+  let totalCount = 0;
+
+  if (!Array.isArray(parts) || parts.length === 0) {
+    throw new TypeError('Expected a nonempty array of ZIP byte arrays.');
+  }
+
+  for (let partIndex = 0; partIndex < parts.length; partIndex += 1) {
+    const bytes = parts[partIndex];
+    const fail = message => {
+      throw new Error(`ZIP part ${partIndex + 1}: ${message}`);
+    };
+    if (!(bytes instanceof Uint8Array)) {
+      fail('expected a Uint8Array.');
+    }
+    if (bytes.byteLength < 22) fail('archive is truncated.');
+    const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    const u16 = offset => view.getUint16(offset, true);
+    const u32 = offset => view.getUint32(offset, true);
+
+    // An EOCD may have a comment of at most 65,535 bytes. Its declared comment
+    // must reach the exact end, so a signature inside ordinary file data is
+    // not enough to accept a candidate.
+    let eocd = -1;
+    const earliest = Math.max(0, bytes.byteLength - 22 - U16_LIMIT);
+    for (let offset = bytes.byteLength - 22; offset >= earliest; offset -= 1) {
+      if (u32(offset) === EOCD_SIGNATURE &&
+          offset + 22 + u16(offset + 20) === bytes.byteLength) {
+        eocd = offset;
+        break;
+      }
+    }
+    if (eocd < 0) fail('missing or truncated end-of-central-directory record.');
+    if (eocd >= 20 && u32(eocd - 20) === ZIP64_LOCATOR_SIGNATURE) {
+      fail('ZIP64 archives are unsupported.');
+    }
+    const count = u16(eocd + 10);
+    const directoryBytes = u32(eocd + 12);
+    const directoryOffset = u32(eocd + 16);
+    if (u16(eocd + 4) !== 0 || u16(eocd + 6) !== 0 ||
+        u16(eocd + 8) !== count) {
+      fail('multidisk archives are unsupported.');
+    }
+    if (count === U16_LIMIT || directoryBytes === U32_LIMIT ||
+        directoryOffset === U32_LIMIT) {
+      fail('ZIP64 archives are unsupported.');
+    }
+    if (directoryOffset + directoryBytes !== eocd) {
+      fail('invalid central-directory bounds or unsupported extra records.');
+    }
+    if (totalCount + count >= U16_LIMIT) fail('merged entry count exceeds ZIP32 limits.');
+
+    const checkExtras = (start, length) => {
+      const end = start + length;
+      let cursor = start;
+      while (cursor < end) {
+        if (cursor + 4 > end) fail('truncated extra-field header.');
+        const tag = u16(cursor);
+        const payloadLength = u16(cursor + 2);
+        cursor += 4;
+        if (cursor + payloadLength > end) fail('truncated extra-field payload.');
+        if (tag === 0x0001) fail('ZIP64 extra fields are unsupported.');
+        if (tag === 0x9901) fail('encrypted archives are unsupported.');
+        cursor += payloadLength;
+      }
+    };
+
+    let cursor = directoryOffset;
+    const ranges = [];
+    for (let entryIndex = 0; entryIndex < count; entryIndex += 1) {
+      if (cursor + 46 > eocd || u32(cursor) !== CENTRAL_SIGNATURE) {
+        fail('truncated or invalid central-directory entry.');
+      }
+      const flags = u16(cursor + 8);
+      const method = u16(cursor + 10);
+      const crc = u32(cursor + 16);
+      const compressedBytes = u32(cursor + 20);
+      const uncompressedBytes = u32(cursor + 24);
+      const nameLength = u16(cursor + 28);
+      const extraLength = u16(cursor + 30);
+      const commentLength = u16(cursor + 32);
+      const localOffset = u32(cursor + 42);
+      const entryEnd = cursor + 46 + nameLength + extraLength + commentLength;
+      if (entryEnd > eocd || nameLength === 0) fail('invalid entry name or length.');
+      if ((flags & (0x0001 | 0x0040 | 0x2000)) !== 0) {
+        fail('encrypted or masked-header archives are unsupported.');
+      }
+      if (method !== 0 && method !== 8) fail('unsupported compression method.');
+      if (u16(cursor + 34) !== 0) fail('multidisk entries are unsupported.');
+      if (compressedBytes === U32_LIMIT || uncompressedBytes === U32_LIMIT ||
+          localOffset === U32_LIMIT) fail('ZIP64 entries are unsupported.');
+      if (method === 0 && compressedBytes !== uncompressedBytes) {
+        fail('stored entry has inconsistent sizes.');
+      }
+      checkExtras(cursor + 46 + nameLength, extraLength);
+
+      // Names are compared as raw bytes: this preserves the original filename
+      // encoding and does not introduce a dependency on a CP437 decoder.
+      let nameKey = '';
+      for (let index = 0; index < nameLength; index += 1) {
+        nameKey += String.fromCharCode(bytes[cursor + 46 + index]);
+      }
+      if (names.has(nameKey)) fail('duplicate member name across the input archives.');
+      names.add(nameKey);
+
+      if (localOffset + 30 > directoryOffset || u32(localOffset) !== LOCAL_SIGNATURE) {
+        fail('invalid local-header offset.');
+      }
+      const localNameLength = u16(localOffset + 26);
+      const localExtraLength = u16(localOffset + 28);
+      const dataOffset = localOffset + 30 + localNameLength + localExtraLength;
+      let localEnd = dataOffset + compressedBytes;
+      if (dataOffset > directoryOffset || localEnd > directoryOffset ||
+          localNameLength !== nameLength || u16(localOffset + 6) !== flags ||
+          u16(localOffset + 8) !== method) {
+        fail('local record disagrees with its directory entry or is truncated.');
+      }
+      for (let index = 0; index < nameLength; index += 1) {
+        if (bytes[localOffset + 30 + index] !== bytes[cursor + 46 + index]) {
+          fail('local filename disagrees with its directory entry.');
+        }
+      }
+      checkExtras(localOffset + 30 + localNameLength, localExtraLength);
+
+      const localCrc = u32(localOffset + 14);
+      const localCompressed = u32(localOffset + 18);
+      const localUncompressed = u32(localOffset + 22);
+      if ((flags & 0x0008) === 0) {
+        if (localCrc !== crc || localCompressed !== compressedBytes ||
+            localUncompressed !== uncompressedBytes) {
+          fail('local CRC or sizes disagree with the directory entry.');
+        }
+      } else {
+        if ((localCrc !== 0 && localCrc !== crc) ||
+            (localCompressed !== 0 && localCompressed !== compressedBytes) ||
+            (localUncompressed !== 0 && localUncompressed !== uncompressedBytes)) {
+          fail('inconsistent local data-descriptor placeholders.');
+        }
+        const descriptorMatches = offset => offset + 12 <= directoryOffset &&
+          u32(offset) === crc && u32(offset + 4) === compressedBytes &&
+          u32(offset + 8) === uncompressedBytes;
+        if (localEnd + 16 <= directoryOffset &&
+            u32(localEnd) === DESCRIPTOR_SIGNATURE && descriptorMatches(localEnd + 4)) {
+          localEnd += 16;
+        } else if (descriptorMatches(localEnd)) {
+          // This also handles the rare case where the CRC equals the optional
+          // descriptor signature but the descriptor itself has no signature.
+          localEnd += 12;
+        } else {
+          fail('missing, truncated, or inconsistent data descriptor.');
+        }
+      }
+      ranges.push([localOffset, localEnd]);
+
+      const newOffset = localBytes + localOffset;
+      if (newOffset >= U32_LIMIT) fail('merged local offset exceeds ZIP32 limits.');
+      const centralEntry = bytes.slice(cursor, entryEnd);
+      new DataView(centralEntry.buffer).setUint32(42, newOffset, true);
+      centralChunks.push(centralEntry);
+      centralBytes += centralEntry.byteLength;
+      cursor = entryEnd;
+    }
+    if (cursor !== eocd) fail('directory size and entry count disagree.');
+
+    // Reject overlapping, unreferenced, or truncated local records. The
+    // supplied project archives have conventional contiguous local records.
+    ranges.sort((left, right) => left[0] - right[0]);
+    let localCursor = 0;
+    for (const range of ranges) {
+      if (range[0] !== localCursor) fail('overlapping or noncontiguous local records.');
+      localCursor = range[1];
+    }
+    if (localCursor !== directoryOffset) fail('unreferenced bytes before the directory.');
+
+    localChunks.push(bytes.subarray(0, directoryOffset));
+    localBytes += directoryOffset;
+    totalCount += count;
+    if (localBytes >= U32_LIMIT || centralBytes >= U32_LIMIT ||
+        localBytes + centralBytes + 22 >= U32_LIMIT) {
+      fail('merged archive exceeds supported ZIP32 size.');
+    }
+  }
+
+  const end = new Uint8Array(22);
+  const endView = new DataView(end.buffer);
+  endView.setUint32(0, EOCD_SIGNATURE, true);
+  endView.setUint16(8, totalCount, true);
+  endView.setUint16(10, totalCount, true);
+  endView.setUint32(12, centralBytes, true);
+  endView.setUint32(16, localBytes, true);
+  const byteLength = localBytes + centralBytes + end.byteLength;
+  const blob = new Blob([...localChunks, ...centralChunks, end], { type: 'application/zip' });
+  return { blob, entryCount: totalCount, byteLength };
+}
+
+const downloadLink = document.getElementById('download-source-zip');
+const status = document.getElementById('source-download-status');
+const cancelButton = document.getElementById('cancel-source-download');
+const partDownloads = document.getElementById('nonuniqueness-parts');
+let activeRequest = null;
+let readyUrl = null;
+
+const sha256 = async bytes => {
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(digest), value => value.toString(16).padStart(2, '0')).join('');
+};
+
+cancelButton.addEventListener('click', () => {
+  if (activeRequest) activeRequest.abort();
+});
+
+downloadLink.addEventListener('click', async event => {
+  if (readyUrl) return; // The prepared Blob is now a normal download link.
+  event.preventDefault();
+  if (activeRequest) return;
+  if (!globalThis.crypto || !crypto.subtle) {
+    status.textContent = 'Please use the individual ZIP downloads below.';
+    partDownloads.open = true;
+    return;
+  }
+
+  const controller = new AbortController();
+  activeRequest = controller;
+  downloadLink.setAttribute('aria-disabled', 'true');
+  downloadLink.setAttribute('aria-busy', 'true');
+  downloadLink.textContent = 'Preparing source ZIP…';
+  cancelButton.hidden = false;
+
+  try {
+    const parts = [];
+    for (let index = 0; index < sourceParts.length; index++) {
+      const part = sourceParts[index];
+      status.textContent = `Downloading source files: part ${index + 1} of ${sourceParts.length}…`;
+      const response = await fetch(part.name, {signal: controller.signal});
+      if (!response.ok) throw new Error(`Could not fetch ${part.name}: HTTP ${response.status}`);
+      const bytes = new Uint8Array(await response.arrayBuffer());
+      if (controller.signal.aborted) throw new DOMException('Cancelled', 'AbortError');
+      if (bytes.byteLength !== part.size || await sha256(bytes) !== part.sha256) {
+        throw new Error(`The checksum does not match for ${part.name}.`);
+      }
+      parts.push(bytes);
+    }
+    if (controller.signal.aborted) throw new DOMException('Cancelled', 'AbortError');
+    status.textContent = 'Preparing the complete ZIP…';
+    const {blob, entryCount} = mergeSourceZipParts(parts);
+    if (entryCount !== 1265) throw new Error('Unexpected number of source files.');
+    readyUrl = URL.createObjectURL(blob);
+    downloadLink.href = readyUrl;
+    downloadLink.download = 'nonuniqueness-source.zip';
+    downloadLink.textContent = 'Save source ZIP';
+    downloadLink.removeAttribute('aria-disabled');
+    downloadLink.removeAttribute('aria-busy');
+    status.textContent = `Source ZIP ready (${entryCount.toLocaleString('en-US')} files). If the download does not start, click “Save source ZIP”.`;
+    downloadLink.click();
+  } catch (error) {
+    downloadLink.textContent = 'Download source ZIP';
+    if (controller.signal.aborted) {
+      status.textContent = 'Download cancelled. You can try again when ready.';
+    } else {
+      status.textContent = 'The complete ZIP could not be prepared. Try again or use the individual ZIP downloads below.';
+      partDownloads.open = true;
+      console.warn('Source ZIP download failed:', error);
+    }
+  } finally {
+    activeRequest = null;
+    cancelButton.hidden = true;
+    downloadLink.removeAttribute('aria-disabled');
+    downloadLink.removeAttribute('aria-busy');
+  }
+});
+
+})();
+</script>
 </body>
 </html>
