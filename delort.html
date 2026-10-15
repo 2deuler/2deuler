@@ -145,7 +145,7 @@
       <section class="section" id="overview" aria-labelledby="overview-title">
         <p class="section-label">The problem</p>
         <h2 id="overview-title">Delort’s discussion</h2>
-        <p>Delort proved global weak existence for compactly supported vorticity in <span class="math"><i>H</i><sup>−1</sup></span> that is a measure of one sign and asked whether the sign condition could be removed.</p>
+        <p>Delort proved global weak existence for compactly supported vorticity measures of one sign in <span class="math"><i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span> and made the following remark in his 1990 École Polytechnique seminar talk:</p>
         <figure class="discussion-quotation">
           <blockquote class="discussion-translation" lang="en">
             <p>Let us conclude with a remark on the positivity assumption imposed on the initial data <span class="math"><i>ω</i><sub>0</sub></span>. One may ask whether the vortex-sheet problem admits a solution with no assumption on the initial vorticity other than that it be a compactly supported measure belonging to <span class="math"><i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>.</p>
@@ -163,7 +163,7 @@
         <h2 id="result-title">No restriction on the initial sign</h2>
         <div class="theorem">
           <p class="theorem-label">Theorem 1.1 · As stated in the AI-assisted manuscript</p>
-          <p>For every finite signed Radon measure <span class="math"><i>ω</i><sub>0</sub> ∈ <i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>, there are <strong>infinitely many distinct global weak velocity solutions</strong> with initial value <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><msup><mi>∇</mi><mo>⊥</mo></msup><msup><mi>Δ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>ω</mi><mn>0</mn></msub></mrow></math>. They satisfy</p>
+          <p>For every finite signed Radon measure <span class="math"><i>ω</i><sub>0</sub> ∈ <i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>, there are <strong>infinitely many distinct global weak velocity solutions</strong> <span class="math"><i>u</i></span> with initial value <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><msup><mi>∇</mi><mo>⊥</mo></msup><msup><mi>Δ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>ω</mi><mn>0</mn></msub></mrow></math>, which satisfy</p>
           <div class="equation" tabindex="0" role="group" aria-label="The velocity difference is continuous in L2 and vanishes at the initial time">
             <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
               <mrow><mi>u</mi><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>L</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>,</mo><mspace width=".7em"/><mo stretchy="false">(</mo><mi>u</mi><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>.</mo></mrow>
@@ -172,15 +172,18 @@
           <p>The vorticity <span class="math"><i>ω</i> = curl <i>u</i></span> satisfies <span class="math"><i>ω</i>(0) = <i>ω</i><sub>0</sub></span> and the following regularity properties:</p>
           <ol class="regularity-list">
             <li>
-              <p><span class="inline-equation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ω</mi><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>H</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo><mo>∩</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>L</mi><mn>1</mn></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math></span> Moreover, if <span class="math"><i>ω</i><sub>0</sub> ∈ <i>L</i><sup>1</sup></span>, one also has <span class="math"><i>ω</i> ∈ <i>C</i>([0, ∞); <i>L</i><sup>1</sup>)</span>.</p>
+              <p><span class="inline-equation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ω</mi><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>H</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo><mo>∩</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>L</mi><mn>1</mn></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math></span></p>
             </li>
             <li>
               <p>Also, <span class="math"><i>ω</i>(<i>t</i>)</span> is weakly continuous as a finite signed Radon measure, i.e.</p>
               <div class="equation" tabindex="0" role="group" aria-label="For every continuous function phi vanishing at infinity, the map from t to the integral of phi against omega of t is continuous on zero to infinity">
                 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
-                  <mrow><mo stretchy="false">(</mo><mi>t</mi><mo>↦</mo><msub><mo>∫</mo><msup><mi>ℝ</mi><mn>2</mn></msup></msub><mi>φ</mi><mspace width=".1667em"/><mi mathvariant="normal">d</mi><mi>ω</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mspace width="1em"/><mtext>for every</mtext><mspace width=".35em"/><mi>φ</mi><mo>∈</mo><msub><mi>C</mi><mn>0</mn></msub><mo stretchy="false">(</mo><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>.</mo></mrow>
+                  <mrow><mi>t</mi><mo>↦</mo><msub><mo>∫</mo><msup><mi>ℝ</mi><mn>2</mn></msup></msub><mi>φ</mi><mspace width=".1667em"/><mi mathvariant="normal">d</mi><mi>ω</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mspace width="1em"/><mtext>for every</mtext><mspace width=".35em"/><mi>φ</mi><mo>∈</mo><msub><mi>C</mi><mn>0</mn></msub><mo stretchy="false">(</mo><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>.</mo></mrow>
                 </math>
               </div>
+            </li>
+            <li>
+              <p>Moreover, if <span class="math"><i>ω</i><sub>0</sub> ∈ <i>L</i><sup>1</sup></span>, one also has <span class="math"><i>ω</i> ∈ <i>C</i>([0, ∞); <i>L</i><sup>1</sup>)</span>.</p>
             </li>
           </ol>
         </div>
@@ -189,7 +192,7 @@
       <section class="section" id="scope" aria-labelledby="scope-title">
         <p class="section-label">Scope</p>
         <h2 id="scope-title">Remark</h2>
-        <p>The approach uses <strong>convex integration in the style of <a href="https://arxiv.org/abs/2408.07934">Bruè–Colombo–Kumar</a></strong>: starting from an Euler–Reynolds subsolution, one iteratively reduces the Reynolds stress through the time-averaged effect of moving dipole perturbations. The perturbations remain summable in velocity (<span class="math"><i>L</i><sup>2</sup></span>) and vorticity (<span class="math"><i>L</i><sup>1</sup></span>).</p>
+        <p>The approach uses <strong>convex integration in the style of <a href="https://arxiv.org/abs/2408.07934">Bruè–Colombo–Kumar</a></strong>: starting from an Euler–Reynolds subsolution, one iteratively reduces the Reynolds stress through the time-averaged effect of moving dipole perturbations. The perturbations remain summable in velocity <span class="math"><i>L</i><sup>2</sup></span> and vorticity <span class="math"><i>L</i><sup>1</sup></span>.</p>
         <p>The result concerns <strong>weak velocity solutions</strong>. It does not assert an energy inequality, preservation of the sign of vorticity, propagation of higher <span class="math"><i>L</i><sup><i>p</i></sup></span> norms, or renormalized transport.</p>
       </section>
 
