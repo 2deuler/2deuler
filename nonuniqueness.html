@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Non-unique vanishing-viscosity solutions of 2D Euler with vorticity in Lp. To be announced.">
+  <meta name="description" content="An AI-assisted manuscript claiming distinct vanishing-viscosity limits for 2D Euler with finite Lp vorticity. Main theorem, reading group, paper, and source material.">
   <meta name="theme-color" content="#f5f2ec">
   <title>Non-unique vanishing-viscosity solutions of 2D Euler with vorticity in Lᵖ</title>
   <style>
@@ -47,30 +47,81 @@
     @media(max-width:600px){.shell{padding:0 22px}.header{padding:22px 0 20px}.nav{font-size:11px;gap:4px 17px}.brand{font-size:14px}body{font-size:17px;line-height:1.8}h1{font-size:38px;line-height:1.16;letter-spacing:-.045em}h2{font-size:27px}.footer{align-items:flex-start}main{padding-bottom:48px}}
     @media(max-width:380px){.shell{padding:0 18px}h1{font-size:33px}.nav{gap:4px 13px}}
 
-
-    .math{font-family:"Cambria Math","STIX Two Math",var(--serif)}
+    .hero{display:grid;grid-template-columns:minmax(0,1fr) 244px;grid-template-areas:"eyebrow ." "title note" "lead note" "actions note";column-gap:68px;row-gap:25px;padding:59px 0 73px;border-bottom:1px solid var(--line)}
+    .hero .eyebrow{grid-area:eyebrow}
+    .hero h1{grid-area:title;max-width:840px}
+    .hero .lead{grid-area:lead;font-size:18px;line-height:1.85;max-width:660px;color:var(--muted);margin:0}
+    .hero .actions{grid-area:actions;margin-top:5px}
+    .ai-note{grid-area:note;align-self:end;border-left:1px solid var(--line);padding:4px 0 3px 25px;font-size:13px;line-height:1.85;color:var(--muted)}
+    .ai-note::before{content:"";display:block;width:30px;height:3px;background:var(--accent);margin:0 0 19px;border-radius:2px}
+    .ai-note strong{display:block;font-size:15px;line-height:1.55;color:var(--ink);margin-bottom:13px}
+    .ai-note p{margin:0}
+    .section{display:grid;grid-template-columns:152px minmax(0,1fr);column-gap:50px;max-width:1020px;margin:70px auto 0;scroll-margin-top:35px}
+    .section > *{grid-column:2;min-width:0}
+    .section > .section-label{grid-column:1;grid-row:1/span 2;padding-top:7px;max-width:134px;color:var(--muted)}
+    .section > :last-child{margin-bottom:0}
+    .math{font-family:"Cambria Math","STIX Two Math",var(--serif);white-space:normal}
+    .math i{font-style:italic}
     sub,sup{line-height:0;font-size:.72em}
-    .home-intro{padding:66px 0 55px;max-width:900px}
-    .home-intro .eyebrow{margin-bottom:22px}
-    .home-intro h1{max-width:760px}
-    .home-intro .lead{max-width:735px;color:var(--muted);font-size:18px;line-height:1.85;margin:27px 0 0}
-    .projects{border-top:1px solid var(--line)}
-    .project{display:grid;grid-template-columns:88px minmax(0,1fr) 190px;gap:35px;padding:41px 0 43px;border-bottom:1px solid var(--line);align-items:start}
-    .project-number{font-size:12px;color:var(--accent);letter-spacing:.03em;padding-top:5px;margin:0}
-    .project h2{font-size:29px;line-height:1.35;max-width:650px;margin:0 0 16px;text-wrap:balance}
-    .project h2 a{color:var(--ink);text-decoration:none}
-    .project h2 a:hover{text-decoration:underline;text-decoration-thickness:1px}
-    .project-description{font-size:16px;line-height:1.85;color:var(--muted);max-width:670px;margin:0}
-    .project-links{display:flex;flex-direction:column;align-items:flex-start;gap:15px;font-size:12px;line-height:1.7;padding-top:5px}
-    .project-links .button{gap:14px;white-space:nowrap}
-    .project-status{font-size:11px;color:var(--muted);margin:0}
-    .placeholder{min-height:60vh;padding:66px 0 80px;max-width:850px}
-    .placeholder .eyebrow{margin-bottom:22px}
-    .placeholder h1{font-size:clamp(38px,4.8vw,59px);max-width:800px}
-    .announcement{margin-top:33px;color:var(--muted);font-size:20px}
-    @media(max-width:850px){.home-intro{padding:35px 0 40px}.project{grid-template-columns:45px minmax(0,1fr);gap:15px 25px;padding:32px 0}.project-links{grid-column:2;flex-direction:row;align-items:center;flex-wrap:wrap;gap:14px 23px}.project-status{flex-basis:100%}.placeholder{padding:35px 0 60px}}
-    @media(max-width:600px){.home-intro{padding-top:23px}.home-intro .lead{font-size:16px;margin-top:23px}.project{display:block;padding:29px 0}.project-number{padding:0;margin-bottom:12px}.project h2{font-size:26px}.project-description{font-size:15px}.project-links{margin-top:23px}.placeholder{padding-top:23px}.announcement{font-size:18px}}
-    @media print{body{background:white;color:black}.shell{max-width:none;padding:0}.header,.footer,.skip,.project-links{display:none}.home-intro,.placeholder{padding:0 0 24px}.project{grid-template-columns:45px minmax(0,1fr);break-inside:avoid}a{color:inherit}h1{font-size:32pt}}
+    .equation{overflow-x:auto;max-width:100%;padding:15px 4px;margin:4px 0 26px;text-align:center;scrollbar-width:thin}
+    math{font-size:1.12em;font-family:"Cambria Math","STIX Two Math",math}
+    math[display="block"]{width:max-content;min-width:0;margin:0 auto}
+    .discussion-quotation{margin:5px 0 28px}
+    .discussion-translation{font:23px/1.65 var(--serif);letter-spacing:-.01em;padding:3px 0 3px 23px;margin:0 0 14px;border-left:2px solid #bd9b7a;color:#674d3d}
+    .discussion-translation p,.discussion-original p{margin:0}
+    .discussion-quotation figcaption{font-size:12px;line-height:1.8;color:var(--muted);margin:18px 0 0;padding-left:25px}
+    .discussion-original{font-size:14px;line-height:1.85;color:var(--muted);padding-left:25px}
+    .discussion-original .original-label{font-size:11px;letter-spacing:.02em;margin-bottom:8px}
+    .discussion-original blockquote{margin:0}
+    .theorem{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px 29px;margin:2px 0 0}
+    .theorem-label{font-size:11px;line-height:1.8;letter-spacing:.015em;color:var(--accent);margin-bottom:19px}
+    .theorem > :last-child{margin-bottom:0}
+    .theorem .equation{font-size:17px;margin-bottom:21px}
+    .regularity-list{margin:0;padding-left:1.6em;list-style-type:lower-roman}
+    .regularity-list li{padding-left:.3em}
+    .regularity-list li::marker{font-size:.8em;color:var(--muted)}
+    .regularity-list li + li{margin-top:20px}
+    .regularity-list p{margin:0}
+    .regularity-list .equation{margin:8px 0 0;padding:12px 2px}
+    .inline-equation{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle;scrollbar-width:thin}
+    .paper{max-width:1020px;margin:72px auto 0;padding:38px 42px;background:var(--wash);border-radius:12px}
+    .paper .section-label{margin-bottom:13px}
+    .paper h2{font-size:27px;margin-bottom:13px}
+    .paper h3{font:24px/1.5 var(--serif);letter-spacing:-.015em;max-width:650px;margin-bottom:12px}
+    .paper .metadata{font-size:11px;line-height:1.9;color:var(--muted);margin:0 0 19px}
+    .paper > p:not(.section-label):not(.metadata){font-size:15px;line-height:1.8;color:var(--muted);max-width:760px}
+    .team-section{display:grid;grid-template-columns:152px minmax(0,1fr);gap:50px;max-width:1020px;margin:55px auto 0;padding:0 0 33px;border-bottom:1px solid var(--line)}
+    .team-section h2{font-size:14px;letter-spacing:0;color:var(--muted);padding-top:5px;margin:0}
+    .team-list{list-style:none;display:flex;flex-wrap:wrap;gap:14px 40px;margin:0;padding:0}
+    .team-list a{font-size:19px;text-decoration:none;color:var(--ink)}
+    .team-list a::after{content:" ↗";font-size:13px;color:var(--accent)}
+    .team-list a:hover{text-decoration:underline}
+    .community{max-width:min(818px,calc(100% - 202px));margin:53px max(0px,calc((100% - 1020px)/2)) 0 auto}
+    .community h2{font-size:26px;margin-bottom:18px}
+    .community p{font-size:17px;line-height:1.9;color:var(--muted)}
+    .community > :last-child{margin-bottom:0}
+    .community a{overflow-wrap:anywhere}
+    .invitation{padding-top:32px;border-top:1px solid var(--line);margin-top:33px}
+    .acknowledgements{max-width:min(818px,calc(100% - 202px));margin:40px max(0px,calc((100% - 1020px)/2)) 0 auto}
+    .acknowledgements h2{font-size:14px;letter-spacing:0;color:var(--muted);margin-bottom:11px}
+    .acknowledgements p{font-size:13px;line-height:1.9;color:var(--muted);margin:0}
+    @media(max-width:1100px){.hero{grid-template-columns:minmax(0,1fr) 220px;column-gap:40px}.section,.team-section{grid-template-columns:130px minmax(0,1fr);column-gap:35px}.community,.acknowledgements{max-width:calc(100% - 165px);margin-right:0}}
+    @media(max-width:850px){.hero{display:flex;flex-direction:column;gap:24px;padding:35px 0 43px}.hero h1{font-size:clamp(38px,6vw,54px);max-width:750px}.hero .lead{max-width:700px}.ai-note{align-self:stretch;border:0;border-top:1px solid var(--line);padding:20px 0 0;max-width:670px;font-size:13px}.ai-note::before{display:none}.ai-note strong{margin-bottom:7px}.hero .actions{margin-top:0}.section{display:block;margin-top:46px}.section > .section-label{max-width:none;margin-bottom:13px;padding:0}.paper{padding:29px;margin-top:48px}.team-section{display:block;margin-top:38px}.team-section h2{margin-bottom:15px;padding:0}.community,.acknowledgements{max-width:none;margin-right:0}.community{margin-top:38px}.acknowledgements{margin-top:30px}}
+    @media(max-width:600px){.hero{padding-top:23px;gap:21px}.hero h1{font-size:38px}.hero .lead{font-size:16px}.theorem{padding:22px 19px}.theorem .equation{font-size:15px}.discussion-translation{font-size:21px;padding-left:17px}.discussion-quotation figcaption,.discussion-original{padding-left:19px}.paper{padding:25px 22px}.paper h3{font-size:22px}.paper .actions{gap:12px 18px}.community p{font-size:16px}.team-list{gap:10px 28px}.team-list a{font-size:18px}.equation{font-size:16px}}
+    @media(max-width:380px){.hero h1{font-size:33px}.team-list{flex-direction:column}}
+
+    @media print{body{background:#fff;color:#000;font-size:11pt}.shell{max-width:none;padding:0}.header{min-height:0;padding:0 0 15px}.nav,.skip,.actions,.footer{display:none}main,.source-page main{padding:24px 0;max-width:none}.hero{display:block;padding:0 0 24px}.hero h1,h1{font-size:29pt}.hero .lead{font-size:12pt;margin-top:20px}.ai-note{border:0;padding:16px 0 0;margin-top:10px}.ai-note::before{display:none}.section{display:block;margin-top:28px}.section-label{margin-bottom:10px!important}h2{font-size:20pt}.paper,.entry,.theorem{background:none;border:1px solid #bbb;border-radius:0}.community,.acknowledgements{max-width:none;margin-right:0}.equation{overflow:visible}.checksum{background:none}a{color:inherit}.theorem,.team-section,.entry{break-inside:avoid}}
+  
+    .hero h1{font-size:clamp(38px,4.5vw,56px)}
+    .math{white-space:nowrap}
+    .convergence-limits{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 26px;margin:0 0 23px}
+    .theorem .convergence-limits .equation{padding:6px 2px;margin:0}
+    .theorem .velocity-note{font-size:15px;line-height:1.8;color:var(--muted);margin:-5px 0 22px}
+    .paper .metadata a{color:inherit}
+    @media(max-width:850px){.hero h1{font-size:clamp(38px,6vw,54px)}}
+    @media(max-width:600px){.hero h1{font-size:38px}.theorem .velocity-note{font-size:14px}.convergence-limits{gap:8px 20px}}
+    @media(max-width:380px){.hero h1{font-size:33px}}
+    @media print{.hero h1{font-size:29pt}}
   </style>
 </head>
 <body id="top">
@@ -86,15 +137,68 @@
       </nav>
     </header>
     <main id="main-content">
-      <section class="placeholder" aria-labelledby="page-title">
-        <p class="eyebrow">Two-dimensional Euler equations</p>
-        <h1 id="page-title">Non-unique vanishing-viscosity solutions of 2D Euler with vorticity in <span class="math"><i>L</i><sup><i>p</i></sup></span></h1>
-        <p class="announcement">To be announced.</p>
+      <section class="hero" aria-labelledby="paper-title">
+        <p class="eyebrow">Vanishing viscosity and nonuniqueness</p>
+        <h1 id="paper-title">Non-unique vanishing-viscosity solutions of 2D Euler with vorticity in <span class="math"><i>L</i><sup><i>p</i></sup></span></h1>
+        <p class="lead">A manuscript claiming two distinct weak Euler solutions arising as vanishing-viscosity limits from the same compactly supported initial vorticity, for every <span class="math">2 &lt; <i>p</i> &lt; ∞</span>.</p>
+        <aside class="ai-note" aria-label="Manuscript status">
+          <strong>AI-assisted manuscript</strong>
+          <p>The manuscript was developed autonomously by ChatGPT 6.1 Sol. The accompanying <a href="sources.html#nonuniqueness">source material</a> includes the original chat, prompts, and successive versions of the manuscript.</p>
+        </aside>
+        <div class="actions">
+          <a class="button" href="nonuniqueness-paper.pdf">Read the paper <span aria-hidden="true">↗</span></a>
+          <a class="plain-link" href="#main-result">Explore the main result <span aria-hidden="true">↓</span></a>
+          <a class="plain-link" href="sources.html#nonuniqueness">Source material <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="section" id="main-result" aria-labelledby="result-title">
+        <p class="section-label">The manuscript’s main claim</p>
+        <h2 id="result-title">Two distinct vanishing-viscosity limits</h2>
+        <p>The manuscript claims the following result.</p>
+        <div class="theorem">
+          <p class="theorem-label">Theorem</p>
+          <p>For every <span class="math"><i>p</i> ∈ (2, ∞)</span>, there exist a compactly supported vorticity <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>ω</mi><mtext>in</mtext></msub><mo>∈</mo><msup><mi>L</mi><mi>p</mi></msup><mo stretchy="false">(</mo><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></math> and a sequence of viscosities <span class="math">(<i>ν</i><sub><i>n</i></sub>)<sub><i>n</i> ∈ ℕ</sub></span> with <span class="math"><i>ν</i><sub><i>n</i></sub> ↓ 0</span> as <span class="math"><i>n</i> → ∞</span>, such that the associated solutions of the 2D Navier–Stokes equations in vorticity form</p>
+          <div class="equation" tabindex="0" role="group" aria-label="Navier–Stokes vorticity equation with viscosity nu n and common initial vorticity omega in">
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo stretchy="true">{</mo><mtable columnalign="left center left" columnspacing=".3em" rowspacing=".55em"><mtr><mtd><mrow><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>ω</mi><msub><mi>ν</mi><mi>n</mi></msub></msub><mo>+</mo><msub><mi>u</mi><msub><mi>ν</mi><mi>n</mi></msub></msub><mo>·</mo><mi>∇</mi><msub><mi>ω</mi><msub><mi>ν</mi><mi>n</mi></msub></msub></mrow></mtd><mtd><mo>=</mo></mtd><mtd><mrow><msub><mi>ν</mi><mi>n</mi></msub><mi>Δ</mi><msub><mi>ω</mi><msub><mi>ν</mi><mi>n</mi></msub></msub><mo>,</mo></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>ω</mi><msub><mi>ν</mi><mi>n</mi></msub></msub><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mtd><mtd><mo>=</mo></mtd><mtd><mrow><msub><mi>ω</mi><mtext>in</mtext></msub><mo>.</mo></mrow></mtd></mtr></mtable></mrow></math>
+          </div>
+          <p class="velocity-note">Here <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>u</mi><msub><mi>ν</mi><mi>n</mi></msub></msub><mo>=</mo><msup><mi>∇</mi><mo>⊥</mo></msup><msup><mi>Δ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>ω</mi><msub><mi>ν</mi><mi>n</mi></msub></msub></mrow></math> is the associated velocity.</p>
+          <p>These solutions satisfy</p>
+          <div class="convergence-limits" aria-label="Even and odd subsequences converge to distinct limits">
+            <div class="equation"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>ω</mi><msub><mi>ν</mi><mrow><mn>2</mn><mi>n</mi></mrow></msub></msub><mo>→</mo><msub><mi>ω</mi><mi>e</mi></msub><mo>,</mo></mrow></math></div>
+            <div class="equation"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>ω</mi><msub><mi>ν</mi><mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></msub><mo>→</mo><msub><mi>ω</mi><mi>o</mi></msub><mo>,</mo></mrow></math></div>
+            <div class="equation"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>ω</mi><mi>e</mi></msub><mo>≠</mo><msub><mi>ω</mi><mi>o</mi></msub><mo>.</mo></mrow></math></div>
+          </div>
+          <p>Both convergences hold in <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>T</mi><mo stretchy="false">]</mo><mo>;</mo><msup><mi>L</mi><mi>p</mi></msup><mo stretchy="false">(</mo><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow></math> for some <span class="math"><i>T</i> ∈ (0, ∞)</span>. The limits <span class="math"><i>ω</i><sub><i>e</i></sub></span> and <span class="math"><i>ω</i><sub><i>o</i></sub></span> are two distinct weak solutions of the 2D Euler equations with the same initial vorticity <span class="math"><i>ω</i><sub>in</sub></span>.</p>
+        </div>
+      </section>
+
+      <section class="paper" id="paper" aria-labelledby="download-title">
+        <p class="section-label">The paper</p>
+        <h2 id="download-title">Read the full argument</h2>
+        <h3>Non-unique vanishing-viscosity selection for planar Euler</h3>
+        <p class="metadata">ChatGPT 6.1 Sol · Prompters: <a href="https://dmi.unibas.ch/de/personen/umberto-pappalettera/">Umberto Pappalettera</a> and <a href="https://sites.google.com/view/massimo-sorella/home-page">Massimo Sorella</a></p>
+        <p>The revised manuscript is available below. The <a href="sources.html#nonuniqueness">source material</a> brings together the original chat, prompts, manuscript versions, and the complete source ZIP with its SHA-256 checksum.</p>
+        <div class="actions">
+          <a class="button" href="nonuniqueness-paper.pdf">Open the paper <span aria-hidden="true">↗</span></a>
+          <a class="plain-link" href="nonuniqueness-paper.pdf" download="nonuniqueness-paper.pdf">Download PDF <span aria-hidden="true">↓</span></a>
+          <a class="plain-link" href="sources.html#nonuniqueness">Source material &amp; ZIP <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="community" id="our-purpose" aria-labelledby="purpose-title">
+        <h2 id="purpose-title">Our purpose</h2>
+        <p>We are sharing the manuscript here because we would like the mathematics behind this result to be prioritized over a counterproductive race to upload AI-generated proofs to arXiv.</p>
+        <p>We are organizing a reading group to study the claimed proof in detail, identify and deeply understand its main underlying ideas, and communicate them in a form more accessible to the mathematical community, for instance as a set of lecture notes.</p>
+      </section>
+      <section class="community invitation" id="invitation" aria-labelledby="invitation-title">
+        <h2 id="invitation-title">Invitation</h2>
+        <p>We encourage anyone interested in studying the manuscript or joining the reading group to get in touch at <a href="mailto:josef.demmel@fau.de">josef.demmel@fau.de</a>.</p>
       </section>
     </main>
     <footer class="footer">
       <p>Two-dimensional Euler equations · AI-assisted research</p>
-      <nav class="footer-links" aria-label="Footer navigation"><a href="sources.html">Source material</a><a href="mailto:josef.demmel@fau.de">Get in touch</a></nav>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="sources.html#nonuniqueness">Source material</a><a href="mailto:josef.demmel@fau.de">Get in touch</a></nav>
     </footer>
   </div>
 </body>
