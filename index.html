@@ -57,8 +57,7 @@
     .euler-formulation{max-width:735px;margin-top:28px}
     .euler-formulation .equation{overflow-x:auto;max-width:100%;padding:10px 2px;scrollbar-width:thin}
     .euler-formulation math{font-size:1.15em;font-family:"Cambria Math","STIX Two Math",math;width:max-content;margin:0 auto}
-    .euler-formulation .equation-note{font-size:14px;line-height:1.8;color:var(--muted);text-align:center;margin:13px 0 0}
-    @media(max-width:600px){.euler-formulation{margin-top:22px}.euler-formulation math{font-size:1.05em}.euler-formulation .equation-note{font-size:13px}}
+    @media(max-width:600px){.euler-formulation{margin-top:22px}.euler-formulation math{font-size:1.05em}}
     .projects{border-top:1px solid var(--line)}
     .project{display:grid;grid-template-columns:88px minmax(0,1fr) 190px;gap:35px;padding:41px 0 43px;border-bottom:1px solid var(--line);align-items:start}
     .project-number{font-size:12px;color:var(--accent);letter-spacing:.03em;padding-top:5px;margin:0}
@@ -98,9 +97,8 @@
       <section class="home-intro" aria-labelledby="page-title">
         <p class="eyebrow">Existence and nonuniqueness</p>
         <h1 id="page-title">Two-dimensional Euler equations</h1>
-        <p class="lead">The two-dimensional incompressible Euler equations describe the motion of an ideal fluid. Here we collect AI-assisted manuscripts and their source material on the existence and nonuniqueness of weak solutions.</p>
         <div class="euler-formulation">
-          <div class="equation" tabindex="0" role="group" aria-label="Incompressible Euler equations: partial t u plus divergence of u tensor u plus gradient p equals zero, and divergence u equals zero">
+          <div class="equation" tabindex="0" role="group" aria-label="Partial t u plus divergence of u tensor u plus gradient p equals zero, and divergence u equals zero">
             <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
               <mtable columnalign="right center left" columnspacing=".3em" rowspacing=".5em">
                 <mtr>
@@ -114,8 +112,8 @@
               </mtable>
             </math>
           </div>
-          <p class="equation-note">Here <span class="math"><i>u</i>(<i>t</i>, <i>x</i>)</span> is the velocity and <span class="math"><i>p</i>(<i>t</i>, <i>x</i>)</span> the pressure, for <span class="math"><i>x</i> ∈ ℝ<sup>2</sup></span> and <span class="math"><i>t</i> &gt; 0</span>, with initial condition <span class="math"><i>u</i>(0, <i>x</i>) = <i>u</i><sub>0</sub>(<i>x</i>)</span>.</p>
         </div>
+        <p class="lead">These equations describe the motion of an ideal fluid with velocity <span class="math"><i>u</i>(<i>t</i>, <i>x</i>)</span> and pressure <span class="math"><i>p</i>(<i>t</i>, <i>x</i>)</span>, for <span class="math"><i>x</i> ∈ ℝ<sup>2</sup></span> and <span class="math"><i>t</i> &gt; 0</span>, with initial condition <span class="math"><i>u</i>(0, <i>x</i>) = <i>u</i><sub>0</sub>(<i>x</i>)</span>. Here we collect AI-assisted manuscripts and their source material on the existence and nonuniqueness of weak solutions.</p>
       </section>
       <section class="projects" aria-label="Research projects">
         <article class="project" aria-labelledby="delort-title">
