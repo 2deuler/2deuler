@@ -75,7 +75,6 @@
     .discussion-original{font-size:14px;line-height:1.85;color:var(--muted);padding-left:25px}
     .discussion-original .original-label{font-size:11px;letter-spacing:.02em;margin-bottom:8px}
     .discussion-original blockquote{margin:0}
-    .approach{margin-top:26px}
     .theorem{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px 29px;margin:2px 0 0}
     .theorem-label{font-size:11px;line-height:1.8;letter-spacing:.015em;color:var(--accent);margin-bottom:19px}
     .theorem > :last-child{margin-bottom:0}
@@ -139,13 +138,7 @@
       <section class="section" id="overview" aria-labelledby="overview-title">
         <p class="section-label">The problem</p>
         <h2 id="overview-title">Delort’s discussion</h2>
-        <p>The two-dimensional Euler equations describe the motion of an ideal incompressible fluid:</p>
-        <div class="equation" tabindex="0" role="group" aria-label="Two-dimensional incompressible Euler equations">
-          <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
-            <mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><mi mathvariant="normal">div</mi><mo stretchy="false">(</mo><mi>u</mi><mo>⊗</mo><mi>u</mi><mo stretchy="false">)</mo><mo>+</mo><mi>∇</mi><mi>p</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1em"/><mi mathvariant="normal">div</mi><mspace width=".1667em"/><mi>u</mi><mo>=</mo><mn>0</mn><mo>.</mo></mrow>
-          </math>
-        </div>
-        <p>A vortex sheet concentrates vorticity on a curve. Delort proved global weak existence for compactly supported vorticity in <span class="math"><i>H</i><sup>−1</sup></span> that is a measure of one sign. He concluded with the following discussion.</p>
+        <p>Delort proved global weak existence for compactly supported vorticity in <span class="math"><i>H</i><sup>−1</sup></span> that is a measure of one sign and asked whether the sign condition could be removed.</p>
         <figure class="discussion-quotation">
           <blockquote class="discussion-translation" lang="en">
             <p>Let us conclude with a remark on the positivity assumption imposed on the initial data <span class="math"><i>ω</i><sub>0</sub></span>. One may ask whether the vortex-sheet problem admits a solution with no assumption on the initial vorticity other than that it be a compactly supported measure belonging to <span class="math"><i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>.</p>
@@ -156,43 +149,36 @@
           </div>
           <figcaption>English translation and French original from <a href="https://www.numdam.org/article/SEDP_1990-1991____A2_0.pdf#page=13">Delort’s discussion of the sign condition</a>.</figcaption>
         </figure>
-        <p>The sign condition provides the compactness needed to pass to the nonlinear Euler equation. For general signed measures, that mechanism can fail. The manuscript proposes to address Delort’s question by constructing the solutions directly, for arbitrary finite signed initial vorticity in <span class="math"><i>H</i><sup>−1</sup></span>, without requiring compact support.</p>
       </section>
 
       <section class="section" id="main-result" aria-labelledby="result-title">
         <p class="section-label">The manuscript’s main claim</p>
         <h2 id="result-title">No restriction on the initial sign</h2>
-        <p>Write <span class="math">ℳ(ℝ<sup>2</sup>)</span> for the finite signed Radon measures and set</p>
-        <div class="equation" tabindex="0" role="group" aria-label="Initial velocity u zero equals nabla perpendicular Delta inverse omega zero">
-          <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
-            <mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><msup><mi>∇</mi><mo>⊥</mo></msup><msup><mi>Δ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>ω</mi><mn>0</mn></msub><mo>.</mo></mrow>
-          </math>
-        </div>
         <div class="theorem">
           <p class="theorem-label">Theorem 1.1 · As stated in the AI-assisted manuscript</p>
-          <p>For every <span class="math"><i>ω</i><sub>0</sub> ∈ ℳ(ℝ<sup>2</sup>) ∩ <i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>, there are <strong>infinitely many distinct global weak velocity solutions</strong> with initial value <span class="math"><i>u</i><sub>0</sub></span>. They satisfy</p>
+          <p>For every finite signed Radon measure <span class="math"><i>ω</i><sub>0</sub> ∈ <i>H</i><sup>−1</sup>(ℝ<sup>2</sup>)</span>, there are <strong>infinitely many distinct global weak velocity solutions</strong> with initial value <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><msup><mi>∇</mi><mo>⊥</mo></msup><msup><mi>Δ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>ω</mi><mn>0</mn></msub></mrow></math>. They satisfy</p>
           <div class="equation" tabindex="0" role="group" aria-label="The velocity difference is continuous in L2 and vanishes at the initial time">
             <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
               <mrow><mi>u</mi><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>L</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>,</mo><mspace width=".7em"/><mo stretchy="false">(</mo><mi>u</mi><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>.</mo></mrow>
             </math>
           </div>
-          <p>The vorticity <span class="math"><i>ω</i> = curl <i>u</i></span> satisfies <span class="math"><i>ω</i>(0) = <i>ω</i><sub>0</sub></span> and the following regularity properties. All spatial function spaces below are over <span class="math">ℝ<sup>2</sup></span>.</p>
-          <div class="equation" tabindex="0" role="group" aria-label="Vorticity continuity in finite measures and H minus one">
-            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ω</mi><mo>∈</mo><msub><mi>C</mi><mrow><mi>w</mi><mo>∗</mo></mrow></msub><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><mi>ℳ</mi><mo stretchy="false">)</mo><mo>∩</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>H</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math>
+          <p>The vorticity <span class="math"><i>ω</i> = curl <i>u</i></span> satisfies <span class="math"><i>ω</i>(0) = <i>ω</i><sub>0</sub></span> and the following regularity properties.</p>
+          <div class="equation" tabindex="0" role="group" aria-label="Vorticity is continuous in H minus one">
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ω</mi><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>H</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math>
           </div>
           <div class="equation" tabindex="0" role="group" aria-label="Vorticity is continuous in L1 for positive times">
             <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ω</mi><mo>∈</mo><mi>C</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false">)</mo><mo>;</mo><msup><mi>L</mi><mn>1</mn></msup><mo stretchy="false">)</mo><mo>.</mo></mrow></math>
           </div>
-          <p>Here weak-* continuity is tested against functions in <span class="math"><i>C</i><sub>0</sub>(ℝ<sup>2</sup>)</span>. For <span class="math"><i>ω</i><sub>0</sub> ∈ <i>L</i><sup>1</sup></span>, one also has <span class="math"><i>ω</i> ∈ <i>C</i>([0, ∞); <i>L</i><sup>1</sup>)</span>. For singular initial data, continuity in total variation at zero is not asserted.</p>
+          <p>At every time <span class="math"><i>t</i> ≥ 0</span>, <span class="math"><i>ω</i>(<i>t</i>)</span> is a finite signed Radon measure. For every <span class="math"><i>φ</i> ∈ <i>C</i><sub>0</sub>(ℝ<sup>2</sup>)</span>, the map <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>t</mi><mo>↦</mo><msub><mo>∫</mo><msup><mi>ℝ</mi><mn>2</mn></msup></msub><mi>φ</mi><mspace width=".1667em"/><mi mathvariant="normal">d</mi><mi>ω</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></math> is continuous on <span class="math">[0, ∞)</span>.</p>
+          <p>For <span class="math"><i>ω</i><sub>0</sub> ∈ <i>L</i><sup>1</sup></span>, one also has <span class="math"><i>ω</i> ∈ <i>C</i>([0, ∞); <i>L</i><sup>1</sup>)</span>.</p>
         </div>
-        <p class="approach">The approach uses <strong>convex integration in the style of <a href="https://arxiv.org/abs/2408.07934">Bruè–Colombo–Kumar</a></strong>: begin with an approximate Euler flow and remove its equation error through the time-averaged effect of moving dipoles. The corrections remain summable both in velocity <span class="math"><i>L</i><sup>2</sup></span> and in vorticity <span class="math"><i>L</i><sup>1</sup></span>.</p>
       </section>
 
       <section class="section" id="scope" aria-labelledby="scope-title">
         <p class="section-label">Scope</p>
-        <h2 id="scope-title">The solution class matters</h2>
+        <h2 id="scope-title">Remark</h2>
+        <p>The approach uses <strong>convex integration in the style of <a href="https://arxiv.org/abs/2408.07934">Bruè–Colombo–Kumar</a></strong>: begin with an approximate Euler flow and remove its equation error through the time-averaged effect of moving dipoles. The corrections remain summable both in velocity <span class="math"><i>L</i><sup>2</sup></span> and in vorticity <span class="math"><i>L</i><sup>1</sup></span>.</p>
         <p>The result concerns <strong>weak velocity solutions</strong>. It does not assert an energy inequality, preservation of the sign of vorticity, propagation of higher <span class="math"><i>L</i><sup><i>p</i></sup></span> norms, or renormalized transport.</p>
-        <p>It also does not identify a vanishing-viscosity limit or a physically selected continuation of a vortex sheet. In particular, the nonuniqueness statement is not a nonuniqueness result within the bounded-vorticity class of Yudovich.</p>
       </section>
 
       <section class="paper" id="paper" aria-labelledby="download-title">
